@@ -1,0 +1,22 @@
+{
+  "filePath": ".spec-workflow/specs/figma-to-vue-visual-testing/requirements.md",
+  "currentVersion": 2,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-11-10T05:55:36.194Z",
+      "trigger": "initial",
+      "approvalId": "approval_1762754136192_yq3cjq6u4",
+      "approvalTitle": "Requirements - Figma MCP to Vue + Playwright Visual Testing"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-11-10T05:57:14.878Z",
+      "trigger": "approved",
+      "approvalId": "approval_1762754136192_yq3cjq6u4",
+      "approvalTitle": "Requirements - Figma MCP to Vue + Playwright Visual Testing"
+    }
+  ]
+}

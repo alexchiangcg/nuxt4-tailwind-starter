@@ -1,0 +1,22 @@
+{
+  "filePath": ".spec-workflow/specs/figma-to-vue-visual-testing/design.md",
+  "currentVersion": 2,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-11-10T06:01:53.878Z",
+      "trigger": "initial",
+      "approvalId": "approval_1762754513875_wius543ek",
+      "approvalTitle": "Design - Figma to Vue Component Architecture & Testing"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-11-10T06:04:29.231Z",
+      "trigger": "approved",
+      "approvalId": "approval_1762754513875_wius543ek",
+      "approvalTitle": "Design - Figma to Vue Component Architecture & Testing"
+    }
+  ]
+}
