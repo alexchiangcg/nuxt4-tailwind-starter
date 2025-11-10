@@ -172,11 +172,53 @@ import { LoginPage } from '~/features/auth'
 
 ## Figma 轉代碼工作流程
 
-本模板針對 Figma MCP 工作流程優化：
+本模板整合了完整的 **Figma MCP → Vue 3 → Playwright 視覺測試** 工作流程，實現從設計稿到代碼的自動化轉換。
 
-1. 使用 Figma MCP 從 Figma 匯出設計稿
-2. 將生成的元件放置於 `app/shared/components/` 或對應的 `app/features/[feature]/components/`
-3. 使用 Playwright MCP 進行視覺回歸測試
+### 工作流程概覽
+
+1. **從 Figma 提取設計** - 使用 Figma MCP 工具從 Figma Desktop App 獲取 React + Tailwind 代碼
+2. **轉換為 Vue 3** - 將 React 代碼手動轉換為 Vue 3 Composition API
+3. **實作元件** - 遵循 Feature-based 架構放置元件於 `app/shared/components/` 或 `app/features/[feature]/components/`
+4. **視覺回歸測試** - 使用 Playwright MCP 建立自動化視覺測試，確保實作與設計稿像素級一致 (±2px)
+
+### 參考實作：Restaurant Booking Feature
+
+本專案包含完整的參考實作 (`app/features/reservation/`)，展示了從 Figma 設計稿到完整 Vue 應用的整個流程：
+
+- ✅ **8 個共用基礎元件** (BaseInput, BaseButton, BaseCheckbox, BaseDropdown, BaseRadioGroup, BaseDatePicker, BaseTextarea, BaseChip)
+- ✅ **5 個功能專屬元件** (ReservationForm, SpecialRequestsForm, PaymentMethodSelector, PaymentTermsAgreement, BookingDetailCard)
+- ✅ **1 個完整頁面元件** (ReservationFormPage)
+- ✅ **~80 個視覺回歸測試** - 涵蓋所有元件的所有狀態
+
+### 詳細文檔
+
+- 📖 **[WORKFLOW.md](./WORKFLOW.md)** - 完整的 Figma 轉 Vue 工作流程指南
+  - 如何使用 Figma MCP 提取設計
+  - React 到 Vue 3 轉換規則
+  - 元件實作最佳實踐
+  - 常見問題與解決方案
+
+- 🧪 **[TESTING.md](./TESTING.md)** - Playwright 視覺回歸測試指南
+  - 測試結構與組織
+  - 如何撰寫視覺測試
+  - Playwright MCP 工具使用
+  - 測試疑難排解
+
+### 快速開始
+
+```bash
+# 1. 啟動開發伺服器
+yarn dev
+
+# 2. 在瀏覽器中查看參考實作
+http://localhost:3000/restaurant/reservation-form
+
+# 3. 查看測試頁面
+http://localhost:3000/test/base-input
+http://localhost:3000/test/reservation-form-page
+```
+
+詳細步驟請參考 [WORKFLOW.md](./WORKFLOW.md)。
 
 ## 授權
 
