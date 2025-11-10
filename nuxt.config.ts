@@ -4,7 +4,6 @@ import { appDescription } from './app/constants/index'
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
@@ -13,9 +12,14 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/tailwind.css'],
 
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
+  vite: {
+    css: {
+      postcss: {
+        plugins: [
+          require('@tailwindcss/postcss'),
+        ],
+      },
+    },
   },
 
   devtools: {
