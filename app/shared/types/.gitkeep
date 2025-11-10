@@ -1,0 +1,3 @@
+# 全域型別定義 (Global Types)
+# 放置跨 feature 共用的 TypeScript 型別
+# 例如：API Response、Common Models 等

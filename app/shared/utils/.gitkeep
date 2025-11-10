@@ -1,0 +1,3 @@
+# 共用工具函式 (Shared Utils)
+# 放置通用工具函式
+# 例如：formatDate、formatCurrency、debounce、throttle 等

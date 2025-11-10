@@ -1,0 +1,3 @@
+# 共用元件 (Dumb/Common Components)
+# 放置可跨 feature 重用的通用元件
+# 例如：Button、Input、Card、Modal 等

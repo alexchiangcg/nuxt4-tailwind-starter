@@ -1,0 +1,3 @@
+# 共用服務 (Shared Services)
+# 放置全域服務
+# 例如：API Client、Auth Service、Logger、Storage 等
