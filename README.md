@@ -83,7 +83,7 @@ yarn typecheck
 
 ```
 .
-src/
+app/
 ├─ features/
 │  ├─ auth/
 │  │  ├─ pages/            # route pages (單一或多頁面)
@@ -92,14 +92,13 @@ src/
 │  │  │  └─ LoginForm.vue
 │  │  ├─ composables/      # feature-specific hooks
 │  │  │  └─ useLogin.ts
-│  │  ├─ store/            # Pinia module 或 Vuex module
+│  │  ├─ store/            # Pinia module
 │  │  │  └─ auth.store.ts
 │  │  ├─ api/              # 與後端互動的函式
 │  │  │  └─ auth.api.ts
 │  │  ├─ types/            # feature 專屬型別
 │  │  │  └─ auth.types.ts
-│  │  ├─ routes.ts         # feature route definitions (lazy load)
-│  │  ├─ index.ts          # barrel exports (page, routes, store)
+│  │  ├─ index.ts          # barrel exports (page, store)
 │  │  └─ __tests__/        # feature 單元測試
 │  ├─ members/
 │  │  ├─ pages/
@@ -112,24 +111,24 @@ src/
 │  │  │  └─ members.api.ts
 │  │  ├─ types/
 │  │  │  └─ members.types.ts
-│  │  ├─ routes.ts
 │  │  └─ index.ts
 │  └─ ...
+├─ pages/                   # Nuxt pages (檔案式路由)
+│  └─ index.vue
 ├─ layouts/
-│  └─ MainLayout.vue
+│  └─ default.vue
 ├─ shared/                  # 可跨 feature 重用
 │  ├─ components/           # dumb / common components
 │  ├─ composables/          # 公共 hooks (useFetch, useModal...)
 │  ├─ services/             # api client、auth service、logger
 │  ├─ utils/
 │  └─ types/                # 全域型別
-├─ router/
-│  └─ index.ts              # import features' routes and createRouter
-├─ store/                   # pinia root + register feature stores (optional)
+├─ stores/                  # pinia stores
 │  └─ index.ts
-├─ assets/
-├─ styles/
-└─ main.ts
+├─ config/                  # 配置檔案
+├─ constants/               # 常數定義
+├─ assets/                  # 靜態資源
+└─ app.vue                  # 根元件
 
 ```
 
