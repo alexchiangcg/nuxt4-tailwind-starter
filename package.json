@@ -1,0 +1,74 @@
+{
+  "type": "module",
+  "private": true,
+  "packageManager": "yarn@4.8.0",
+  "scripts": {
+    "build": "nuxt build",
+    "dev:pwa": "VITE_PLUGIN_PWA=true nuxt dev",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "prepare": "husky",
+    "preview": "nuxt preview",
+    "start": "node .output/server/index.mjs",
+    "start:generate": "npx serve .output/public",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,vue,js,json,md,yml,yaml}\"",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@nuxtjs/device": "^3.2.4",
+    "@nuxtjs/i18n": "^9.5.4",
+    "dayjs": "^1.11.13",
+    "lodash": "^4.17.21",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@iconify-json/material-symbols": "^1.2.18",
+    "@nuxt/devtools": "^3.0.0-beta.2",
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@pinia/nuxt": "^0.11.2",
+    "@types/lodash": "^4.17.13",
+    "@types/node": "^22.10.7",
+    "@vite-pwa/nuxt": "^1.0.7",
+    "@vueuse/core": "^14.0.0",
+    "@vueuse/nuxt": "^14.0.0",
+    "cross-env": "^10.0.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-format": "^1.0.2",
+    "eslint-plugin-prettier": "^5.2.5",
+    "eslint-plugin-tailwindcss": "^3.17.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "nuxt": "^4.2.0",
+    "pinia": "^3.0.3",
+    "prettier": "^3.4.2",
+    "sass": "^1.89.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.20.0",
+    "unplugin-icons": "^22.1.0",
+    "unplugin-vue-components": "^28.4.1",
+    "vue": "^3.5.22",
+    "vue-tsc": "^3.1.2"
+  },
+  "resolutions": {
+    "@nuxt/devtools": "^3.0.0-beta.2",
+    "@nuxt/kit": "^4.2.0",
+    "nuxt": "^4.2.0",
+    "unplugin": "^2.3.10",
+    "vite": "^7.1.12"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue}": [
+      "eslint --fix"
+    ],
+    "**/*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "template-app",
+  "private": true,
+  "scripts": {
+    "build": "yarn build:nest & yarn build:nuxt",
+    "dev:nest": "yarn workspace server-nest dev",
+    "dev:nuxt": "NODE_OPTIONS='--max-old-space-size=8192' nuxt dev --port 3100",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "build:nuxt": "NODE_OPTIONS='--max-old-space-size=12288' nuxt build",
+    "build:nest": "cross-env $(cat .env | grep -v '^#' | xargs) yarn workspace server-nest build",
+    "generate": "nuxt generate",
+    "format": "prettier --write \"server/**/*.ts\" \"server-nuxt/**/*.ts\" \"pages/**/*.{ts,vue}\"",
+    "start": "cross-env $(cat .env | grep -v '^#' | xargs) yarn workspace server-nest start:prod",
+    "lint": "eslint \"**/*.{js,mjs,ts,vue}\" --fix",
+    "lint:app": "eslint \"app/**/*.{js,mjs,ts,vue}\" --fix",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@fai/nuxt-base": "0.0.9",
+    "@iconify-json/material-symbols": "^1.2.18",
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@nuxtjs/device": "^3.2.4",
+    "@nuxtjs/tailwindcss": "6.13.2",
+    "@vueuse/core": "^13.0.0",
+    "axios": "^1.8.4",
+    "cldr-data": "^36.0.2",
+    "dayjs": "^1.11.13",
+    "lodash": "^4.17.21",
+    "nuxt": "^4.1.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@iconify-json/mdi": "^1.2.3",
+    "@nuxt/eslint": "1.2.0",
+    "@nuxtjs/i18n": "9.5.4",
+    "@pinia/nuxt": "0.11.2",
+    "@types/lodash": "^4",
+    "@types/node": "^22.10.7",
+    "cross-env": "^10.0.0",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "pinia": "^3.0.2",
+    "prettier": "^3.4.2",
+    "sass": "^1.89.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0",
+    "unplugin-icons": "^22.1.0",
+    "unplugin-vue-components": "^28.4.1",
+    "vue-bac-lib": "~3.0.5",
+    "vue-tsc": "^3.0.5"
+  },
+  "packageManager": "yarn@4.8.0",
+  "lint-staged": {
+    "app/**/*.{js,mjs,ts,vue}": [
+      "eslint"
+    ],
+    "**/*.{json,md,yml,yaml}": [
+      "prettier"
+    ]
+  },
+  "workspaces": [
+    "server-nest"
+  ]
+}
