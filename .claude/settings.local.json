@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn dev)",
+      "Bash(yarn add -D @tailwindcss/postcss)",
+      "Bash(yarn remove:*)",
+      "mcp__spec-workflow__spec-workflow-guide",
+      "Bash(curl:*)",
+      "Bash(test:*)",
+      "mcp__spec-workflow__approvals",
+      "Bash(tree:*)",
+      "mcp__figma-dev-mode__get_metadata",
+      "mcp__figma-dev-mode__get_design_context",
+      "mcp__figma-dev-mode__get_screenshot",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_click",
+      "mcp__spec-workflow__log-implementation",
+      "Bash(cat:*)",
+      "Bash(yarn add:*)",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_hover",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_type",
+      "mcp__playwright__browser_select_option",
+      "Bash(yarn lint:*)",
+      "Bash(yarn typecheck:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledMcpjsonServers": [
+    "context7",
+    "deepwiki",
+    "figma-dev-mode",
+    "playwright"
+  ]
+}
