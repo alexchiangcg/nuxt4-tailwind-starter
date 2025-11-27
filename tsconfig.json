@@ -1,3 +1,23 @@
 {
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@syncfusion/ej2-vue-buttons": [
+        "./node_modules/@syncfusion/ej2-vue-buttons/index.d.ts"
+      ],
+      "@syncfusion/ej2-vue-calendars": [
+        "./node_modules/@syncfusion/ej2-vue-calendars/index.d.ts"
+      ],
+      "@syncfusion/ej2-vue-dropdowns": [
+        "./node_modules/@syncfusion/ej2-vue-dropdowns/index.d.ts"
+      ],
+      "@syncfusion/ej2-vue-grids": [
+        "./node_modules/@syncfusion/ej2-vue-grids/index.d.ts"
+      ],
+      "@syncfusion/ej2-vue-inputs": [
+        "./node_modules/@syncfusion/ej2-vue-inputs/index.d.ts"
+      ],
+      "~icons/*": ["./types/icons.d.ts"]
+    }
+  }
 }
