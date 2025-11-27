@@ -14,6 +14,22 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
+  // Fix for Syncfusion packages:
+  // 1. Transpile ES modules for Nuxt compatibility
+  // 2. Map types manually because package.json is missing "types" field
+  build: {
+    transpile: [/@syncfusion/],
+  },
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          "@syncfusion/*": ["../node_modules/@syncfusion/*"],
+        },
+      },
+    },
+  },
+
   app: {
     head: {
       viewport: "width=device-width,initial-scale=1",
@@ -43,7 +59,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ["~/assets/css/tailwind.css"],
+  css: ["~/assets/css/tailwind.css", "~/assets/css/syncfusion.css"],
 
   colorMode: {
     classSuffix: "",
