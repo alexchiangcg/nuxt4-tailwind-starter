@@ -25,7 +25,12 @@
       "mcp__playwright__browser_type",
       "mcp__playwright__browser_select_option",
       "Bash(yarn lint:*)",
-      "Bash(yarn typecheck:*)"
+      "Bash(yarn typecheck:*)",
+      "Bash(mkdir:*)",
+      "mcp__spec-workflow__spec-status",
+      "Bash(npx playwright test:*)",
+      "Bash(PORT=3005 npm run dev:*)",
+      "Bash(npx @playwright/mcp@latest --help)"
     ],
     "deny": [],
     "ask": []
