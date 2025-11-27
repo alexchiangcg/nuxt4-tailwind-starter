@@ -1,5 +1,6 @@
 import { pwa } from "./app/config/pwa";
 import { appDescription } from "./app/constants/index";
+import Icons from "unplugin-icons/vite";
 
 export default defineNuxtConfig({
   modules: [
@@ -97,6 +98,12 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    plugins: [
+      Icons({
+        compiler: "vue3",
+        autoInstall: true,
+      }),
+    ],
     css: {
       postcss: {
         plugins: [require("@tailwindcss/postcss")],
