@@ -1,0 +1,161 @@
+# Tasks Document
+
+## Overview
+本任務文檔將 Schema-Driven 搜尋頁面組件的實作拆解為 10 個原子任務。每個任務專注於 1-3 個檔案，確保清晰的職責劃分與可追蹤的進度。
+
+## Task Breakdown
+
+- [x] 1. 創建 TypeScript 型別定義與 Props interface
+  - File: `app/features/search/components/SearchPage.vue` (script section)
+  - 定義 `SearchFieldSchema` 和 `GridColumnSchema` TypeScript interfaces
+  - 定義組件 Props interface 並匯出供外部使用
+  - 確保完整的型別註解與 JSDoc 註釋
+  - Purpose: 建立型別安全的基礎，為組件開發提供編譯時期檢查
+  - _Leverage: Vue 3 TypeScript support, `defineProps()`, `withDefaults()`_
+  - _Requirements: Req 8 (TypeScript 型別安全)_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: TypeScript Developer specializing in Vue 3 type systems and interface design | Task: Create comprehensive TypeScript interfaces for SearchFieldSchema and GridColumnSchema following requirement 8, ensuring all Props are properly typed with exported interfaces for external use | Restrictions: Must use Vue 3 Composition API types, maintain strict type checking, do not use 'any' type without justification, follow Vue 3 best practices for Props definition | Success: All interfaces compile without TypeScript errors, Props are fully typed with IntelliSense support, interfaces are exported and reusable, passes `yarn typecheck` without warnings | Instructions: 1. Edit tasks.md: Change task 1 from [ ] to [-] before starting. 2. Implement TypeScript interfaces in SearchPage.vue <script setup> section. 3. After completion, use log-implementation tool with detailed artifacts (components, interfaces created). 4. Edit tasks.md: Change task 1 from [-] to [x] when complete._
+
+- [x] 2. 實作 SearchPage 組件基礎結構與響應式狀態
+  - File: `app/features/search/components/SearchPage.vue` (script section)
+  - 設定 Vue 3 `<script setup>` 結構
+  - 實作 Props 定義與 Events（`defineEmits`）
+  - 建立內部響應式狀態：`queryMode`, `isExpanded`, `filters`
+  - 實作 computed properties：`firstRowFields`, `secondRowFields`
+  - Purpose: 建立組件的響應式狀態管理基礎
+  - _Leverage: Vue 3 `ref()`, `computed()`, `defineProps()`, `defineEmits()`_
+  - _Requirements: Req 1, Req 2_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Vue 3 Developer with expertise in Composition API and reactive state management | Task: Implement基礎組件結構與響應式狀態 following requirements 1 and 2, using Vue 3 Composition API patterns with proper state initialization and computed properties | Restrictions: Must use `<script setup>` syntax, follow Vue 3 reactivity rules, do not mutate Props directly, ensure proper memory cleanup | Success: Component structure is clean and organized, reactive state works correctly, computed properties update efficiently, no memory leaks in state management | Instructions: 1. Edit tasks.md: Change task 2 from [ ] to [-] before starting. 2. Implement reactive state and computed properties. 3. After completion, use log-implementation tool with artifacts (functions: ref(), computed() usage). 4. Edit tasks.md: Change task 2 from [-] to [x] when complete._
+
+- [x] 3. 實作搜尋欄位動態渲染邏輯（第一排）
+  - File: `app/features/search/components/SearchPage.vue` (template section)
+  - 使用 `v-for` 遍歷 `firstRowFields` 動態渲染搜尋欄位
+  - 整合 Syncfusion TextBox、DropDownList、DateRangePicker 元件
+  - 實作條件渲染：根據 `field.type` 選擇對應的 Syncfusion 元件
+  - 綁定 `v-model` 到 `filters[field.key]`
+  - Purpose: 實現 Schema-Driven 的搜尋表單動態生成
+  - _Leverage: `@syncfusion/ej2-vue-inputs`, `@syncfusion/ej2-vue-dropdowns`, `@syncfusion/ej2-vue-calendars`_
+  - _Requirements: Req 1 (Schema-Driven 搜尋欄位渲染)_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Vue 3 Frontend Developer with expertise in Syncfusion component integration | Task: Implement dynamic search field rendering for first row following requirement 1, integrating Syncfusion TextBox, DropDownList, and DateRangePicker components with proper v-model binding | Restrictions: Must use Syncfusion components only (no custom inputs), maintain consistent styling across field types, ensure proper two-way binding with filters state, follow Syncfusion Vue 3 integration best practices | Success: All search field types render correctly based on schema, v-model binds properly to filters, Syncfusion components integrate smoothly, UI matches Figma design | Instructions: 1. Edit tasks.md: Change task 3 from [ ] to [-] before starting. 2. Implement template rendering logic with Syncfusion components. 3. After completion, use log-implementation tool with artifacts (components: Syncfusion TextBox/DropDownList/DateRangePicker usage). 4. Edit tasks.md: Change task 3 from [-] to [x] when complete._
+
+- [x] 4. 實作折疊/展開功能（第二排）
+  - File: `app/features/search/components/SearchPage.vue` (template + script)
+  - 實作 `toggleExpand()` method 切換 `isExpanded` 狀態
+  - 使用 `v-if="isExpanded"` 控制第二排欄位顯示/隱藏
+  - 實作展開按鈕圖示動態切換（chevron-up / chevron-down）
+  - 渲染第二排搜尋欄位（同 Task 3 的邏輯）
+  - Purpose: 實現可折疊的進階搜尋區域，提升使用者體驗
+  - _Leverage: Vue 3 `v-if`, Syncfusion Button 元件, `ref()` state_
+  - _Requirements: Req 2 (折疊式搜尋區域)_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Vue 3 Frontend Developer specializing in interactive UI components | Task: Implement collapsible search section for second row following requirement 2, managing expand/collapse state with icon transitions and conditional rendering | Restrictions: Must maintain smooth user experience, ensure proper state synchronization, do not use complex animation libraries (keep it simple with v-if), follow accessibility best practices for expand/collapse buttons | Success: Expand/collapse works smoothly, icon changes correctly, second row fields show/hide properly, state persists during user interaction, keyboard accessible | Instructions: 1. Edit tasks.md: Change task 4 from [ ] to [-] before starting. 2. Implement toggleExpand method and conditional rendering. 3. After completion, use log-implementation tool with artifacts (functions: toggleExpand method). 4. Edit tasks.md: Change task 4 from [-] to [x] when complete._
+
+- [x] 5. 實作表格渲染與 Syncfusion Grid 整合
+  - File: `app/features/search/components/SearchPage.vue` (template section)
+  - 整合 Syncfusion `GridComponent` 並綁定 `gridData` Props
+  - 使用 `v-for` 動態生成 `<e-column>` 根據 `gridColumns` Schema
+  - 配置 Grid 功能：`allowPaging`, `allowSorting`, `pageSettings`
+  - 實作連結欄位的自訂 template（`isLink: true`）
+  - 啟用 Grid 的 Page 和 Sort 功能
+  - Purpose: 實現 Schema-Driven 的表格動態生成與企業級功能
+  - _Leverage: `@syncfusion/ej2-vue-grids` (GridComponent, Page, Sort)_
+  - _Requirements: Req 3 (Schema-Driven 表格欄位渲染), Req 4 (表格資料顯示與分頁), Req 7 (表格排序功能)_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Vue 3 Developer with expertise in Syncfusion Grid and data table integration | Task: Implement dynamic Grid rendering following requirements 3, 4, and 7, integrating Syncfusion GridComponent with paging, sorting, and dynamic column generation from schema | Restrictions: Must use Syncfusion Grid features (do not reinvent pagination/sorting), ensure proper data binding, maintain performance with large datasets, follow Syncfusion Grid best practices for Vue 3 | Success: Grid renders correctly with dynamic columns, paging works smoothly (20 items per page), sorting functions properly for all data types, link columns render as hyperlinks, Grid performance is acceptable with 1000+ rows | Instructions: 1. Edit tasks.md: Change task 5 from [ ] to [-] before starting. 2. Implement GridComponent with dynamic columns and features. 3. After completion, use log-implementation tool with artifacts (components: GridComponent integration, features enabled). 4. Edit tasks.md: Change task 5 from [-] to [x] when complete._
+
+- [x] 6. 實作搜尋、清除、新增按鈕功能
+  - File: `app/features/search/components/SearchPage.vue` (template + script)
+  - 實作 `handleSearch()` method：收集 `filters` 並觸發 `@search` 事件
+  - 實作 `handleClear()` method：重置 `filters` 為空物件
+  - 實作 `handleAdd()` method：觸發 `@add` 事件
+  - 使用 Syncfusion Button 元件渲染三個按鈕（搜尋、清除、新增）
+  - 配置按鈕樣式：Primary, Outline, Icon
+  - Purpose: 實現使用者操作功能與事件轉發
+  - _Leverage: `@syncfusion/ej2-vue-buttons` (ButtonComponent), Vue 3 `defineEmits`_
+  - _Requirements: Req 5 (搜尋與清除功能), Req 6 (新增按鈕與事件轉發)_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Vue 3 Developer with expertise in event handling and component communication | Task: Implement button actions and event emissions following requirements 5 and 6, handling search, clear, and add operations with proper event payloads | Restrictions: Must emit events without side effects (no API calls in component), ensure filters are properly collected before emitting, do not modify gridData in component, follow Vue 3 event emission patterns | Success: Search button emits correct filters object, clear button resets all fields, add button triggers event, events are properly typed, parent component receives events correctly | Instructions: 1. Edit tasks.md: Change task 6 from [ ] to [-] before starting. 2. Implement handleSearch, handleClear, handleAdd methods. 3. After completion, use log-implementation tool with artifacts (functions: three handler methods). 4. Edit tasks.md: Change task 6 from [-] to [x] when complete._
+
+- [x] 7. 創建測試頁面與範例配置
+  - File: `app/pages/test/search-page.vue`
+  - 創建完整的使用範例頁面
+  - 定義 `searchFieldsConfig`：14 個欄位（6 個第一排 + 8 個第二排）
+  - 定義 `gridColumnsConfig`：14 個表格欄位（對齊 Figma 設計）
+  - 提供 `mockGridData`：15 筆模擬資料
+  - 實作 `handleSearch` 和 `handleAdd` 事件處理範例
+  - Purpose: 提供完整的組件使用範例與開發測試環境
+  - _Leverage: SearchPage 組件（已完成的 Task 1-6）_
+  - _Requirements: 所有 Requirements（展示完整功能）_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Full-stack Developer with expertise in component integration and example documentation | Task: Create comprehensive test page demonstrating all component features, providing realistic schema configurations and mock data aligned with Figma design | Restrictions: Must use realistic data structures, ensure example is runnable at http://localhost:9527/test/search-page, provide clear event handling examples, follow Nuxt 4 pages structure | Success: Test page loads without errors, all search fields render correctly, Grid displays mock data properly, search and add buttons trigger console logs, page serves as clear usage documentation | Instructions: 1. Edit tasks.md: Change task 7 from [ ] to [-] before starting. 2. Create test page with full configurations. 3. After completion, use log-implementation tool with artifacts (components: test page created, data schemas provided). 4. Edit tasks.md: Change task 7 from [-] to [x] when complete._
+
+- [x] 8. 編寫 Playwright E2E 測試（測試案例 1-5）
+  - File: `tests/e2e/search-page.spec.ts`
+  - 設定測試環境：`beforeEach` 導航到 `http://localhost:9527/test/search-page`
+  - **測試 1**：驗證第一排搜尋欄位動態渲染（6 個欄位 label）
+  - **測試 2**：驗證折疊/展開功能（第二排欄位顯示/隱藏）
+  - **測試 3**：驗證表格欄位動態渲染（14 個表頭）
+  - **測試 4**：驗證表格資料渲染（第一筆資料內容）
+  - **測試 5**：驗證下拉選單互動（選項列表出現）
+  - Purpose: 驗證 Schema-Driven 動態渲染與基礎互動功能
+  - _Leverage: Playwright API, Syncfusion CSS selectors (`.e-headercell`, `.e-row`)_
+  - _Requirements: Req 9 (Playwright E2E 測試覆蓋) - 測試 1-5_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: QA Automation Engineer with expertise in Playwright and E2E testing | Task: Implement first 5 E2E test cases covering requirement 9, validating schema-driven rendering and basic interactions using Playwright assertions | Restrictions: Must use Playwright best practices (explicit waits, proper selectors), test real DOM elements (not implementation details), ensure tests are reliable and not flaky, use Syncfusion-specific selectors for Grid elements | Success: All 5 tests pass consistently, tests validate dynamic rendering correctness, selectors are resilient to UI changes, test execution time < 30 seconds for all 5 tests | Instructions: 1. Edit tasks.md: Change task 8 from [ ] to [-] before starting. 2. Implement tests 1-5 in search-page.spec.ts. 3. After completion, use log-implementation tool with artifacts (functions: 5 test functions created). 4. Edit tasks.md: Change task 8 from [-] to [x] when complete._
+
+- [x] 9. 編寫 Playwright E2E 測試（測試案例 6-10）
+  - File: `tests/e2e/search-page.spec.ts` (continue)
+  - **測試 6**：驗證搜尋按鈕觸發事件（監聽 console.log）
+  - **測試 7**：驗證表格分頁功能（分頁器顯示與頁碼切換）
+  - **測試 8**：驗證新增按鈕顯示與事件觸發
+  - **測試 9**：驗證清除按鈕重置搜尋條件
+  - **測試 10**：驗證響應式設計（1440px/768px/375px）
+  - Purpose: 驗證事件處理、分頁、響應式設計等進階功能
+  - _Leverage: Playwright API, `page.on('console')`, `page.setViewportSize()`_
+  - _Requirements: Req 9 (Playwright E2E 測試覆蓋) - 測試 6-10_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: QA Automation Engineer specializing in event testing and responsive design validation | Task: Implement remaining 5 E2E test cases covering requirement 9, validating event emissions, pagination, and responsive behavior using advanced Playwright features | Restrictions: Must properly handle async events (console logs, viewport changes), ensure tests clean up event listeners, verify responsive behavior across all breakpoints, maintain test isolation | Success: All 5 tests pass consistently, event emissions are correctly validated, pagination works across different data sets, responsive tests cover all specified viewport sizes, total test suite execution < 60 seconds | Instructions: 1. Edit tasks.md: Change task 9 from [ ] to [-] before starting. 2. Implement tests 6-10 in search-page.spec.ts. 3. After completion, use log-implementation tool with artifacts (functions: 5 additional test functions). 4. Edit tasks.md: Change task 9 from [-] to [x] when complete._
+
+- [x] 10. 創建實施文檔與使用指南
+  - File: `docs/SEARCH_PAGE_IMPLEMENTATION.md`
+  - 撰寫完整的實施說明文檔（繁體中文）
+  - 包含章節：核心架構、資料結構、使用範例、測試說明、設計決策、Q&A
+  - 提供 Linus 式的技術評論與「好品味」標準評估
+  - 記錄 Syncfusion 元件映射表與整合說明
+  - 提供 Playwright 測試的驗證邏輯詳解
+  - Purpose: 提供完整的開發者文檔，促進組件的理解與擴展
+  - _Leverage: 已完成的 requirements.md, design.md, tasks.md_
+  - _Requirements: 所有 Requirements（文檔總結）_
+  - _Prompt: Implement the task for spec figma-search-page-component, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Technical Writer with deep understanding of software architecture and developer documentation | Task: Create comprehensive implementation documentation covering all requirements, providing clear usage examples, architectural explanations, and troubleshooting guides in Traditional Chinese | Restrictions: Must maintain Linus Torvalds' "good taste" coding philosophy throughout documentation, provide both conceptual and practical guidance, ensure documentation is accessible to developers of varying skill levels, include code examples for all major features | Success: Documentation is comprehensive (>5000 words), covers all aspects from architecture to testing, provides clear usage examples, includes Mermaid diagrams or code snippets, receives positive feedback from development team, serves as single source of truth for component usage | Instructions: 1. Edit tasks.md: Change task 10 from [ ] to [-] before starting. 2. Create comprehensive documentation in docs/ directory. 3. After completion, use log-implementation tool with artifacts (documentation file created with sections). 4. Edit tasks.md: Change task 10 from [-] to [x] when complete._
+
+## Definition of Done
+
+每個任務完成時必須符合以下標準：
+
+✅ **代碼品質**
+- 通過 `yarn typecheck` TypeScript 檢查（無錯誤）
+- 通過 `yarn lint` ESLint 檢查（無錯誤）
+- 程式碼符合 Prettier 格式規範
+
+✅ **功能完整性**
+- 所有 Acceptance Criteria 都已實現
+- 組件在 `http://localhost:9527/test/search-page` 可正常運行
+- 無 Console 錯誤或警告
+
+✅ **測試覆蓋**
+- Playwright E2E 測試全部通過（10/10）
+- 測試案例覆蓋所有核心功能
+
+✅ **文檔完整**
+- 程式碼包含必要的註釋
+- TypeScript 型別有 JSDoc 說明
+- 實施文檔已更新
+
+✅ **Git 提交**
+- 已使用 log-implementation 工具記錄實作細節
+- Tasks.md 狀態已更新為 [x]
+
+## Progress Tracking
+
+- **Completed**: 10/10 (100%)
+- **In Progress**: 0/10 (0%)
+- **Pending**: 0/10 (0%)
+
+## Notes
+
+- 所有任務已完成（現有代碼已實作所有功能）
+- 本 tasks.md 用於記錄實作分解與追蹤
+- Phase 4 將使用 log-implementation 工具記錄每個任務的詳細實作

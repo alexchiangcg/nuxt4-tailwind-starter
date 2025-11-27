@@ -1,0 +1,115 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - heading "Schema-Driven 搜尋頁面範例" [level=1] [ref=e5]
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: 查詢模式
+          - combobox "一般查詢" [ref=e10] [cursor=pointer]:
+            - combobox "dropdownlist": 一般查詢
+            - generic [ref=e11]: 
+        - button "" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 
+      - generic [ref=e14]:
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - generic [ref=e18]: 預約進度
+            - combobox "dropdownlist" [ref=e19] [cursor=pointer]:
+              - combobox "dropdownlist"
+              - generic [ref=e20]: 
+          - generic [ref=e21]:
+            - generic [ref=e22]: 預約狀態
+            - combobox "dropdownlist" [ref=e23] [cursor=pointer]:
+              - combobox "dropdownlist"
+              - generic [ref=e24]: 
+          - generic [ref=e25]:
+            - generic [ref=e26]: 預約類別
+            - combobox "dropdownlist" [ref=e27] [cursor=pointer]:
+              - combobox "dropdownlist"
+              - generic [ref=e28]: 
+          - generic [ref=e29]:
+            - generic [ref=e30]: 業務員
+            - combobox "dropdownlist" [ref=e31] [cursor=pointer]:
+              - combobox "dropdownlist"
+              - generic [ref=e32]: 
+          - generic [ref=e33]:
+            - generic [ref=e34]: 預約名稱
+            - textbox "請輸入" [ref=e36]: 測試文字
+          - generic [ref=e37]:
+            - generic [ref=e38]: 預約中心編號
+            - combobox "dropdownlist" [ref=e39] [cursor=pointer]:
+              - combobox "dropdownlist"
+              - generic [ref=e40]: 
+        - generic [ref=e41]:
+          - button "" [ref=e42] [cursor=pointer]:
+            - generic [ref=e43]: 
+          - button [active] [ref=e44] [cursor=pointer]
+          - button "" [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]: 
+      - button " 新增預約" [ref=e48] [cursor=pointer]:
+        - generic [ref=e49]: 
+        - text: 新增預約
+      - grid [ref=e51]:
+        - rowgroup [ref=e69]:
+          - row "預約中心編號 預約進度 預約狀態 預約類別 預約名稱 預約來源 業務員 預約金額 新增日期 取消日期 開始日期 結束日期 新增者 取消者" [ref=e70]:
+            - columnheader "預約中心編號" [ref=e71] [cursor=pointer]:
+              - generic [ref=e72]: 預約中心編號
+            - columnheader "預約進度" [ref=e74] [cursor=pointer]:
+              - generic [ref=e75]: 預約進度
+            - columnheader "預約狀態" [ref=e77] [cursor=pointer]:
+              - generic [ref=e78]: 預約狀態
+            - columnheader "預約類別" [ref=e80] [cursor=pointer]:
+              - generic [ref=e81]: 預約類別
+            - columnheader "預約名稱" [ref=e83] [cursor=pointer]:
+              - generic [ref=e84]: 預約名稱
+            - columnheader "預約來源" [ref=e86] [cursor=pointer]:
+              - generic [ref=e87]: 預約來源
+            - columnheader "業務員" [ref=e89] [cursor=pointer]:
+              - generic [ref=e90]: 業務員
+            - columnheader "預約金額" [ref=e92] [cursor=pointer]:
+              - generic [ref=e93]: 預約金額
+            - columnheader "新增日期" [ref=e95] [cursor=pointer]:
+              - generic [ref=e96]: 新增日期
+            - columnheader "取消日期" [ref=e98] [cursor=pointer]:
+              - generic [ref=e99]: 取消日期
+            - columnheader "開始日期" [ref=e101] [cursor=pointer]:
+              - generic [ref=e102]: 開始日期
+            - columnheader "結束日期" [ref=e104] [cursor=pointer]:
+              - generic [ref=e105]: 結束日期
+            - columnheader "新增者" [ref=e107] [cursor=pointer]:
+              - generic [ref=e108]: 新增者
+            - columnheader "取消者" [ref=e110] [cursor=pointer]:
+              - generic [ref=e111]: 取消者
+        - rowgroup [ref=e130]:
+          - row "No records to display" [ref=e131]
+        - textbox "clipboard" [ref=e132]
+  - generic [ref=e133]:
+    - img [ref=e134]
+    - generic [ref=e135]:
+      - text: This application was built using a trial version of Syncfusion
+      - superscript [ref=e136]: ®
+      - text: Essential Studio
+      - superscript [ref=e137]: ®
+      - text: . To remove the license validation message permanently, a valid license key must be included.
+    - link "Claim your free account" [ref=e138] [cursor=pointer]:
+      - /url: https://www.syncfusion.com/account/claim-license-key?pl=SmF2YVNjcmlwdA==&vs=MzA=&utm_source=es_license_validation_banner&utm_medium=listing&utm_campaign=license-information
+  - generic:
+    - img
+  - generic:
+    - generic:
+      - generic:
+        - button "Go to parent" [disabled]
+        - button "Open in editor"
+        - button "Close"
+  - generic [ref=e139]:
+    - button "Toggle Nuxt DevTools" [ref=e140] [cursor=pointer]:
+      - img [ref=e141]
+    - generic "Page load time" [ref=e144]:
+      - generic [ref=e145]: "49"
+      - generic [ref=e146]: ms
+    - button "Toggle Component Inspector" [ref=e148] [cursor=pointer]:
+      - img [ref=e149]
+```

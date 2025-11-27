@@ -1,0 +1,22 @@
+{
+  "filePath": ".spec-workflow/specs/figma-search-page-component/tasks.md",
+  "currentVersion": 2,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-11-26T07:36:18.536Z",
+      "trigger": "initial",
+      "approvalId": "approval_1764142578533_w9eica3gq",
+      "approvalTitle": "Phase 3: Tasks - Figma Search Page Component (10 Atomic Tasks)"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-11-26T07:55:55.289Z",
+      "trigger": "approved",
+      "approvalId": "approval_1764142578533_w9eica3gq",
+      "approvalTitle": "Phase 3: Tasks - Figma Search Page Component (10 Atomic Tasks)"
+    }
+  ]
+}
