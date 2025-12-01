@@ -2,17 +2,17 @@
   <div class="search-page-container">
     <!-- 頂部控制區 -->
     <div class="top-controls">
-      <div class="query-mode-selector">
-        <label class="text-sm text-gray-700">查詢模式</label>
+      <div class="query-mode-group">
+        <label class="query-mode-label">查詢模式</label>
         <ejs-dropdownlist
           v-model="queryMode"
           :dataSource="['一般查詢', '進階查詢']"
           :fields="{ text: 'text', value: 'text' }"
           placeholder="請選擇"
-          cssClass="custom-dropdown"
+          cssClass="query-mode-dropdown"
         />
       </div>
-      <ejs-button iconCss="e-icons e-settings" cssClass="e-outline" />
+      <ejs-button iconCss="e-icons e-settings" cssClass="settings-btn" />
     </div>
 
     <!-- 搜尋條件區 -->
@@ -119,29 +119,36 @@
 
       <!-- 按鈕組 -->
       <div class="button-group">
-        <ejs-button iconCss="e-icons e-search" isPrimary @click="handleSearch" />
-        <ejs-button iconCss="e-icons e-delete" cssClass="e-outline" @click="handleClear" />
-        <ejs-button
-          :iconCss="isExpanded ? 'e-icons e-chevron-up' : 'e-icons e-chevron-down'"
-          cssClass="e-outline"
-          @click="toggleExpand"
-        />
+        <button class="action-btn primary-btn" @click="handleSearch">
+          <IconSearch />
+        </button>
+        <button class="action-btn outline-btn" @click="handleClear">
+          <IconDelete />
+        </button>
+        <button class="action-btn outline-btn" @click="toggleExpand">
+          <IconExpandMore :class="{ 'rotate-180': !isExpanded }" />
+        </button>
       </div>
     </div>
 
     <!-- 新增按鈕 -->
     <div v-if="addButtonText" class="add-button-container">
-      <ejs-button :content="addButtonText" iconCss="e-icons e-plus" isPrimary @click="handleAdd" />
+      <button class="add-btn" @click="handleAdd">
+        <IconAdd />
+        <span>{{ addButtonText }}</span>
+      </button>
     </div>
 
     <!-- 結果表格 -->
     <div class="grid-container">
       <ClientOnly>
         <ejs-grid
+          ref="grid"
           :dataSource="gridData"
           :allowPaging="true"
           :allowSorting="true"
           :pageSettings="{ pageSize: 20, pageSizes: [10, 20, 50, 100] }"
+          @dataBound="onDataBound"
         >
           <e-columns>
             <e-column
@@ -168,7 +175,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide, watch, defineEmits } from 'vue'
+import { ref, computed, provide, watch } from 'vue'
 import { TextBoxComponent as EjsTextbox } from '@syncfusion/ej2-vue-inputs'
 import { DropDownListComponent as EjsDropdownlist } from '@syncfusion/ej2-vue-dropdowns'
 import { DateRangePickerComponent as EjsDaterangepicker } from '@syncfusion/ej2-vue-calendars'
@@ -181,6 +188,14 @@ import {
   Toolbar,
 } from '@syncfusion/ej2-vue-grids'
 import { ButtonComponent as EjsButton } from '@syncfusion/ej2-vue-buttons'
+// @ts-expect-error - unplugin-icons virtual modules
+import IconSearch from '~icons/material-symbols/search'
+// @ts-expect-error - unplugin-icons virtual modules
+import IconDelete from '~icons/material-symbols/delete-outline'
+// @ts-expect-error - unplugin-icons virtual modules
+import IconExpandMore from '~icons/material-symbols/expand-more'
+// @ts-expect-error - unplugin-icons virtual modules
+import IconAdd from '~icons/material-symbols/add'
 
 // Provide Grid services
 provide('grid', [Page, Sort, Toolbar])
@@ -238,11 +253,6 @@ const queryMode = ref('一般查詢')
 const isExpanded = ref(false)
 const filters = ref<Record<string, any>>({})
 
-// 調試：檢查數據
-watch(() => props.gridData, (newVal) => {
-  console.log('SearchPage - gridData changed:', newVal?.length, newVal)
-}, { immediate: true })
-
 // ============================================
 // Computed
 // ============================================
@@ -278,6 +288,14 @@ const handleAdd = () => {
   }
   emit('add')
 }
+
+const grid = ref<InstanceType<typeof EjsGrid> | null>(null)
+
+const onDataBound = () => {
+  if (grid.value) {
+    grid.value.autoFitColumns()
+  }
+}
 </script>
 
 <style scoped>
@@ -289,41 +307,61 @@ const handleAdd = () => {
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  max-width: 1406px;
+  min-height: 100vh;
+  background-color: #f8fafc;
 }
 
 /* ============================================
-   Top Controls
+   Top Controls - 符合 Figma 設計
    ============================================ */
 .top-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 40px;
 }
 
-.query-mode-selector {
+.query-mode-group {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 200px;
+  align-items: center;
+  gap: 8px;
+  position: relative;
 }
 
-.query-mode-selector label {
-  font-size: 14px;
-  color: #333;
+.query-mode-label {
+  font-size: 16px;
+  color: #333333;
+  font-weight: 400;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.settings-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #2877ee;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.settings-btn :deep(.e-btn-icon) {
+  color: #2877ee;
 }
 
 /* ============================================
-   Search Form
+   Search Form - 符合 Figma 設計
    ============================================ */
 .search-form-container {
   display: flex;
   gap: 20px;
   align-items: flex-end;
   padding: 16px;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border: 1px solid #d7dae0;
   border-radius: 4px;
+  height: auto;
 }
 
 .search-fields-wrapper {
@@ -331,18 +369,20 @@ const handleAdd = () => {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: visible;
 }
 
 .search-fields-row {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  align-items: flex-end;
 }
 
 .search-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   min-width: 132px;
 }
 
@@ -350,28 +390,104 @@ const handleAdd = () => {
   font-size: 14px;
   color: #3c4a5b;
   font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.1px;
 }
 
 /* ============================================
-   Button Group
+   Button Group - 符合 Figma 設計
    ============================================ */
 .button-group {
   display: flex;
-  gap: 8px;
+  gap: 5px;
   align-items: flex-end;
-  padding-bottom: 2px;
+  padding-bottom: 0;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn :deep(svg) {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.primary-btn {
+  background-color: #2877ee;
+  border: 1px solid #2877ee;
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background-color: #1a5fc9;
+  border-color: #1a5fc9;
+}
+
+.outline-btn {
+  background-color: transparent;
+  border: 1px solid #2877ee;
+  color: #2877ee;
+}
+
+.outline-btn:hover {
+  background-color: rgba(40, 119, 238, 0.05);
 }
 
 /* ============================================
-   Add Button
+   Add Button - 符合 Figma 設計
    ============================================ */
 .add-button-container {
   display: flex;
   justify-content: flex-start;
 }
 
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: #2877ee;
+  border: 1px solid #2877ee;
+  color: #ffffff;
+  border-radius: 4px;
+  height: 40px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #1a5fc9;
+  border-color: #1a5fc9;
+}
+
+.add-btn :deep(svg) {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 /* ============================================
-   Grid
+   Grid - 符合 Figma 設計
    ============================================ */
 .grid-container {
   border: 1px solid #d7dae0;
@@ -380,48 +496,114 @@ const handleAdd = () => {
 }
 
 /* ============================================
-   Syncfusion Customization
+   Syncfusion Customization - 符合 Figma 設計
    ============================================ */
-:deep(.custom-textbox),
-:deep(.custom-dropdown),
-:deep(.custom-daterange) {
+:deep(.query-mode-dropdown .e-input-group) {
+  background-color: #ffffff;
+  border-bottom: 1px solid #183e81;
+  border-radius: 0;
+  height: 40px;
+}
+
+:deep(.custom-textbox .e-input-group),
+:deep(.custom-dropdown .e-input-group),
+:deep(.custom-daterange .e-input-group) {
   background-color: #e5eaf3;
   border-bottom: 1px solid #7f8996;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   border-radius: 4px 4px 0 0;
   height: 40px;
 }
 
-:deep(.e-input-group),
-:deep(.e-ddl) {
-  height: 40px;
+:deep(.e-input-group input),
+:deep(.e-ddl input) {
+  font-size: 16px;
+  color: #333333;
+  line-height: 24px;
+  padding: 8px 10px;
 }
 
-:deep(.e-input-group input) {
-  font-size: 16px;
+:deep(.e-input-group input::placeholder) {
   color: #7f8996;
 }
 
+/* Grid Header */
 :deep(.e-grid .e-headercell) {
-  background: linear-gradient(
-    90deg,
-    rgba(40, 119, 238, 0.05) 0%,
-    rgba(40, 119, 238, 0.05) 100%
-  );
+  background: rgba(40, 119, 238, 0.05);
+  border-top: 1px solid #d7dae0;
+  border-bottom: none;
   font-weight: 500;
   font-size: 14px;
   color: #0f172a;
+  padding: 8px;
+  height: 40px;
+  line-height: 20px;
+}
+
+/* Grid Rows */
+:deep(.e-grid .e-row) {
+  border-bottom: 1px solid #d7dae0;
+  height: 36px;
 }
 
 :deep(.e-grid .e-row:nth-child(even)) {
   background-color: rgba(15, 23, 42, 0.04);
 }
 
+:deep(.e-grid .e-row:nth-child(odd)) {
+  background-color: #ffffff;
+}
+
+:deep(.e-grid .e-rowcell) {
+  font-size: 14px;
+  color: #0f172a;
+  padding: 8px;
+  line-height: 20px;
+}
+
+/* Grid Links */
 :deep(.grid-link) {
   color: #0f172a;
   text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
 }
 
 :deep(.grid-link:hover) {
   color: #2877ee;
+}
+
+/* Pager */
+:deep(.e-pager) {
+  background-color: #ffffff;
+  border-top: 1px solid #d4d4d4;
+  padding: 16px 30px;
+  border-radius: 0 0 4px 4px;
+}
+
+:deep(.e-pager .e-numericitem),
+:deep(.e-pager .e-currentitem) {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333333;
+  line-height: 24px;
+  min-width: 24px;
+}
+
+:deep(.e-pager .e-currentitem.e-active) {
+  background-color: #2877ee;
+  color: #ffffff;
+}
+
+:deep(.e-pager .e-pagercontainer) {
+  font-size: 16px;
+  color: #0f172a;
 }
 </style>
