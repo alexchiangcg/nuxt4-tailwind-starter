@@ -39,6 +39,8 @@
     "context7",
     "deepwiki",
     "figma-dev-mode",
-    "playwright"
-  ]
+    "playwright",
+    "spec-workflow"
+  ],
+  "enableAllProjectMcpServers": true
 }
