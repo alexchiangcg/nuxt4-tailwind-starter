@@ -16,12 +16,22 @@
       }
     },
     "playwright": {
-      "type": "stdio",
       "command": "npx",
       "args": [
         "@playwright/mcp@latest"
       ],
       "env": {}
+    },
+      "syncfusion-vue-assistant": {
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@syncfusion/vue-assistant@latest"
+        ],
+        "env": {
+        "Syncfusion_API_Key": "Coj36uqoSNNEItd1AQfD+2VtzS7ktB/PX6OuiffF1hFh7tLDMc6BUF6e25sdsxOM+q20MklFu3VLzlTHWOGEpA=="
+        }
     },
     "spec-workflow": {
           "type": "stdio",
