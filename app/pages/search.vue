@@ -17,12 +17,6 @@ import SearchPage from '~/features/search/components/SearchPage.vue'
 import type { SearchFieldSchema, GridColumnSchema } from '~/features/search/components/SearchPage.vue'
 
 // Import Syncfusion CSS
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-buttons/styles/material.css'
-import '@syncfusion/ej2-inputs/styles/material.css'
-import '@syncfusion/ej2-dropdowns/styles/material.css'
-import '@syncfusion/ej2-calendars/styles/material.css'
-import '@syncfusion/ej2-grids/styles/material.css'
 
 definePageMeta({
   layout: 'default',
