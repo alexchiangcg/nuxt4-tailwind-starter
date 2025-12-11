@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ["~/assets/css/tailwind.css", "~/assets/css/syncfusion.css"],
+  css: ["~/assets/css/syncfusion.css", "~/assets/css/tailwind.css"],
 
   colorMode: {
     classSuffix: "",

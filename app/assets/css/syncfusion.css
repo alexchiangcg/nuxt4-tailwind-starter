@@ -1,11 +1,12 @@
-@import '@syncfusion/ej2-base/styles/tailwind.css';
-@import '@syncfusion/ej2-buttons/styles/tailwind.css';
-@import '@syncfusion/ej2-inputs/styles/tailwind.css';
-@import '@syncfusion/ej2-popups/styles/tailwind.css';
-@import '@syncfusion/ej2-lists/styles/tailwind.css';
-@import '@syncfusion/ej2-dropdowns/styles/tailwind.css';
-@import '@syncfusion/ej2-calendars/styles/tailwind.css';
-@import '@syncfusion/ej2-navigations/styles/tailwind.css';
-@import '@syncfusion/ej2-splitbuttons/styles/tailwind.css';
-@import '@syncfusion/ej2-grids/styles/tailwind.css';
-@import '@syncfusion/ej2-notifications/styles/tailwind.css';
+/* 統一使用 Material 3 主題（支持 CSS 變數） */
+@import "@syncfusion/ej2-base/styles/material3.css";
+@import '@syncfusion/ej2-buttons/styles/material3.css';
+@import '@syncfusion/ej2-inputs/styles/material3.css';
+@import '@syncfusion/ej2-popups/styles/material3.css';
+@import '@syncfusion/ej2-lists/styles/material3.css';
+@import '@syncfusion/ej2-dropdowns/styles/material3.css';
+@import '@syncfusion/ej2-calendars/styles/material3.css';
+@import '@syncfusion/ej2-navigations/styles/material3.css';
+@import '@syncfusion/ej2-splitbuttons/styles/material3.css';
+@import '@syncfusion/ej2-grids/styles/material3.css';
+@import '@syncfusion/ej2-notifications/styles/material3.css';

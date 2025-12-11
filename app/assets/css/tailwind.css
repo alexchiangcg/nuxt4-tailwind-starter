@@ -1,5 +1,17 @@
 @import 'tailwindcss';
 
+:root{
+  --color-sf-primary: 13, 148, 136;
+}
+:root[data-theme="default"] {
+  --color-sf-primary: 255, 158, 66;
+}
+
+@theme {
+  --color-primary: rgb(var(--color-sf-primary));
+  --color-secondary: var(--brand-secondary);
+}
+
 /* Custom button styles */
 .btn {
   @apply px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
