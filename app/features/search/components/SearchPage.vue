@@ -18,6 +18,7 @@
     <!-- 搜尋條件區 -->
     <div class="search-form-container">
       <div class="search-fields-wrapper">
+        
         <!-- 第一排欄位（始終顯示） -->
         <div class="search-fields-row">
           <template v-for="field in firstRowFields" :key="field.key">
@@ -67,56 +68,58 @@
           </template>
         </div>
 
-        <!-- 第二排欄位（可折疊） -->
-        <div v-if="isExpanded && secondRowFields.length > 0" class="search-fields-row">
-          <template v-for="field in secondRowFields" :key="field.key">
-            <!-- Text Input -->
-            <div
-              v-if="field.type === 'text'"
-              class="search-field"
-              :style="{ flexGrow: field.width || 1 }"
-            >
-              <label class="field-label">{{ field.label }}</label>
-              <ejs-textbox
-                v-model="filters[field.key]"
-                :placeholder="field.placeholder || '請輸入'"
-                cssClass="custom-textbox"
-              />
-            </div>
+        <!-- 第二排欄位（可折疊，帶動畫） -->
+        <Transition name="expand">
+          <div v-if="isExpanded && secondRowFields.length > 0" class="search-fields-row">
+            <template v-for="field in secondRowFields" :key="field.key">
+              <!-- Text Input -->
+              <div
+                v-if="field.type === 'text'"
+                class="search-field"
+                :style="{ flexGrow: field.width || 1 }"
+              >
+                <label class="field-label">{{ field.label }}</label>
+                <ejs-textbox
+                  v-model="filters[field.key]"
+                  :placeholder="field.placeholder || '請輸入'"
+                  cssClass="custom-textbox"
+                />
+              </div>
 
-            <!-- Dropdown -->
-            <div
-              v-else-if="field.type === 'dropdown'"
-              class="search-field"
-              :style="{ flexGrow: field.width || 1 }"
-            >
-              <label class="field-label">{{ field.label }}</label>
-              <ejs-dropdownlist
-                v-model="filters[field.key]"
-                :dataSource="field.options"
-                :placeholder="field.placeholder || '請選擇'"
-                cssClass="custom-dropdown"
-              />
-            </div>
+              <!-- Dropdown -->
+              <div
+                v-else-if="field.type === 'dropdown'"
+                class="search-field"
+                :style="{ flexGrow: field.width || 1 }"
+              >
+                <label class="field-label">{{ field.label }}</label>
+                <ejs-dropdownlist
+                  v-model="filters[field.key]"
+                  :dataSource="field.options"
+                  :placeholder="field.placeholder || '請選擇'"
+                  cssClass="custom-dropdown"
+                />
+              </div>
 
-            <!-- Date Range -->
-            <div
-              v-else-if="field.type === 'daterange'"
-              class="search-field"
-              :style="{ flexGrow: field.width || 1 }"
-            >
-              <label class="field-label">{{ field.label }}</label>
-              <ejs-daterangepicker
-                v-model="filters[field.key]"
-                :placeholder="field.placeholder || '選擇日期範圍'"
-                format="yyyy/MM/dd"
-                cssClass="custom-daterange"
-              />
-            </div>
-          </template>
-        </div>
+              <!-- Date Range -->
+              <div
+                v-else-if="field.type === 'daterange'"
+                class="search-field"
+                :style="{ flexGrow: field.width || 1 }"
+              >
+                <label class="field-label">{{ field.label }}</label>
+                <ejs-daterangepicker
+                  v-model="filters[field.key]"
+                  :placeholder="field.placeholder || '選擇日期範圍'"
+                  format="yyyy/MM/dd"
+                  cssClass="custom-daterange"
+                />
+              </div>
+            </template>
+          </div>
+        </Transition>
+        
       </div>
-
       <!-- 按鈕組 -->
       <div class="button-group">
         <button class="action-btn primary-btn" @click="handleSearch">
@@ -129,6 +132,7 @@
           <IconExpandMore :class="{ 'rotate-180': !isExpanded }" />
         </button>
       </div>
+
     </div>
 
     <!-- 新增按鈕 -->
@@ -515,7 +519,7 @@ const closeSettingsDialog = () => {
 .search-form-container {
   display: flex;
   gap: 20px;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 16px;
   background-color: #ffffff;
   border: 1px solid #d7dae0;
@@ -536,6 +540,51 @@ const closeSettingsDialog = () => {
   flex-wrap: wrap;
   gap: 16px;
   align-items: flex-end;
+}
+
+/* 展開/收起動畫 - 更平滑通用的版本 */
+.expand-enter-active {
+  transition: opacity 0.25s ease, margin-top 0.25s ease;
+  animation: expand-in 0.25s ease;
+}
+
+.expand-leave-active {
+  transition: opacity 0.2s ease, margin-top 0.2s ease;
+  animation: expand-out 0.2s ease;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+  opacity: 0;
+  margin-top: 0;
+}
+
+.expand-enter-to,
+.expand-leave-from {
+  opacity: 1;
+  margin-top: 16px;
+}
+
+@keyframes expand-in {
+  from {
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    max-height: 500px;
+    overflow: visible;
+  }
+}
+
+@keyframes expand-out {
+  from {
+    max-height: 500px;
+    overflow: hidden;
+  }
+  to {
+    max-height: 0;
+    overflow: hidden;
+  }
 }
 
 .search-field {
@@ -559,8 +608,8 @@ const closeSettingsDialog = () => {
 .button-group {
   display: flex;
   gap: 5px;
-  align-items: flex-end;
-  padding-bottom: 0;
+  align-items: flex-start;
+  padding-top: 12px;
 }
 
 .action-btn {
@@ -584,7 +633,7 @@ const closeSettingsDialog = () => {
 
 .rotate-180 {
   transform: rotate(180deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .primary-btn {
