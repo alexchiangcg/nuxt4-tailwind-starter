@@ -504,7 +504,11 @@ const mockGridData = ref([
 // ============================================
 const handleSearch = (filters: Record<string, any>) => {
   console.log('搜尋條件:', filters)
-  // TODO: 實作 API 呼叫
+    return $fetch('/api/user/search', {
+      method: 'POST',
+      body: filters,
+    })
+  
 }
 
 const handleAdd = () => {

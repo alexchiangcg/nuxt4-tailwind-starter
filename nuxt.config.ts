@@ -15,22 +15,6 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  // Fix for Syncfusion packages:
-  // 1. Transpile ES modules for Nuxt compatibility
-  // 2. Map types manually because package.json is missing "types" field
-  build: {
-    transpile: [/@syncfusion/],
-  },
-  typescript: {
-    tsConfig: {
-      compilerOptions: {
-        paths: {
-          "@syncfusion/*": ["../node_modules/@syncfusion/*"],
-        },
-      },
-    },
-  },
-
   app: {
     head: {
       viewport: "width=device-width,initial-scale=1",
@@ -64,6 +48,20 @@ export default defineNuxtConfig({
 
   colorMode: {
     classSuffix: "",
+  },
+
+  runtimeConfig: {
+    public: {
+      backendUrl:
+        process.env.NUXT_PUBLIC_BACKEND_URL || "http://localhost:8080/api/v1",
+    },
+  },
+
+  // Fix for Syncfusion packages:
+  // 1. Transpile ES modules for Nuxt compatibility
+  // 2. Map types manually because package.json is missing "types" field
+  build: {
+    transpile: [/@syncfusion/],
   },
 
   devServer: {
@@ -107,6 +105,15 @@ export default defineNuxtConfig({
     css: {
       postcss: {
         plugins: [require("@tailwindcss/postcss")],
+      },
+    },
+  },
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          "@syncfusion/*": ["../node_modules/@syncfusion/*"],
+        },
       },
     },
   },
