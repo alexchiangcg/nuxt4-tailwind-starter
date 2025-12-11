@@ -5,7 +5,7 @@
       <div class="query-mode-group">
         <label class="query-mode-label">查詢模式</label>
         <ejs-dropdownlist
-          v-model="queryMode"
+          v-model:value="queryMode"
           :dataSource="queryModeOptions"
           :fields="{ text: 'text', value: 'text' }"
           placeholder="請選擇"
@@ -30,7 +30,7 @@
             >
               <label class="field-label">{{ field.label }}</label>
               <ejs-textbox
-                v-model="filters[field.key]"
+                v-model:value="filters[field.key]"
                 :placeholder="field.placeholder || '請輸入'"
                 cssClass="custom-textbox"
               />
@@ -44,7 +44,7 @@
             >
               <label class="field-label">{{ field.label }}</label>
               <ejs-dropdownlist
-                v-model="filters[field.key]"
+                v-model:value="filters[field.key]"
                 :dataSource="field.options"
                 :placeholder="field.placeholder || '請選擇'"
                 cssClass="custom-dropdown"
@@ -59,7 +59,7 @@
             >
               <label class="field-label">{{ field.label }}</label>
               <ejs-daterangepicker
-                v-model="filters[field.key]"
+                v-model:value="filters[field.key]"
                 :placeholder="field.placeholder || '選擇日期範圍'"
                 format="yyyy/MM/dd"
                 cssClass="custom-daterange"
@@ -80,7 +80,7 @@
               >
                 <label class="field-label">{{ field.label }}</label>
                 <ejs-textbox
-                  v-model="filters[field.key]"
+                  v-model:value="filters[field.key]"
                   :placeholder="field.placeholder || '請輸入'"
                   cssClass="custom-textbox"
                 />
@@ -94,7 +94,7 @@
               >
                 <label class="field-label">{{ field.label }}</label>
                 <ejs-dropdownlist
-                  v-model="filters[field.key]"
+                  v-model:value="filters[field.key]"
                   :dataSource="field.options"
                   :placeholder="field.placeholder || '請選擇'"
                   cssClass="custom-dropdown"
@@ -109,7 +109,7 @@
               >
                 <label class="field-label">{{ field.label }}</label>
                 <ejs-daterangepicker
-                  v-model="filters[field.key]"
+                  v-model:value="filters[field.key]"
                   :placeholder="field.placeholder || '選擇日期範圍'"
                   format="yyyy/MM/dd"
                   cssClass="custom-daterange"
@@ -129,7 +129,7 @@
           <IconDelete />
         </button>
         <button class="action-btn outline-btn" @click="toggleExpand">
-          <IconExpandMore :class="{ 'rotate-180': !isExpanded }" />
+          <IconExpandMore class="toggle-icon" :class="{ 'is-expanded': isExpanded }" />
         </button>
       </div>
 
@@ -502,8 +502,21 @@ const handleSearch = () => {
   emit('search', filters.value)
 }
 
+const resetFilters = () => {
+  const next: Record<string, any> = {}
+  actualSearchFields.value.forEach((field) => {
+    if (!field) return
+    if (field.type === 'daterange' || field.type === 'dropdown') {
+      next[field.key] = null
+    } else {
+      next[field.key] = ''
+    }
+  })
+  filters.value = next
+}
+
 const handleClear = () => {
-  filters.value = {}
+  resetFilters()
 }
 
 const toggleExpand = () => {
@@ -988,9 +1001,12 @@ const closeSettingsDialog = () => {
   flex-shrink: 0;
 }
 
-.rotate-180 {
+.toggle-icon {
+  transition: transform 0.25s ease;
+}
+
+.toggle-icon.is-expanded {
   transform: rotate(180deg);
-  transition: transform 0.3s ease;
 }
 
 .primary-btn {
