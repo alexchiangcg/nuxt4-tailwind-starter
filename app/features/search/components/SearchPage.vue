@@ -12,7 +12,7 @@
           cssClass="query-mode-dropdown"
         />
       </div>
-      <ejs-button iconCss="e-icons e-settings" cssClass="settings-btn" />
+      <ejs-button iconCss="e-icons e-settings" cssClass="settings-btn" @click="openSettings" />
     </div>
 
     <!-- 搜尋條件區 -->
@@ -147,6 +147,7 @@
           :dataSource="gridData"
           :allowPaging="true"
           :allowSorting="true"
+          :allowReordering="true"
           :pageSettings="{ pageSize: 20, pageSizes: [10, 20, 50, 100] }"
           @dataBound="onDataBound"
         >
@@ -171,11 +172,39 @@
         </template>
       </ClientOnly>
     </div>
+
+    <!-- 設定欄位彈窗 -->
+    <ejs-dialog
+      ref="settingsDialogRef"
+      v-model="showSettingsDialog"
+      :visible="showSettingsDialog"
+      header="設定欄位"
+      :width="400"
+      :height="500"
+      :isModal="true"
+      :showCloseIcon="true"
+      :buttons="dialogButtons"
+      @close="closeSettingsDialog"
+      @open="initSortable"
+    >
+      <div class="column-settings-content">
+        <p class="settings-hint">拖動調整順序，勾選顯示欄位</p>
+        <ul ref="sortableListRef" class="column-list">
+          <li v-for="col in columnSettingsData" :key="col.id" class="column-item">
+            <span class="drag-handle">☰</span>
+            <label class="column-checkbox">
+              <input type="checkbox" v-model="col.visible" />
+              <span>{{ col.name }}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </ejs-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide, watch } from 'vue'
+import { ref, computed, provide, nextTick } from 'vue'
 import { TextBoxComponent as EjsTextbox } from '@syncfusion/ej2-vue-inputs'
 import { DropDownListComponent as EjsDropdownlist } from '@syncfusion/ej2-vue-dropdowns'
 import { DateRangePickerComponent as EjsDaterangepicker } from '@syncfusion/ej2-vue-calendars'
@@ -185,9 +214,10 @@ import {
   ColumnDirective as EColumn,
   Page,
   Sort,
-  Toolbar,
+  Reorder,
 } from '@syncfusion/ej2-vue-grids'
 import { ButtonComponent as EjsButton } from '@syncfusion/ej2-vue-buttons'
+import { DialogComponent as EjsDialog } from '@syncfusion/ej2-vue-popups'
 // @ts-expect-error - unplugin-icons virtual modules
 import IconSearch from '~icons/material-symbols/search'
 // @ts-expect-error - unplugin-icons virtual modules
@@ -198,7 +228,7 @@ import IconExpandMore from '~icons/material-symbols/expand-more'
 import IconAdd from '~icons/material-symbols/add'
 
 // Provide Grid services
-provide('grid', [Page, Sort, Toolbar])
+provide('grid', [Page, Sort, Reorder])
 
 // ============================================
 // Types
@@ -252,6 +282,21 @@ const emit = defineEmits<{
 const queryMode = ref('一般查詢')
 const isExpanded = ref(false)
 const filters = ref<Record<string, any>>({})
+const showSettingsDialog = ref(false)
+const columnSettingsData = ref<Array<{ id: string; name: string; visible: boolean }>>([])
+const sortableListRef = ref<HTMLElement | null>(null)
+
+// Dialog 按鈕配置
+const dialogButtons = [
+  {
+    click: () => applyColumnSettings(),
+    buttonModel: { content: '儲存', isPrimary: true },
+  },
+  {
+    click: () => closeSettingsDialog(),
+    buttonModel: { content: '取消' },
+  },
+]
 
 // ============================================
 // Computed
@@ -295,6 +340,120 @@ const onDataBound = () => {
   if (grid.value) {
     grid.value.autoFitColumns()
   }
+}
+
+const openSettings = () => {
+  // 準備列設置數據
+  if (grid.value?.ej2Instances) {
+    const columns = grid.value.ej2Instances.getColumns()
+    columnSettingsData.value = columns
+      .filter((col: any) => col.field)
+      .map((col: any) => ({
+        id: col.field,
+        name: col.headerText || col.field,
+        visible: col.visible !== false,
+      }))
+  }
+  showSettingsDialog.value = true
+}
+
+const initSortable = async () => {
+  // 彈窗打開後初始化拖放功能
+  await nextTick()
+  if (sortableListRef.value) {
+    // 使用原生 HTML5 拖放 API 實現簡單的拖放
+    const items = sortableListRef.value.querySelectorAll('.column-item')
+    items.forEach((item) => {
+      item.setAttribute('draggable', 'true')
+
+      item.addEventListener('dragstart', (e: any) => {
+        e.target.classList.add('dragging')
+      })
+
+      item.addEventListener('dragend', (e: any) => {
+        e.target.classList.remove('dragging')
+      })
+    })
+
+    sortableListRef.value.addEventListener('dragover', (e: any) => {
+      e.preventDefault()
+      const afterElement = getDragAfterElement(sortableListRef.value!, e.clientY)
+      const dragging = document.querySelector('.dragging')
+      if (dragging && sortableListRef.value) {
+        if (afterElement == null) {
+          sortableListRef.value.appendChild(dragging)
+        } else {
+          sortableListRef.value.insertBefore(dragging, afterElement)
+        }
+      }
+    })
+  }
+}
+
+const getDragAfterElement = (container: HTMLElement, y: number) => {
+  const draggableElements = [...container.querySelectorAll('.column-item:not(.dragging)')]
+
+  return draggableElements.reduce((closest: any, child: any) => {
+    const box = child.getBoundingClientRect()
+    const offset = y - box.top - box.height / 2
+
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child }
+    } else {
+      return closest
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element
+}
+
+const applyColumnSettings = () => {
+  if (!grid.value?.ej2Instances) return
+
+  const gridInstance = grid.value.ej2Instances
+
+  // 獲取拖放後的列順序
+  if (sortableListRef.value) {
+    const items = sortableListRef.value.querySelectorAll('.column-item')
+    const newOrder: Array<{ id: string; name: string; visible: boolean }> = []
+
+    items.forEach((item) => {
+      const checkbox = item.querySelector('input[type="checkbox"]') as HTMLInputElement
+      const label = item.querySelector('label span')?.textContent || ''
+      const colData = columnSettingsData.value.find((c) => c.name === label)
+      if (colData) {
+        newOrder.push({
+          ...colData,
+          visible: checkbox.checked,
+        })
+      }
+    })
+
+    // 應用列可見性
+    newOrder.forEach((item) => {
+      const column = gridInstance.getColumnByField(item.id)
+      if (column) {
+        column.visible = item.visible
+      }
+    })
+
+    // 應用列順序
+    newOrder.forEach((item, targetIndex) => {
+      const currentIndex = gridInstance.getColumnIndexByField(item.id)
+      if (currentIndex !== -1 && currentIndex !== targetIndex) {
+        const targetField = gridInstance.columns[targetIndex]?.field
+        if (targetField) {
+          gridInstance.reorderColumns(item.id, targetField)
+        }
+      }
+    })
+
+    gridInstance.refreshColumns()
+  }
+
+  showSettingsDialog.value = false
+}
+
+const closeSettingsDialog = () => {
+  showSettingsDialog.value = false
 }
 </script>
 
@@ -606,4 +765,81 @@ const onDataBound = () => {
   font-size: 16px;
   color: #0f172a;
 }
+
+/* ============================================
+   Column Settings Dialog
+   ============================================ */
+.column-settings-content {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-hint {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #7f8996;
+}
+
+/* 列設置列表 */
+.column-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+.column-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #e5eaf3;
+  background-color: #fff;
+  cursor: move;
+  transition: background-color 0.2s;
+}
+
+.column-item:hover {
+  background-color: rgba(40, 119, 238, 0.05);
+}
+
+.column-item.dragging {
+  opacity: 0.5;
+  background-color: rgba(40, 119, 238, 0.1);
+}
+
+.drag-handle {
+  font-size: 18px;
+  color: #7f8996;
+  cursor: grab;
+  user-select: none;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.column-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.column-checkbox input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.column-checkbox span {
+  font-size: 14px;
+  color: #333333;
+}
+
 </style>
