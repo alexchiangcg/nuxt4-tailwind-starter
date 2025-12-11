@@ -6,10 +6,11 @@
         <label class="query-mode-label">查詢模式</label>
         <ejs-dropdownlist
           v-model="queryMode"
-          :dataSource="['一般查詢', '進階查詢']"
+          :dataSource="queryModeOptions"
           :fields="{ text: 'text', value: 'text' }"
           placeholder="請選擇"
           cssClass="query-mode-dropdown"
+          @select="handleQueryModeChange"
         />
       </div>
       <ejs-button iconCss="e-icons e-settings" cssClass="settings-btn" @click="openSettings" />
@@ -183,32 +184,65 @@
       v-model="showSettingsDialog"
       :visible="showSettingsDialog"
       header="設定欄位"
-      :width="400"
-      :height="500"
+      :width="500"
+      :height="600"
       :isModal="true"
       :showCloseIcon="true"
       :buttons="dialogButtons"
       @close="closeSettingsDialog"
       @open="initSortable"
     >
-      <div class="column-settings-content">
-        <p class="settings-hint">拖動調整順序，勾選顯示欄位</p>
-        <ul ref="sortableListRef" class="column-list">
-          <li v-for="col in columnSettingsData" :key="col.id" class="column-item">
-            <span class="drag-handle">☰</span>
-            <label class="column-checkbox">
-              <input type="checkbox" v-model="col.visible" />
-              <span>{{ col.name }}</span>
-            </label>
-          </li>
-        </ul>
+      <div class="settings-dialog-content">
+        <ejs-tab v-model="activeTab">
+          <e-tabitems>
+            <!-- 搜尋欄位 Tab -->
+            <e-tabitem :header="{ text: '搜尋欄位' }" :content="'fieldContent'">
+              <template v-slot:fieldContent>
+                <div class="tab-content">
+                  <p class="settings-hint">拖動調整順序，勾選顯示欄位，選擇顯示列數</p>
+                  <ul ref="sortableFieldListRef" class="column-list">
+                    <li v-for="field in fieldSettingsData" :key="field.id" class="column-item">
+                      <span class="drag-handle">☰</span>
+                      <label class="column-checkbox">
+                        <input type="checkbox" v-model="field.visible" />
+                        <span>{{ field.name }}</span>
+                      </label>
+                      <select v-model="field.row" class="row-select">
+                        <option :value="1">第一排</option>
+                        <option :value="2">第二排</option>
+                      </select>
+                    </li>
+                  </ul>
+                </div>
+              </template>
+            </e-tabitem>
+
+            <!-- 結果欄位 Tab -->
+            <e-tabitem :header="{ text: '結果欄位' }" :content="'columnContent'">
+              <template v-slot:columnContent>
+                <div class="tab-content">
+                  <p class="settings-hint">拖動調整順序，勾選顯示欄位</p>
+                  <ul ref="sortableListRef" class="column-list">
+                    <li v-for="col in columnSettingsData" :key="col.id" class="column-item">
+                      <span class="drag-handle">☰</span>
+                      <label class="column-checkbox">
+                        <input type="checkbox" v-model="col.visible" />
+                        <span>{{ col.name }}</span>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </template>
+            </e-tabitem>
+          </e-tabitems>
+        </ejs-tab>
       </div>
     </ejs-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide, nextTick } from 'vue'
+import { ref, computed, provide, nextTick, watch } from 'vue'
 import { TextBoxComponent as EjsTextbox } from '@syncfusion/ej2-vue-inputs'
 import { DropDownListComponent as EjsDropdownlist } from '@syncfusion/ej2-vue-dropdowns'
 import { DateRangePickerComponent as EjsDaterangepicker } from '@syncfusion/ej2-vue-calendars'
@@ -222,6 +256,12 @@ import {
 } from '@syncfusion/ej2-vue-grids'
 import { ButtonComponent as EjsButton } from '@syncfusion/ej2-vue-buttons'
 import { DialogComponent as EjsDialog } from '@syncfusion/ej2-vue-popups'
+import {
+  TabComponent as EjsTab,
+  TabItemsDirective as ETabitems,
+  TabItemDirective as ETabitem,
+} from '@syncfusion/ej2-vue-navigations'
+import { useLocalStorage } from '../../../composables/useLocalStorage'
 // @ts-expect-error - unplugin-icons virtual modules
 import IconSearch from '~icons/material-symbols/search'
 // @ts-expect-error - unplugin-icons virtual modules
@@ -283,12 +323,63 @@ const emit = defineEmits<{
 // ============================================
 // State
 // ============================================
-const queryMode = ref('一般查詢')
+const queryMode = useLocalStorage('search_query_mode', '一般查詢')
+const queryModeList = useLocalStorage<string[]>('search_query_mode_list', ['一般查詢', '進階查詢'])
 const isExpanded = ref(false)
 const filters = ref<Record<string, any>>({})
 const showSettingsDialog = ref(false)
-const columnSettingsData = ref<Array<{ id: string; name: string; visible: boolean }>>([])
+const columnSettingsData = ref<Array<{ id: string; name: string; visible: boolean; row: 1 | 2 }>>([])
+const fieldSettingsData = ref<Array<{ id: string; name: string; visible: boolean; row: 1 | 2 }>>([])
 const sortableListRef = ref<HTMLElement | null>(null)
+const sortableFieldListRef = ref<HTMLElement | null>(null)
+const activeTab = ref(0)
+const showNewModeDialog = ref(false)
+const newModeName = ref('')
+
+// 實際渲染的搜尋欄位（可由 localStorage 覆蓋）
+const actualSearchFields = ref<SearchFieldSchema[]>([])
+
+// 初始化搜尋欄位配置（根據當前查詢模式）
+const initSearchFields = () => {
+  // 確保只在客戶端執行
+  if (typeof window === 'undefined') {
+    actualSearchFields.value = [...props.searchFields]
+    return
+  }
+
+  // 使用查詢模式作為 key 的一部分
+  const storageKey = `search_field_settings_${queryMode.value}`
+  const savedSettings = localStorage.getItem(storageKey)
+
+  if (savedSettings) {
+    try {
+      const settings = JSON.parse(savedSettings)
+      // 根據保存的配置重建 searchFields
+      actualSearchFields.value = settings
+        .filter((s: any) => s.visible)
+        .map((s: any) => {
+          const originalField = props.searchFields.find((f) => f.key === s.id)
+          return originalField ? { ...originalField, row: s.row } : null
+        })
+        .filter(Boolean) as SearchFieldSchema[]
+    } catch (e) {
+      console.warn('Failed to parse saved field settings:', e)
+      actualSearchFields.value = [...props.searchFields]
+    }
+  } else {
+    actualSearchFields.value = [...props.searchFields]
+  }
+}
+
+// 監聽 props.searchFields 變化
+watch(() => props.searchFields, () => {
+  initSearchFields()
+}, { immediate: true })
+
+// 監聽查詢模式變化，自動切換對應的欄位配置
+watch(queryMode, () => {
+  initSearchFields()
+})
 
 // Dialog 按鈕配置
 const dialogButtons = [
@@ -305,12 +396,14 @@ const dialogButtons = [
 // ============================================
 // Computed
 // ============================================
+const queryModeOptions = computed(() => [...queryModeList.value, '+ 新增模式'])
+
 const firstRowFields = computed(() =>
-  props.searchFields.filter((field) => field.row === 1 || !field.row)
+  actualSearchFields.value.filter((field) => field.row === 1 || !field.row)
 )
 
 const secondRowFields = computed(() =>
-  props.searchFields.filter((field) => field.row === 2)
+  actualSearchFields.value.filter((field) => field.row === 2)
 )
 
 // ============================================
@@ -347,7 +440,7 @@ const onDataBound = () => {
 }
 
 const openSettings = () => {
-  // 準備列設置數據
+  // 準備結果欄位設置數據
   if (grid.value?.ej2Instances) {
     const columns = grid.value.ej2Instances.getColumns()
     columnSettingsData.value = columns
@@ -356,42 +449,88 @@ const openSettings = () => {
         id: col.field,
         name: col.headerText || col.field,
         visible: col.visible !== false,
+        row: 1 as 1 | 2, // 預設第一排
       }))
   }
+
+  // 準備搜尋欄位設置數據（從 localStorage 讀取或使用預設值）
+  if (typeof window !== 'undefined') {
+    // 使用查詢模式作為 key 的一部分
+    const storageKey = `search_field_settings_${queryMode.value}`
+    const savedSettings = localStorage.getItem(storageKey)
+
+    if (savedSettings) {
+      try {
+        fieldSettingsData.value = JSON.parse(savedSettings)
+      } catch (e) {
+        // 如果解析失敗，使用預設值
+        fieldSettingsData.value = props.searchFields.map((field) => ({
+          id: field.key,
+          name: field.label,
+          visible: true,
+          row: field.row || 1,
+        }))
+      }
+    } else {
+      fieldSettingsData.value = props.searchFields.map((field) => ({
+        id: field.key,
+        name: field.label,
+        visible: true,
+        row: field.row || 1,
+      }))
+    }
+  } else {
+    // SSR 環境使用預設值
+    fieldSettingsData.value = props.searchFields.map((field) => ({
+      id: field.key,
+      name: field.label,
+      visible: true,
+      row: field.row || 1,
+    }))
+  }
+
   showSettingsDialog.value = true
 }
 
 const initSortable = async () => {
   // 彈窗打開後初始化拖放功能
   await nextTick()
-  if (sortableListRef.value) {
-    // 使用原生 HTML5 拖放 API 實現簡單的拖放
-    const items = sortableListRef.value.querySelectorAll('.column-item')
-    items.forEach((item) => {
-      item.setAttribute('draggable', 'true')
 
-      item.addEventListener('dragstart', (e: any) => {
-        e.target.classList.add('dragging')
-      })
+  // 初始化結果欄位拖放
+  initDragDrop(sortableListRef.value)
 
-      item.addEventListener('dragend', (e: any) => {
-        e.target.classList.remove('dragging')
-      })
+  // 初始化搜尋欄位拖放
+  initDragDrop(sortableFieldListRef.value)
+}
+
+const initDragDrop = (container: HTMLElement | null) => {
+  if (!container) return
+
+  const items = container.querySelectorAll('.column-item')
+  items.forEach((item) => {
+    item.setAttribute('draggable', 'true')
+
+    item.addEventListener('dragstart', (e: any) => {
+      e.target.classList.add('dragging')
     })
 
-    sortableListRef.value.addEventListener('dragover', (e: any) => {
-      e.preventDefault()
-      const afterElement = getDragAfterElement(sortableListRef.value!, e.clientY)
-      const dragging = document.querySelector('.dragging')
-      if (dragging && sortableListRef.value) {
-        if (afterElement == null) {
-          sortableListRef.value.appendChild(dragging)
-        } else {
-          sortableListRef.value.insertBefore(dragging, afterElement)
-        }
+    item.addEventListener('dragend', (e: any) => {
+      e.target.classList.remove('dragging')
+    })
+  })
+
+  container.addEventListener('dragover', (e: any) => {
+    e.preventDefault()
+    const afterElement = getDragAfterElement(container, e.clientY)
+    const dragging = document.querySelector('.dragging')
+    if (dragging && container) {
+      if (afterElement == null) {
+        container.appendChild(dragging)
+      } else {
+        container.insertBefore(dragging, afterElement)
       }
-    })
-  }
+    }
+  })
 }
 
 const getDragAfterElement = (container: HTMLElement, y: number) => {
@@ -410,14 +549,11 @@ const getDragAfterElement = (container: HTMLElement, y: number) => {
 }
 
 const applyColumnSettings = () => {
-  if (!grid.value?.ej2Instances) return
-
-  const gridInstance = grid.value.ej2Instances
-
-  // 獲取拖放後的列順序
-  if (sortableListRef.value) {
+  // 保存結果欄位設定
+  if (grid.value?.ej2Instances && sortableListRef.value) {
+    const gridInstance = grid.value.ej2Instances
     const items = sortableListRef.value.querySelectorAll('.column-item')
-    const newOrder: Array<{ id: string; name: string; visible: boolean }> = []
+    const newOrder: Array<{ id: string; name: string; visible: boolean; row: 1 | 2 }> = []
 
     items.forEach((item) => {
       const checkbox = item.querySelector('input[type="checkbox"]') as HTMLInputElement
@@ -451,6 +587,42 @@ const applyColumnSettings = () => {
     })
 
     gridInstance.refreshColumns()
+
+    // 保存到 localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('search_grid_columns', JSON.stringify(newOrder))
+    }
+  }
+
+  // 保存搜尋欄位設定
+  if (sortableFieldListRef.value) {
+    const items = sortableFieldListRef.value.querySelectorAll('.column-item')
+    const newOrder: Array<{ id: string; name: string; visible: boolean; row: 1 | 2 }> = []
+
+    items.forEach((item) => {
+      const checkbox = item.querySelector('input[type="checkbox"]') as HTMLInputElement
+      const rowSelect = item.querySelector('select') as HTMLSelectElement
+      const label = item.querySelector('label span')?.textContent || ''
+      const fieldData = fieldSettingsData.value.find((f) => f.name === label)
+      if (fieldData) {
+        newOrder.push({
+          ...fieldData,
+          visible: checkbox.checked,
+          row: parseInt(rowSelect.value) as 1 | 2,
+        })
+      }
+    })
+
+    fieldSettingsData.value = newOrder
+
+    // 保存到 localStorage（使用查詢模式作為 key 的一部分）
+    if (typeof window !== 'undefined') {
+      const storageKey = `search_field_settings_${queryMode.value}`
+      localStorage.setItem(storageKey, JSON.stringify(newOrder))
+    }
+
+    // 重新載入搜尋欄位配置
+    initSearchFields()
   }
 
   showSettingsDialog.value = false
@@ -458,6 +630,36 @@ const applyColumnSettings = () => {
 
 const closeSettingsDialog = () => {
   showSettingsDialog.value = false
+}
+
+// 處理查詢模式變更
+const handleQueryModeChange = (args: any) => {
+  const selectedValue = args.itemData || args.value
+  if (selectedValue === '+ 新增模式') {
+    // 阻止選擇「+ 新增模式」
+    args.cancel = true
+
+    // 使用 setTimeout 避免下拉選單尚未關閉時彈出對話框
+    setTimeout(() => {
+      const modeName = prompt('請輸入新查詢模式名稱：')
+      if (modeName && modeName.trim()) {
+        const trimmedName = modeName.trim()
+        // 檢查是否重複
+        if (queryModeList.value.includes(trimmedName)) {
+          alert('此查詢模式名稱已存在！')
+          return
+        }
+        if (trimmedName === '+ 新增模式') {
+          alert('不能使用此名稱！')
+          return
+        }
+        // 新增到清單
+        queryModeList.value.push(trimmedName)
+        // 切換到新模式
+        queryMode.value = trimmedName
+      }
+    }, 100)
+  }
 }
 </script>
 
@@ -818,7 +1020,14 @@ const closeSettingsDialog = () => {
 /* ============================================
    Column Settings Dialog
    ============================================ */
-.column-settings-content {
+.settings-dialog-content {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-content {
   padding: 16px;
   height: 100%;
   display: flex;
@@ -889,6 +1098,27 @@ const closeSettingsDialog = () => {
 .column-checkbox span {
   font-size: 14px;
   color: #333333;
+}
+
+.row-select {
+  padding: 4px 8px;
+  border: 1px solid #d7dae0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333333;
+  background-color: #ffffff;
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.row-select:hover {
+  border-color: #2877ee;
+}
+
+.row-select:focus {
+  outline: none;
+  border-color: #2877ee;
+  box-shadow: 0 0 0 2px rgba(40, 119, 238, 0.1);
 }
 
 </style>
