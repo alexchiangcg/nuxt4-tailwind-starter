@@ -10,7 +10,7 @@
           :fields="{ text: 'text', value: 'text' }"
           placeholder="請選擇"
           cssClass="query-mode-dropdown"
-          @select="handleQueryModeChange"
+          @change="handleQueryModeChange"
         />
       </div>
       <ejs-button iconCss="e-icons e-settings" cssClass="settings-btn" @click="openSettings" />
@@ -234,6 +234,80 @@
                 </div>
               </template>
             </e-tabitem>
+
+            <!-- 查詢模式管理 Tab -->
+            <e-tabitem :header="{ text: '查詢模式管理' }" :content="'modeManagementContent'">
+              <template v-slot:modeManagementContent>
+                <div class="tab-content">
+                  <p class="settings-hint">管理查詢模式：新增、刪除或重命名</p>
+
+                  <div class="mode-management-container">
+                    <!-- 現有模式列表 -->
+                    <ul class="mode-list">
+                      <li v-for="(mode, index) in queryModeList" :key="mode" class="mode-item">
+                        <div class="mode-name-wrapper">
+                          <ejs-textbox
+                            v-if="editingModeIndex === index"
+                            v-model="editingModeName"
+                            cssClass="mode-edit-input"
+                            @keyup.enter="confirmEditMode"
+                            @keyup.esc="cancelEditMode"
+                            @blur="cancelEditMode"
+                          />
+                          <span v-else class="mode-name">
+                            {{ mode }}
+                            <span v-if="mode === queryMode" class="mode-chip">使用中</span>
+                          </span>
+                        </div>
+                        <div class="mode-actions">
+                          <template v-if="editingModeIndex === index">
+                            <ejs-button
+                              iconCss="e-icons e-check"
+                              cssClass="e-small e-success"
+                              @click="confirmEditMode"
+                            >儲存</ejs-button>
+                            <ejs-button
+                              iconCss="e-icons e-close"
+                              cssClass="e-small e-outline"
+                              @click="cancelEditMode"
+                            >取消</ejs-button>
+                          </template>
+                          <template v-else>
+                            <ejs-button
+                              iconCss="e-icons e-edit"
+                              cssClass="e-small e-outline"
+                              @click="startEditMode(index)"
+                            >重命名</ejs-button>
+                            <ejs-button
+                              iconCss="e-icons e-trash"
+                              cssClass="e-small e-outline e-danger"
+                              @click="deleteMode(index)"
+                              :disabled="queryModeList.length <= 1"
+                            >刪除</ejs-button>
+                          </template>
+                        </div>
+                      </li>
+                    </ul>
+
+                    <!-- 新增模式區域 -->
+                    <div class="add-mode-section">
+                      <ejs-textbox
+                        v-model="newModeName"
+                        placeholder="輸入新查詢模式名稱"
+                        cssClass="new-mode-input"
+                        @keyup.enter="addNewMode"
+                      />
+                      <ejs-button
+                        iconCss="e-icons e-plus"
+                        cssClass="e-success"
+                        @click="addNewMode"
+                        :disabled="!newModeName.trim()"
+                      >新增模式</ejs-button>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </e-tabitem>
           </e-tabitems>
         </ejs-tab>
       </div>
@@ -333,8 +407,9 @@ const fieldSettingsData = ref<Array<{ id: string; name: string; visible: boolean
 const sortableListRef = ref<HTMLElement | null>(null)
 const sortableFieldListRef = ref<HTMLElement | null>(null)
 const activeTab = ref(0)
-const showNewModeDialog = ref(false)
 const newModeName = ref('')
+const editingModeIndex = ref<number | null>(null)
+const editingModeName = ref('')
 
 // 實際渲染的搜尋欄位（可由 localStorage 覆蓋）
 const actualSearchFields = ref<SearchFieldSchema[]>([])
@@ -381,6 +456,18 @@ watch(queryMode, () => {
   initSearchFields()
 })
 
+// 確保目前模式始終存在於模式清單
+watch(
+  queryModeList,
+  (modes) => {
+    if (!modes.includes(queryMode.value) && modes.length > 0) {
+      queryMode.value = modes[0]
+      initSearchFields()
+    }
+  },
+  { deep: true }
+)
+
 // Dialog 按鈕配置
 const dialogButtons = [
   {
@@ -396,7 +483,9 @@ const dialogButtons = [
 // ============================================
 // Computed
 // ============================================
-const queryModeOptions = computed(() => [...queryModeList.value, '+ 新增模式'])
+const queryModeOptions = computed(() =>
+  [...queryModeList.value, '+ 新增模式'].map((text) => ({ text }))
+)
 
 const firstRowFields = computed(() =>
   actualSearchFields.value.filter((field) => field.row === 1 || !field.row)
@@ -436,6 +525,104 @@ const grid = ref<InstanceType<typeof EjsGrid> | null>(null)
 const onDataBound = () => {
   if (grid.value) {
     grid.value.autoFitColumns()
+  }
+}
+
+const buildDefaultFieldSettings = () =>
+  props.searchFields.map((field) => ({
+    id: field.key,
+    name: field.label,
+    visible: true,
+    row: field.row || 1,
+  }))
+
+const persistFieldSettingsForMode = (modeName: string, settings?: Array<{ id: string; name: string; visible: boolean; row: 1 | 2 }>) => {
+  if (typeof window === 'undefined') return
+  const payload = settings && settings.length > 0 ? settings : buildDefaultFieldSettings()
+  localStorage.setItem(`search_field_settings_${modeName}`, JSON.stringify(payload))
+}
+
+const addNewMode = () => {
+  const trimmedName = newModeName.value.trim()
+  if (!trimmedName) return
+  if (trimmedName === '+ 新增模式') {
+    alert('不能使用此名稱！')
+    return
+  }
+  if (queryModeList.value.includes(trimmedName)) {
+    alert('此查詢模式名稱已存在！')
+    return
+  }
+
+  queryModeList.value.push(trimmedName)
+  persistFieldSettingsForMode(trimmedName, fieldSettingsData.value)
+  queryMode.value = trimmedName
+  newModeName.value = ''
+  initSearchFields()
+}
+
+const startEditMode = (index: number) => {
+  editingModeIndex.value = index
+  editingModeName.value = queryModeList.value[index]
+}
+
+const cancelEditMode = () => {
+  editingModeIndex.value = null
+  editingModeName.value = ''
+}
+
+const confirmEditMode = () => {
+  if (editingModeIndex.value === null) return
+  const newName = editingModeName.value.trim()
+  const oldName = queryModeList.value[editingModeIndex.value]
+  if (!newName) {
+    cancelEditMode()
+    return
+  }
+  if (newName === '+ 新增模式') {
+    alert('不能使用此名稱！')
+    return
+  }
+  if (newName !== oldName && queryModeList.value.includes(newName)) {
+    alert('此查詢模式名稱已存在！')
+    return
+  }
+
+  queryModeList.value.splice(editingModeIndex.value, 1, newName)
+
+  if (typeof window !== 'undefined') {
+    const oldKey = `search_field_settings_${oldName}`
+    const newKey = `search_field_settings_${newName}`
+    const stored = localStorage.getItem(oldKey)
+    if (stored) {
+      localStorage.setItem(newKey, stored)
+      localStorage.removeItem(oldKey)
+    } else {
+      persistFieldSettingsForMode(newName, fieldSettingsData.value)
+    }
+  }
+
+  if (queryMode.value === oldName) {
+    queryMode.value = newName
+    initSearchFields()
+  }
+
+  cancelEditMode()
+}
+
+const deleteMode = (index: number) => {
+  if (queryModeList.value.length <= 1) return
+
+  const removedMode = queryModeList.value[index]
+  queryModeList.value.splice(index, 1)
+
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(`search_field_settings_${removedMode}`)
+  }
+
+  if (queryMode.value === removedMode) {
+    queryMode.value = queryModeList.value[0]
+    initSearchFields()
   }
 }
 
@@ -634,7 +821,7 @@ const closeSettingsDialog = () => {
 
 // 處理查詢模式變更
 const handleQueryModeChange = (args: any) => {
-  const selectedValue = args.itemData || args.value
+  const selectedValue = args?.itemData?.text ?? args?.value
   if (selectedValue === '+ 新增模式') {
     // 阻止選擇「+ 新增模式」
     args.cancel = true
@@ -642,22 +829,24 @@ const handleQueryModeChange = (args: any) => {
     // 使用 setTimeout 避免下拉選單尚未關閉時彈出對話框
     setTimeout(() => {
       const modeName = prompt('請輸入新查詢模式名稱：')
-      if (modeName && modeName.trim()) {
-        const trimmedName = modeName.trim()
-        // 檢查是否重複
-        if (queryModeList.value.includes(trimmedName)) {
-          alert('此查詢模式名稱已存在！')
-          return
-        }
-        if (trimmedName === '+ 新增模式') {
-          alert('不能使用此名稱！')
-          return
-        }
-        // 新增到清單
-        queryModeList.value.push(trimmedName)
-        // 切換到新模式
-        queryMode.value = trimmedName
+      if (!modeName) return
+
+      const trimmedName = modeName.trim()
+      if (!trimmedName) return
+
+      if (queryModeList.value.includes(trimmedName)) {
+        alert('此查詢模式名稱已存在！')
+        return
       }
+      if (trimmedName === '+ 新增模式') {
+        alert('不能使用此名稱！')
+        return
+      }
+
+      queryModeList.value.push(trimmedName)
+      persistFieldSettingsForMode(trimmedName, fieldSettingsData.value)
+      queryMode.value = trimmedName
+      initSearchFields()
     }, 100)
   }
 }
@@ -1119,6 +1308,73 @@ const handleQueryModeChange = (args: any) => {
   outline: none;
   border-color: #2877ee;
   box-shadow: 0 0 0 2px rgba(40, 119, 238, 0.1);
+}
+
+.mode-management-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mode-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e5eaf3;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.mode-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mode-name {
+  font-size: 14px;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-chip {
+  padding: 2px 6px;
+  border-radius: 12px;
+  background: rgba(40, 119, 238, 0.12);
+  color: #2877ee;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.mode-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-edit-input :deep(.e-input-group) {
+  width: 220px;
+}
+
+.add-mode-section {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 </style>
