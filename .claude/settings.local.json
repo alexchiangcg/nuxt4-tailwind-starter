@@ -30,17 +30,21 @@
       "mcp__spec-workflow__spec-status",
       "Bash(npx playwright test:*)",
       "Bash(PORT=3005 npm run dev:*)",
-      "Bash(npx @playwright/mcp@latest --help)"
+      "Bash(npx @playwright/mcp@latest --help)",
+      "mcp__syncfusion-vue-assistant__SyncfusionVueAssistant",
+      "mcp__playwright__browser_run_code",
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_console_messages"
     ],
     "deny": [],
     "ask": []
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "context7",
     "deepwiki",
     "figma-dev-mode",
     "playwright",
     "spec-workflow"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
