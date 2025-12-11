@@ -10,7 +10,6 @@
           :fields="{ text: 'text', value: 'text' }"
           placeholder="請選擇"
           cssClass="query-mode-dropdown"
-          @change="handleQueryModeChange"
         />
       </div>
       <ejs-button iconCss="e-icons e-settings" cssClass="settings-btn" @click="openSettings" />
@@ -483,9 +482,7 @@ const dialogButtons = [
 // ============================================
 // Computed
 // ============================================
-const queryModeOptions = computed(() =>
-  [...queryModeList.value, '+ 新增模式'].map((text) => ({ text }))
-)
+const queryModeOptions = computed(() => queryModeList.value.map((text) => ({ text })))
 
 const firstRowFields = computed(() =>
   actualSearchFields.value.filter((field) => field.row === 1 || !field.row)
@@ -819,37 +816,6 @@ const closeSettingsDialog = () => {
   showSettingsDialog.value = false
 }
 
-// 處理查詢模式變更
-const handleQueryModeChange = (args: any) => {
-  const selectedValue = args?.itemData?.text ?? args?.value
-  if (selectedValue === '+ 新增模式') {
-    // 阻止選擇「+ 新增模式」
-    args.cancel = true
-
-    // 使用 setTimeout 避免下拉選單尚未關閉時彈出對話框
-    setTimeout(() => {
-      const modeName = prompt('請輸入新查詢模式名稱：')
-      if (!modeName) return
-
-      const trimmedName = modeName.trim()
-      if (!trimmedName) return
-
-      if (queryModeList.value.includes(trimmedName)) {
-        alert('此查詢模式名稱已存在！')
-        return
-      }
-      if (trimmedName === '+ 新增模式') {
-        alert('不能使用此名稱！')
-        return
-      }
-
-      queryModeList.value.push(trimmedName)
-      persistFieldSettingsForMode(trimmedName, fieldSettingsData.value)
-      queryMode.value = trimmedName
-      initSearchFields()
-    }, 100)
-  }
-}
 </script>
 
 <style scoped>
