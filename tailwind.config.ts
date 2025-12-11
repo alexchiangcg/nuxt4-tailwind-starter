@@ -17,12 +17,6 @@ export default {
         serif: ['DM Serif Display', 'serif'],
         mono: ['DM Mono', 'monospace'],
       },
-      colors: {
-        teal: {
-          600: '#0d9488',
-          700: '#0f766e',
-        },
-      },
     },
   },
   plugins: [],
