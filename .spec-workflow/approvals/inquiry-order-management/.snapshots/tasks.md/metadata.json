@@ -1,0 +1,22 @@
+{
+  "filePath": ".spec-workflow/specs/inquiry-order-management/tasks.md",
+  "currentVersion": 2,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-12T01:24:22.987Z",
+      "trigger": "initial",
+      "approvalId": "approval_1765502662984_w5c5qw3fv",
+      "approvalTitle": "Tasks Document - 初洽單管理任務分解（已修復格式錯誤）"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-12T01:39:10.780Z",
+      "trigger": "approved",
+      "approvalId": "approval_1765502662984_w5c5qw3fv",
+      "approvalTitle": "Tasks Document - 初洽單管理任務分解（已修復格式錯誤）"
+    }
+  ]
+}

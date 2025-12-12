@@ -1,0 +1,552 @@
+# Tasks Document
+
+## Phase 1: 基礎設施建置
+
+### 1.1 建立 Feature 目錄結構
+- [ ] 1.1.1 建立 `app/features/inquiry-order/` 目錄結構
+  - File: 建立完整目錄結構
+  - 建立 pages/, components/, composables/, store/, api/, types/, mock/, __tests__/ 目錄
+  - Purpose: 遵循 Feature-based 架構規範
+  - _Leverage: `.spec-workflow/steering/structure.md` 架構規範_
+  - _Requirements: 設計文檔 "Directory Structure"_
+  - _Definition of Done_:
+      - 所有必要目錄已建立
+      - 目錄結構符合 structure.md 規範
+      - 建立 index.ts (barrel exports 入口)
+
+### 1.2 定義 TypeScript 介面
+- [ ] 1.2.1 建立核心型別定義
+  - File: `app/features/inquiry-order/types/inquiry-order.types.ts`
+  - 定義 InquiryOrder, InquiryOrderDetail, DropdownOption 介面
+  - 定義 API 請求/回應型別
+  - Purpose: 建立型別安全基礎
+  - _Leverage: `design.md` Data Models 章節_
+  - _Requirements: Requirements 1-8 (所有資料欄位)_
+  - _Prompt: Role: TypeScript Developer specializing in type systems | Task: 根據 design.md Data Models 章節建立完整的 TypeScript 介面，包含 InquiryOrder (主檔資料)、InquiryOrderDetail (活動明細)、DropdownOption (下拉選單選項)、ApiResponse<T> (API 回應)、SaveInquiryOrderRequest/Response (儲存請求回應) | Restrictions: 必須包含所有必填欄位標記、日期型別使用 Date | null、遵循專案命名規範 (PascalCase for interfaces) | Success: 所有介面編譯無錯誤、型別覆蓋所有需求欄位、註解清楚說明前端/後端產生欄位_
+  - _Definition of Done_:
+      - InquiryOrder 介面包含 4 大區塊所有欄位
+      - InquiryOrderDetail 介面包含 17 個欄位
+      - 所有型別通過 TypeScript 編譯
+      - 欄位註解標示前端/後端產生
+
+### 1.3 建立 Mock Data
+- [ ] 1.3.1 建立下拉選單 Mock 資料
+  - File: `app/features/inquiry-order/mock/inquiry-order.mock.ts`
+  - 建立所有下拉選單的假資料 (初洽狀態、來源、類別、場地等)
+  - 實作 Mock API 函式 (mockGetInquiryOrder, mockSaveInquiryOrder 等)
+  - Purpose: UI 原型階段資料來源
+  - _Leverage: `design.md` Mock Data Structure 章節_
+  - _Requirements: Requirements 1.7-1.10 (下拉選單資料源)_
+  - _Prompt: Role: Frontend Developer with expertise in mock data generation | Task: 根據 design.md Mock Data Structure 章節建立完整的 Mock 資料，包含 MOCK_INQUIRY_STATUS (初洽狀態)、MOCK_LEAD_SOURCE (來源)、MOCK_CATEGORY (類別)、MOCK_COMPETITOR_VENUES (同業場館)、MOCK_DECISION_FACTORS (決定因素)、MOCK_MAIN_VENUES (主場地)、MOCK_SUB_VENUES (子場地)、MOCK_ACTIVITY_CATEGORIES (活動類別)、MOCK_TABLE_LAYOUTS (桌圖)，並實作 mockGetInquiryOrder、mockGetInquiryOrderDetails、mockSaveInquiryOrder 等 Mock API 函式 | Restrictions: 每個選項至少 3-5 筆資料、必須符合 DropdownOption 介面 (id, name)、Mock API 需模擬 500-800ms 延遲 | Success: 所有下拉選單都有 Mock 資料、Mock API 函式可正常運作、資料結構符合 types 定義_
+  - _Definition of Done_:
+      - 10+ 種下拉選單 Mock 資料已建立
+      - Mock API 函式實作完成 (模擬延遲)
+      - 包含範例初洽單資料
+
+### 1.4 建立 Pinia Store
+- [ ] 1.4.1 建立初洽單 Store
+  - File: `app/features/inquiry-order/store/inquiry-order.store.ts`
+  - 使用 Composition API 風格建立 Pinia Store
+  - 定義 state (inquiryOrder, inquiryOrderDetails, isLoading, errors)
+  - 定義 getters 和 actions
+  - Purpose: 集中管理表單狀態
+  - _Leverage: `design.md` Pinia Store 設計、`app/features/auth/store/auth.store.ts` 範例_
+  - _Requirements: Requirements 6 (Tab 切換與狀態保持)_
+  - _Prompt: Role: Vue Developer specializing in Pinia state management | Task: 根據 design.md Pinia Store 設計章節建立 useInquiryOrderStore，使用 Composition API 風格 (defineStore + ref + computed)，包含 state (inquiryOrder, inquiryOrderDetails, currentDetail, isLoading, errors)、getters (hasDetails, isValid)、actions (setInquiryOrder, setInquiryOrderDetails, addDetail, updateDetail, deleteDetail, resetStore) | Restrictions: 必須使用 Composition API 風格、所有 state 必須有完整型別定義、參考 app/features/auth/store/auth.store.ts 既有模式 | Success: Store 編譯無錯誤、所有 actions 有完整型別推斷、可在元件中正常使用_
+  - _Definition of Done_:
+      - Store 使用 Composition API 風格
+      - 包含 state、getters、actions
+      - 型別定義完整
+      - 可透過 useInquiryOrderStore() 存取
+
+### 1.5 建立 Barrel Exports
+- [ ] 1.5.1 設定 Feature 統一匯出
+  - File: `app/features/inquiry-order/index.ts`
+  - 匯出 composables, store, types, pages
+  - Purpose: 提供 Feature 的 Public API
+  - _Leverage: `design.md` Barrel Exports 模式、`.spec-workflow/steering/structure.md` 命名規範_
+  - _Requirements: 架構規範_
+  - _Prompt: Role: TypeScript Developer with module system expertise | Task: 建立 barrel exports 檔案 (app/features/inquiry-order/index.ts)，統一匯出 composables (useInquiryOrder, useInquiryOrderDetails)、store (useInquiryOrderStore)、pages (InquiryOrderFormPage, InquiryOrderDetailEditPage)、types (使用 export type * from)，遵循 structure.md Barrel Exports 模式 | Restrictions: 外部只能透過 index.ts 導入、type imports 必須使用 export type *、不直接匯出內部實作細節 | Success: 可從 ~/features/inquiry-order 導入所有 public API、型別導入正確、遵循專案規範_
+  - _Definition of Done_:
+      - 匯出所有 composables
+      - 匯出 store
+      - 匯出 types (使用 export type *)
+      - 匯出 pages (待實作)
+
+---
+
+## Phase 2: 主檔表單實作
+
+### 2.1 Figma 設計匯出
+- [ ] 2.1.1 從 Figma 匯出主檔表單設計
+  - File: 使用 Figma MCP 匯出 node-id=6146-113071
+  - 匯出主檔表單的 4 個資料區塊設計
+  - 轉換為 Vue 元件骨架
+  - Purpose: 確保設計與實作一致
+  - _Leverage: Figma MCP、設計稿 node-id=6146-113071_
+  - _Requirements: Requirements 1 (主檔表單資料輸入)_
+  - _Prompt: Role: Frontend Developer with Figma-to-Code expertise | Task: 使用 Figma MCP 工具從設計稿 (node-id=6146-113071) 匯出主檔表單設計，包含基本資料、客戶資料、宴會資料、輔助資訊 4 個區塊，轉換為 Vue 3 Composition API 元件骨架，保留 Figma 的佈局和樣式參數 | Restrictions: 必須使用 Figma MCP 匯出、保留所有欄位和佈局資訊、產生 Vue 3 + TypeScript 程式碼 | Success: 4 個區塊的 Vue 元件骨架已產生、包含所有欄位、佈局與設計稿一致_
+  - _Definition of Done_:
+      - Figma 設計已匯出
+      - 4 個區塊元件骨架已產生
+      - 佈局與設計稿一致
+
+### 2.2 建立主頁面容器
+- [ ] 2.2.1 實作 InquiryOrderFormPage.vue
+  - File: `app/features/inquiry-order/pages/InquiryOrderFormPage.vue`
+  - 建立頁面容器，包含 Header、Syncfusion Tab 元件
+  - 整合 useInquiryOrder composable
+  - Purpose: 提供主檔表單的容器和 Tab 切換
+  - _Leverage: `design.md` InquiryOrderFormPage 設計、Syncfusion Tab 元件_
+  - _Requirements: Requirements 1, 6 (主檔表單、Tab 切換)_
+  - _Prompt: Role: Vue Developer with Syncfusion expertise | Task: 根據 design.md InquiryOrderFormPage 章節實作主頁面容器，包含 Header (標題 + Syncfusion Button 元件: 儲存/複製/轉訂席單)、Syncfusion Tab 元件 (主檔 / 預計活動明細)，使用 useInquiryOrder composable 處理業務邏輯，遵循 design.md Template 結構 | Restrictions: 必須使用 Syncfusion ejs-tab, ejs-button、Tab 內容使用 v-slot:content、Header 按鈕根據 mode 顯示/隱藏 | Success: 頁面可正常顯示、Tab 切換正常、按鈕根據模式顯示、引用 composable 成功_
+  - _Definition of Done_:
+      - 頁面容器建立完成
+      - Syncfusion Tab 元件整合
+      - Syncfusion Button 元件整合
+      - 根據 mode (create/edit) 顯示對應按鈕
+      - useInquiryOrder composable 整合
+
+### 2.3 實作基本資料區塊
+- [ ] 2.3.1 建立 InquiryBasicInfo.vue
+  - File: `app/features/inquiry-order/components/InquiryBasicInfo.vue`
+  - 整合 Syncfusion 元件 (TextBox, DatePicker, DropDownList, MultiSelect)
+  - 綁定 Pinia Store (v-model)
+  - 實作欄位驗證和唯讀邏輯
+  - Purpose: 基本資料輸入區塊
+  - _Leverage: `design.md` InquiryBasicInfo 設計、Syncfusion 元件範例_
+  - _Requirements: Requirements 1.1-1.10 (基本資料欄位)_
+  - _Prompt: Role: Vue Developer with Syncfusion UI components expertise | Task: 根據 design.md InquiryBasicInfo 章節實作基本資料區塊，包含 Syncfusion 元件 (ejs-textbox: 初洽單號/手動單號/相關專案/訂席單號、ejs-dropdownlist: 初洽狀態、ejs-datepicker: 初洽日、ejs-multiselect: 初洽訂席來源)，綁定 store.inquiryOrder 的對應欄位，實作唯讀邏輯 (初洽單號、相關專案、訂席單號)，使用 MOCK 資料源 | Restrictions: 必須使用 Syncfusion 元件、v-model 綁定 store、唯讀欄位使用 :readonly="true"、下拉選單使用 :dataSource 和 :fields | Success: 所有欄位可正常輸入/顯示、唯讀欄位無法編輯、下拉選單顯示 Mock 資料、v-model 雙向綁定正常_
+  - _Definition of Done_:
+      - 8 個欄位元件整合完成
+      - Syncfusion 元件正確使用
+      - v-model 綁定 Store
+      - 唯讀欄位邏輯實作
+      - 下拉選單使用 Mock Data
+
+### 2.4 實作客戶資料區塊
+- [ ] 2.4.1 建立 InquiryCustomerInfo.vue
+  - File: `app/features/inquiry-order/components/InquiryCustomerInfo.vue`
+  - 整合 Syncfusion TextBox 和 Button 元件
+  - 實作 Email 和手機驗證
+  - Purpose: 客戶資料輸入區塊
+  - _Leverage: `design.md` InquiryCustomerInfo 設計_
+  - _Requirements: Requirements 1 (客戶資料欄位)_
+  - _Prompt: Role: Vue Developer with form validation expertise | Task: 根據 design.md InquiryCustomerInfo 章節實作客戶資料區塊，包含 Syncfusion ejs-textbox (客戶姓名、聯絡人、聯絡手機、聯絡 E-mail、城市、鄉鎮市區) 和 ejs-button (會員管理 - UI only)，綁定 store.inquiryOrder，實作驗證規則 (聯絡手機: /^09\d{8}$/、聯絡 E-mail: /^[^\s@]+@[^\s@]+\.[^\s@]+$/) | Restrictions: 必須使用 Syncfusion 元件、驗證錯誤顯示在欄位旁、會員管理按鈕目前僅 UI 無功能 | Success: 所有欄位可輸入、驗證規則正常運作、錯誤訊息正確顯示、會員管理按鈕可顯示_
+  - _Definition of Done_:
+      - 6 個欄位 + 1 個按鈕整合完成
+      - Email 和手機驗證實作
+      - 錯誤訊息顯示
+      - 會員管理按鈕 (UI only)
+
+### 2.5 實作宴會資料區塊
+- [ ] 2.5.1 建立 InquiryBanquetInfo.vue
+  - File: `app/features/inquiry-order/components/InquiryBanquetInfo.vue`
+  - 整合 Syncfusion DropDownList, TextBox, DatePicker
+  - 實作「初洽業務」→「賞廳業務」自動帶入邏輯
+  - Purpose: 宴會資料輸入區塊
+  - _Leverage: `design.md` InquiryBanquetInfo 設計_
+  - _Requirements: Requirements 1, 5.3 (宴會資料欄位、自動帶入邏輯)_
+  - _Prompt: Role: Vue Developer with business logic implementation skills | Task: 根據 design.md InquiryBanquetInfo 章節實作宴會資料區塊，包含 Syncfusion 元件 (ejs-dropdownlist: 類別、ejs-textbox: 宴名/預算範圍/賞廳業務、ejs-datepicker: 預計宴客日期區間起迄/賞廳日期時間)，綁定 store，實作特殊邏輯: 當「初洽業務」(從 InquiryBasicInfo 的 inquireContactPerson) 變更時，自動帶入「賞廳業務」但允許再次修改 | Restrictions: 必須監聽 inquireContactPerson 變化、自動帶入後仍可手動修改、使用 watch 或 computed | Success: 所有欄位可輸入、自動帶入邏輯正常、手動修改不會被覆蓋_
+  - _Definition of Done_:
+      - 7 個欄位整合完成
+      - 自動帶入邏輯實作
+      - 可手動覆寫自動帶入值
+
+### 2.6 實作輔助資訊區塊
+- [ ] 2.6.1 建立 InquirySupplementInfo.vue
+  - File: `app/features/inquiry-order/components/InquirySupplementInfo.vue`
+  - 整合 Syncfusion MultiSelect 和 TextBox (multiline)
+  - Purpose: 輔助資訊輸入區塊
+  - _Leverage: `design.md` InquirySupplementInfo 設計_
+  - _Requirements: Requirements 1 (輔助資訊欄位)_
+  - _Prompt: Role: Vue Developer with Syncfusion MultiSelect expertise | Task: 根據 design.md InquirySupplementInfo 章節實作輔助資訊區塊，包含 Syncfusion ejs-multiselect (已看同業場館、決定宴客場地主因、下訂同業場館、未下定原因 - 使用 mode="CheckBox") 和 ejs-textbox (聯絡備註 - multiline)，綁定 store，使用對應的 MOCK 資料源 | Restrictions: MultiSelect 必須使用 mode="CheckBox"、聯絡備註為多行文字框、綁定 store 的陣列欄位 | Success: 所有 MultiSelect 可多選、CheckBox 模式顯示正確、聯絡備註支援多行輸入_
+  - _Definition of Done_:
+      - 4 個 MultiSelect + 1 個 TextBox 整合完成
+      - MultiSelect 使用 CheckBox 模式
+      - 聯絡備註支援多行
+
+### 2.7 建立 Composables
+- [ ] 2.7.1 實作 useInquiryOrder.ts
+  - File: `app/features/inquiry-order/composables/useInquiryOrder.ts`
+  - 實作表單載入、儲存、複製、驗證邏輯
+  - 實作自動欄位處理 (前端產生 createdBy, createdDate)
+  - 實作自動儲存草稿 (LocalStorage)
+  - Purpose: 封裝主檔表單業務邏輯
+  - _Leverage: `design.md` useInquiryOrder 設計_
+  - _Requirements: Requirements 1, 4, 5, 7 (主檔、複製、自動欄位、驗證)_
+  - _Prompt: Role: Vue Composable Developer with business logic expertise | Task: 根據 design.md useInquiryOrder 章節實作 composable，包含 methods (loadInquiryOrder - 載入資料、saveInquiryOrder - 儲存並處理前端產生欄位 createdBy/createdDate、validateInquiryOrder - 驗證必填和格式、copyInquiryOrder - 複製並重置特定欄位、handleInquireContactPersonChange - 自動帶入邏輯、autoSaveDraft/loadDraft/clearDraft - LocalStorage 草稿)，computed (isEditMode - 判斷新增/編輯、canConvert - 是否可轉訂席單)，使用 store 和 mockApi | Restrictions: 新增時前端產生 createdBy/createdDate、複製時清空特定欄位 (requirements.md:94-104)、驗證包含必填/email/phone、使用 try-catch 處理 API 錯誤 | Success: 所有 methods 正常運作、驗證邏輯完整、草稿自動儲存、前端欄位正確產生_
+  - _Definition of Done_:
+      - loadInquiryOrder 實作
+      - saveInquiryOrder 實作 (含前端欄位產生)
+      - validateInquiryOrder 實作
+      - copyInquiryOrder 實作
+      - autoSaveDraft 實作
+
+### 2.8 整合元件至主頁面
+- [ ] 2.8.1 將 4 個區塊元件整合至 InquiryOrderFormPage
+  - File: `app/features/inquiry-order/pages/InquiryOrderFormPage.vue` (修改)
+  - 在「主檔」Tab 中加入 4 個區塊元件
+  - 連接 composable 的方法到按鈕事件
+  - Purpose: 完成主檔表單完整功能
+  - _Leverage: 已完成的 4 個區塊元件_
+  - _Requirements: Requirements 1, 6 (主檔、Tab)_
+  - _Prompt: Role: Vue Integration Developer | Task: 將 InquiryBasicInfo, InquiryCustomerInfo, InquiryBanquetInfo, InquirySupplementInfo 4 個元件整合至 InquiryOrderFormPage 的「主檔」Tab 中，連接 useInquiryOrder 的 handleSave, handleCopy, handleConvert 方法到 Header 按鈕的 @click 事件，確保 Tab 切換時狀態保持 | Restrictions: 元件順序: 基本資料 → 客戶資料 → 宴會資料 → 輔助資訊、按鈕事件正確綁定、Tab 內容使用 v-slot:content | Success: 4 個區塊正常顯示、按鈕功能正常、Tab 切換不會遺失資料_
+  - _Definition of Done_:
+      - 4 個區塊元件已加入
+      - 按鈕事件已連接
+      - Tab 切換測試通過
+
+### 2.9 Playwright 視覺測試
+- [ ] 2.9.1 建立主檔表單視覺回歸測試
+  - File: `tests/e2e/inquiry-order-form.spec.ts`
+  - 使用 Playwright MCP 建立截圖基線
+  - 測試 4 個區塊的 UI 呈現
+  - Purpose: 確保 UI 與設計一致
+  - _Leverage: Playwright MCP、`design.md` 測試策略_
+  - _Requirements: 測試覆蓋_
+  - _Prompt: Role: QA Engineer with Playwright and visual testing expertise | Task: 使用 Playwright MCP 建立主檔表單的視覺回歸測試，包含測試案例: 新增模式 (截圖 4 個區塊)、編輯模式 (截圖 4 個區塊)、驗證錯誤狀態 (觸發錯誤後截圖)、響應式設計 (手機版 375x667)，使用 expect(locator).toHaveScreenshot() 建立基線 | Restrictions: 必須使用 Playwright MCP、截圖需包含所有元件、測試前先填充 Mock 資料 | Success: 所有測試案例通過、截圖基線已建立、UI 與設計稿一致_
+  - _Definition of Done_:
+      - 4 個區塊截圖基線建立
+      - 驗證錯誤狀態測試
+      - 響應式設計測試
+
+---
+
+## Phase 3: 活動明細實作
+
+### 3.1 Figma 設計匯出
+- [ ] 3.1.1 從 Figma 匯出活動明細列表設計
+  - File: 使用 Figma MCP 匯出 node-id=6202-297366
+  - 匯出活動明細 DataGrid 設計
+  - 轉換為 Vue 元件骨架
+  - Purpose: 確保設計與實作一致
+  - _Leverage: Figma MCP、設計稿 node-id=6202-297366_
+  - _Requirements: Requirements 2 (活動明細列表)_
+  - _Prompt: Role: Frontend Developer with Figma-to-Code expertise | Task: 使用 Figma MCP 工具從設計稿 (node-id=6202-297366) 匯出活動明細列表設計，包含 DataGrid 的 17 個欄位、新增按鈕、編輯按鈕，轉換為 Vue 3 元件骨架，保留 Figma 的欄位寬度和樣式 | Restrictions: 必須使用 Figma MCP、保留所有欄位資訊、產生包含 Syncfusion Grid 的程式碼骨架 | Success: 活動明細列表元件骨架已產生、包含 17 個欄位定義、佈局與設計稿一致_
+  - _Definition of Done_:
+      - Figma 設計已匯出
+      - DataGrid 元件骨架已產生
+      - 17 個欄位定義完整
+
+### 3.2 實作活動明細列表
+- [ ] 3.2.1 建立 InquiryOrderDetailsGrid.vue
+  - File: `app/features/inquiry-order/components/InquiryOrderDetailsGrid.vue`
+  - 整合 Syncfusion Grid 元件 (唯讀模式)
+  - 實作新增和編輯按鈕 (跳轉到編輯頁)
+  - 實作空資料狀態顯示
+  - Purpose: 活動明細唯讀列表顯示
+  - _Leverage: `design.md` InquiryOrderDetailsGrid 設計、Syncfusion Grid 範例_
+  - _Requirements: Requirements 2 (活動明細列表顯示)_
+  - _Prompt: Role: Vue Developer with Syncfusion Grid expertise | Task: 根據 design.md InquiryOrderDetailsGrid 章節實作活動明細列表，使用 Syncfusion ejs-grid 元件，配置 17 個欄位 (e-column: mainVenue, subVenue, usageDate, startTime, endTime, activityCategory, activitySubject, tableLayout, equipmentNeeds, reservedTables, reservedPeople, remarks, modifiedBy, modifiedDate, createdBy, createdDate, 操作)，綁定 store.inquiryOrderDetails，設定 :allowPaging="true", :allowSorting="true"，實作 Toolbar (新增按鈕)，操作欄使用 :template 加入編輯按鈕，點擊時使用 navigateTo 跳轉，實作空資料顯示 (v-if) | Restrictions: Grid 為唯讀 (不啟用 editing)、新增/編輯跳轉至獨立頁面、操作欄使用 template、日期欄位使用 type="date" format="yyyy/MM/dd" | Success: Grid 可顯示資料、分頁和排序正常、新增/編輯按鈕可跳轉、空資料訊息正確顯示_
+  - _Definition of Done_:
+      - Syncfusion Grid 整合完成
+      - 17 個欄位定義完整
+      - 新增/編輯按鈕可跳轉
+      - 空資料狀態實作
+
+### 3.3 實作活動明細編輯頁
+- [ ] 3.3.1 建立 InquiryOrderDetailEditPage.vue
+  - File: `app/features/inquiry-order/pages/InquiryOrderDetailEditPage.vue`
+  - 整合 Syncfusion 元件 (DropDownList, DatePicker, TimePicker, TextBox)
+  - 實作日期範圍驗證 (使用日期必須在預計宴客日期區間內)
+  - 實作時間驗證 (結束時間 > 開始時間)
+  - Purpose: 活動明細新增/編輯頁面
+  - _Leverage: `design.md` InquiryOrderDetailEditPage 設計_
+  - _Requirements: Requirements 2, 7 (活動明細、驗證)_
+  - _Prompt: Role: Vue Developer with complex form validation skills | Task: 根據 design.md InquiryOrderDetailEditPage 章節實作活動明細編輯頁，包含 Syncfusion 元件 (ejs-dropdownlist: 預計主場地/子場地/活動類別/桌圖、ejs-datepicker: 使用日期、ejs-timepicker: 開始時間/結束時間、ejs-textbox: 活動主旨/預計設備需求/預訂桌數/預訂人數、ejs-textbox multiline: 備註)，綁定 store.currentDetail，實作驗證規則 (必填: mainVenue, usageDate, startTime, endTime、使用日期必須在 inquiryOrder.expectedBanquetDateStart ~ expectedBanquetDateEnd 範圍內、endTime > startTime)，儲存按鈕呼叫 useInquiryOrderDetails.saveDetail() | Restrictions: 使用 URL params 判斷新增/編輯模式、驗證錯誤顯示在欄位旁、TimePicker 使用 24 小時制 | Success: 所有欄位可輸入、驗證規則正常、可儲存並返回列表_
+  - _Definition of Done_:
+      - 編輯頁面建立完成
+      - 所有欄位整合 Syncfusion 元件
+      - 日期範圍驗證實作
+      - 時間驗證實作
+      - 儲存功能實作
+
+### 3.4 建立 Composables
+- [ ] 3.4.1 實作 useInquiryOrderDetails.ts
+  - File: `app/features/inquiry-order/composables/useInquiryOrderDetails.ts`
+  - 實作新增、編輯、儲存、刪除邏輯
+  - 實作明細驗證
+  - Purpose: 封裝活動明細業務邏輯
+  - _Leverage: `design.md` useInquiryOrderDetails 設計_
+  - _Requirements: Requirements 2 (活動明細)_
+  - _Prompt: Role: Vue Composable Developer with CRUD operations expertise | Task: 根據 design.md useInquiryOrderDetails 章節實作 composable，包含 methods (addDetail - 建立新明細並設定 createdBy/createdDate、editDetail - 載入既有明細、saveDetail - 儲存並驗證、deleteDetail - 刪除確認、validateDetail - 驗證必填/日期範圍/時間)，computed (details - 從 store 取得明細列表、currentDetail - 當前編輯明細)，使用 store 和 helper functions (generateTempId - 產生暫時 ID、getCurrentUser - 取得當前使用者) | Restrictions: 新增時產生 temp-{timestamp} ID、儲存時更新 store (addDetail or updateDetail)、刪除需確認對話框、驗證包含日期範圍和時間邏輯 | Success: 新增/編輯/刪除正常運作、驗證邏輯完整、前端欄位正確產生_
+  - _Definition of Done_:
+      - addDetail 實作
+      - editDetail 實作
+      - saveDetail 實作 (含驗證)
+      - deleteDetail 實作 (含確認)
+
+### 3.5 整合至主頁面
+- [ ] 3.5.1 將活動明細列表整合至 InquiryOrderFormPage
+  - File: `app/features/inquiry-order/pages/InquiryOrderFormPage.vue` (修改)
+  - 在「預計活動明細」Tab 中加入列表元件
+  - Purpose: 完成活動明細功能
+  - _Leverage: InquiryOrderDetailsGrid 元件_
+  - _Requirements: Requirements 2, 6 (活動明細、Tab)_
+  - _Prompt: Role: Vue Integration Developer | Task: 將 InquiryOrderDetailsGrid 元件整合至 InquiryOrderFormPage 的「預計活動明細」Tab 中，確保 Tab 切換時狀態保持，測試從列表跳轉至編輯頁的導航 | Restrictions: Tab 內容使用 v-slot:content、確保 store 狀態在 Tab 切換時不會遺失 | Success: 活動明細列表正常顯示、Tab 切換狀態保持、跳轉功能正常_
+  - _Definition of Done_:
+      - 活動明細列表已加入 Tab
+      - Tab 切換測試通過
+      - 跳轉功能測試通過
+
+### 3.6 建立 Nuxt Pages
+- [ ] 3.6.1 建立路由頁面檔案
+  - File: `app/pages/inquiry-order/index.vue` 和 `app/pages/inquiry-order/details/[id].vue`
+  - 從 feature pages 導入並使用元件
+  - Purpose: 設定 Nuxt 檔案式路由
+  - _Leverage: `.spec-workflow/steering/structure.md` Pages 規範_
+  - _Requirements: 路由架構_
+  - _Prompt: Role: Nuxt Developer with routing expertise | Task: 建立 Nuxt 檔案式路由頁面，app/pages/inquiry-order/index.vue (導入 InquiryOrderFormPage)、app/pages/inquiry-order/details/[id].vue (導入 InquiryOrderDetailEditPage)，遵循 structure.md Pages 規範 (頁面檔案應極簡，從 features 導入頁面元件並組合)，路由對應: /inquiry-order → 主表單、/inquiry-order/details/new → 新增明細、/inquiry-order/details/:id → 編輯明細 | Restrictions: 頁面檔案僅用於路由，主要邏輯在 feature pages、使用 <script setup> 導入元件 | Success: 路由可正常訪問、頁面元件正確載入、動態路由參數正確傳遞_
+  - _Definition of Done_:
+      - index.vue 建立完成 (/inquiry-order)
+      - [id].vue 建立完成 (/inquiry-order/details/:id)
+      - 路由測試通過
+
+### 3.7 Playwright 視覺測試
+- [ ] 3.7.1 建立活動明細視覺回歸測試
+  - File: `tests/e2e/inquiry-order-details.spec.ts`
+  - 測試列表、編輯頁、空資料狀態
+  - Purpose: 確保 UI 與設計一致
+  - _Leverage: Playwright MCP、`design.md` 測試策略_
+  - _Requirements: 測試覆蓋_
+  - _Prompt: Role: QA Engineer with Playwright expertise | Task: 使用 Playwright MCP 建立活動明細的視覺回歸測試，包含測試案例: 列表顯示 (有資料)、列表空資料狀態、編輯頁新增模式、編輯頁編輯模式、驗證錯誤狀態，使用 expect(locator).toHaveScreenshot() 建立基線 | Restrictions: 必須使用 Playwright MCP、測試前先準備 Mock 資料、截圖需包含所有 UI 元素 | Success: 所有測試案例通過、截圖基線已建立、UI 與設計稿一致_
+  - _Definition of Done_:
+      - 列表截圖基線建立
+      - 編輯頁截圖基線建立
+      - 空資料狀態測試
+
+---
+
+## Phase 4: 整合與優化
+
+### 4.1 Tab 切換優化
+- [ ] 4.1.1 確保 Tab 切換時狀態保持
+  - File: `app/features/inquiry-order/pages/InquiryOrderFormPage.vue` (優化)
+  - 測試 Tab 切換時未儲存的輸入不會遺失
+  - Purpose: 提升使用者體驗
+  - _Leverage: Pinia Store_
+  - _Requirements: Requirements 6 (Tab 切換與狀態保持)_
+  - _Prompt: Role: Vue Developer with state management expertise | Task: 優化 InquiryOrderFormPage 的 Tab 切換邏輯，確保 requirements.md 6.3 (業務人員在任一 Tab 輸入資料後切換到另一 Tab，系統 SHALL 保留未儲存的輸入資料 client-side state)，測試場景: 在主檔輸入資料 → 切換到活動明細 → 切回主檔 (資料應保留)、在活動明細新增 → 切換到主檔 → 切回活動明細 (資料應保留)，使用 Pinia Store 確保狀態持久化 | Restrictions: 不使用 LocalStorage (除了草稿自動儲存)、所有狀態由 Pinia Store 管理、Tab 切換不觸發 API 呼叫 | Success: Tab 切換時資料完全保留、使用者可在 Tab 間自由切換不會遺失輸入_
+  - _Definition of Done_:
+      - Tab 切換測試通過
+      - 狀態保持驗證
+      - 無資料遺失問題
+
+### 4.2 儲存功能整合
+- [ ] 4.2.1 實作完整儲存流程
+  - File: `app/features/inquiry-order/composables/useInquiryOrder.ts` (優化)
+  - 儲存主檔 + 所有活動明細
+  - 處理前端產生欄位 (新增者、新增日期)
+  - 處理後端回傳欄位 (初洽單號、修改者、修改日期)
+  - Purpose: 完成儲存功能
+  - _Leverage: Mock API、Store_
+  - _Requirements: Requirements 5, 6.4 (自動欄位、儲存)_
+  - _Prompt: Role: Vue Developer with data persistence expertise | Task: 優化 useInquiryOrder.saveInquiryOrder() 方法，實作完整儲存流程 (1. 驗證主檔和明細、2. 設定前端產生欄位 createdBy/createdDate (新增時)、3. 呼叫 mockSaveInquiryOrder (傳送 master + details)、4. 更新 store 包含後端回傳的 inquiryOrderNo/modifiedBy/modifiedDate、5. 清除草稿、6. 顯示成功訊息)，遵循 requirements.md 5 (自動欄位處理) 和 6.4 (儲存主檔和明細所有變更) | Restrictions: 新增時前端產生 createdBy/createdDate、儲存後清除 LocalStorage 草稿、使用 try-catch 處理錯誤、顯示 Toast 通知 | Success: 儲存成功後資料正確更新、後端欄位正確顯示、草稿已清除、錯誤處理完善_
+  - _Definition of Done_:
+      - 儲存主檔 + 明細功能實作
+      - 前端欄位產生邏輯
+      - 後端欄位更新邏輯
+      - 成功/錯誤訊息顯示
+
+### 4.3 複製功能實作
+- [ ] 4.3.1 完善複製初洽單功能
+  - File: `app/features/inquiry-order/composables/useInquiryOrder.ts` (優化)
+  - 實作複製邏輯 (重置特定欄位)
+  - Purpose: 快速建立相似初洽單
+  - _Leverage: Store、Mock API_
+  - _Requirements: Requirements 4 (初洽單複製)_
+  - _Prompt: Role: Vue Developer with data cloning expertise | Task: 優化 useInquiryOrder.copyInquiryOrder() 方法，實作 requirements.md 4 的完整複製邏輯 (1. 複製主檔可複製欄位，特例不複製: customerName, contactPerson, contactPhone, contactEmail, leadSource、2. 複製所有活動明細、3. 重置: id=undefined, inquiryOrderNo='', status='初洽中', reservationNumber='', inquireDate=今天、4. 前端產生: createdBy=當前使用者, createdDate=當前時間、5. 導航至新增頁面)，確保複製後的資料結構正確 | Restrictions: 不複製的欄位必須清空、狀態重置為預設值、活動明細全部複製、使用 navigateTo('/inquiry-order/new') | Success: 複製功能正常、特定欄位正確清空、活動明細已複製、導航至新增頁_
+  - _Definition of Done_:
+      - 複製邏輯實作完成
+      - 特定欄位清空邏輯
+      - 活動明細複製
+      - 導航功能實作
+
+### 4.4 LocalStorage 自動儲存
+- [ ] 4.4.1 實作草稿自動儲存
+  - File: `app/features/inquiry-order/composables/useInquiryOrder.ts` (優化)
+  - 實作 autoSaveDraft (每 30 秒或欄位 blur)
+  - 實作 loadDraft (頁面載入時)
+  - Purpose: 防止資料遺失
+  - _Leverage: LocalStorage API_
+  - _Requirements: 設計文檔 Error Handling 章節_
+  - _Prompt: Role: Frontend Developer with data persistence expertise | Task: 實作草稿自動儲存功能 (1. autoSaveDraft: 將 store.inquiryOrder 和 store.inquiryOrderDetails 儲存至 localStorage['inquiry-order-draft']、2. loadDraft: 頁面載入時從 localStorage 還原草稿、3. clearDraft: 儲存成功或使用者手動清除時刪除草稿)，設定自動儲存觸發時機: 每 30 秒 (使用 setInterval) 或欄位 blur 時 (使用 watch)，頁面離開前提示未儲存變更 (使用 onBeforeRouteLeave) | Restrictions: 使用 JSON.stringify/parse、錯誤處理 (localStorage 可能失敗)、草稿過期時間 24 小時、離開頁面前提示 | Success: 草稿自動儲存正常、重新載入頁面草稿還原、儲存後草稿清除、離開頁面有提示_
+  - _Definition of Done_:
+      - autoSaveDraft 實作 (30 秒或 blur)
+      - loadDraft 實作
+      - clearDraft 實作
+      - 離開頁面提示
+
+### 4.5 錯誤處理完善
+- [ ] 4.5.1 統一錯誤處理機制
+  - File: `app/features/inquiry-order/composables/useErrorHandler.ts` (新建) 或使用 `app/shared/composables/useErrorHandler.ts`
+  - 實作錯誤分類 (表單驗證、API 錯誤、系統錯誤)
+  - 實作 Toast 通知
+  - Purpose: 提供友善錯誤訊息
+  - _Leverage: `design.md` Error Handling 章節、Syncfusion Toast 元件_
+  - _Requirements: Requirements 7 (表單驗證與錯誤提示)、設計文檔 Error Handling_
+  - _Prompt: Role: Frontend Developer with error handling expertise | Task: 根據 design.md Error Handling 章節建立錯誤處理機制，實作 useErrorHandler composable (errors ref, handleError function, clearErrors function)，整合至 useInquiryOrder 和 useInquiryOrderDetails，錯誤分類 (1. 表單驗證錯誤: 紅色標記在欄位旁 + 彙總錯誤訊息在表單頂部、2. API 錯誤: Toast 通知 + 重試按鈕、3. 系統錯誤: ErrorBoundary + 錯誤日誌)，使用 Syncfusion Toast 元件顯示通知 | Restrictions: 錯誤訊息必須清晰具體 (如: 聯絡手機格式不正確，請輸入 10 碼數字)、API 錯誤需 try-catch 包裝、顯示位置醒目 | Success: 所有錯誤都有友善訊息、Toast 通知正常顯示、重試功能可用_
+  - _Definition of Done_:
+      - 錯誤處理 composable 建立
+      - Toast 通知整合
+      - 錯誤訊息友善化
+      - 重試機制實作
+
+### 4.6 效能優化
+- [ ] 4.6.1 優化 DataGrid 效能
+  - File: `app/features/inquiry-order/components/InquiryOrderDetailsGrid.vue` (優化)
+  - 啟用虛擬滾動 (Syncfusion Grid virtualization)
+  - 優化資料載入
+  - Purpose: 提升大量資料顯示效能
+  - _Leverage: Syncfusion Grid 虛擬滾動功能_
+  - _Requirements: 設計文檔 Performance 章節_
+  - _Prompt: Role: Performance Optimization Engineer with Syncfusion expertise | Task: 優化 InquiryOrderDetailsGrid 的效能，啟用 Syncfusion Grid 的虛擬滾動功能 (設定 :enableVirtualization="true", :pageSettings="{ pageSize: 50 }")，確保 DataGrid 渲染時間 < 200ms (顯示 50 筆活動明細)，優化資料載入 (使用 computed 過濾資料而非重新查詢)，測試大量資料場景 (100+ 筆明細) | Restrictions: 虛擬滾動僅在資料量 > 20 筆時啟用、保持分頁和排序功能正常、不影響使用者體驗 | Success: 大量資料載入流暢、滾動無卡頓、渲染時間符合要求_
+  - _Definition of Done_:
+      - 虛擬滾動啟用
+      - 效能測試通過 (< 200ms)
+      - 大量資料測試通過
+
+### 4.7 完整 E2E 測試
+- [ ] 4.7.1 建立完整使用者流程測試
+  - File: `tests/e2e/inquiry-order-full-flow.spec.ts`
+  - 測試「新增初洽單 → 儲存 → 複製」完整流程
+  - 測試「新增活動明細 → 編輯 → 刪除」流程
+  - Purpose: 驗證完整功能
+  - _Leverage: Playwright MCP、`design.md` 測試策略_
+  - _Requirements: 所有 Requirements_
+  - _Prompt: Role: QA Automation Engineer with E2E testing expertise | Task: 使用 Playwright 建立完整的 E2E 測試，涵蓋 design.md E2E 測試章節的 3 個測試場景 (1. 新增初洽單完整流程: 進入新增頁 → 填寫主檔資料 → 切換到活動明細 Tab → 新增活動明細 → 儲存初洽單 → 驗證成功訊息、2. 複製初洽單流程: 開啟既有初洽單 → 點擊複製按鈕 → 驗證特定欄位已清空 → 驗證初洽日更新為今天、3. 表單驗證測試: 直接點擊儲存 (未填寫必填欄位) → 驗證錯誤訊息顯示)，確保所有使用者互動正常 | Restrictions: 使用真實的使用者操作序列、測試前準備 Mock 資料、驗證 UI 回饋和資料變化 | Success: 所有測試案例通過、涵蓋主要使用者流程、測試穩定可靠_
+  - _Definition of Done_:
+      - 新增流程測試通過
+      - 複製流程測試通過
+      - 驗證測試通過
+      - 所有 E2E 測試穩定
+
+---
+
+## Phase 5: 測試與文檔
+
+### 5.1 單元測試補充
+- [ ] 5.1.1 建立 Composables 單元測試
+  - File: `app/features/inquiry-order/composables/__tests__/useInquiryOrder.test.ts` 和 `useInquiryOrderDetails.test.ts`
+  - 測試所有 methods 和 computed
+  - 使用 Vitest + Pinia
+  - Purpose: 確保業務邏輯正確
+  - _Leverage: `design.md` 單元測試章節_
+  - _Requirements: Composables 邏輯_
+  - _Prompt: Role: Test Engineer with Vitest and Pinia testing expertise | Task: 根據 design.md 單元測試章節建立 composables 的單元測試，使用 Vitest + @vue/test-utils + Pinia，測試案例包含 (useInquiryOrder: 初始化、驗證必填欄位、驗證 Email 格式、複製功能、自動帶入邏輯；useInquiryOrderDetails: 新增明細、編輯明細、驗證日期範圍、驗證時間)，使用 createPinia() 建立測試用 store，mock API 呼叫 (vi.mock)，確保測試覆蓋率 > 80% | Restrictions: 測試前使用 setActivePinia(createPinia())、mock 所有外部依賴、測試成功和失敗場景 | Success: 所有 composables 測試通過、覆蓋率 > 80%、測試獨立且可重複執行_
+  - _Definition of Done_:
+      - useInquiryOrder 測試完成
+      - useInquiryOrderDetails 測試完成
+      - 測試覆蓋率 > 80%
+
+### 5.2 元件測試補充
+- [ ] 5.2.1 建立元件測試
+  - File: `app/features/inquiry-order/components/__tests__/*.test.ts` (4 個區塊元件 + 明細列表)
+  - 測試 props、emits、v-model 綁定
+  - Purpose: 確保元件正確運作
+  - _Leverage: `design.md` 元件測試章節_
+  - _Requirements: 元件功能_
+  - _Prompt: Role: Frontend Test Engineer with Vue Test Utils expertise | Task: 根據 design.md 元件測試章節建立元件測試，使用 Vitest + @vue/test-utils + Pinia，測試案例包含 (InquiryBasicInfo: 渲染必填欄位標記、v-model 綁定、唯讀邏輯；InquiryCustomerInfo: Email 驗證、手機驗證；InquiryBanquetInfo: 自動帶入邏輯；InquirySupplementInfo: MultiSelect CheckBox 模式；InquiryOrderDetailsGrid: Grid 顯示、空資料狀態、按鈕點擊)，使用 mount() 掛載元件，模擬使用者輸入 (await wrapper.find().setValue())，驗證 store 更新 | Restrictions: 測試前初始化 Pinia、mock Syncfusion 元件 (或使用真實元件)、測試元件行為而非實作細節 | Success: 所有元件測試通過、覆蓋率 > 70%、測試穩定_
+  - _Definition of Done_:
+      - 4 個區塊元件測試完成
+      - 明細列表測試完成
+      - 測試覆蓋率 > 70%
+
+### 5.3 E2E 測試覆蓋
+- [ ] 5.3.1 確保 E2E 測試覆蓋所有關鍵流程
+  - File: `tests/e2e/` (檢查並補充)
+  - 驗證所有測試案例通過
+  - Purpose: 完整的 E2E 覆蓋
+  - _Leverage: 既有 E2E 測試_
+  - _Requirements: 所有功能_
+  - _Prompt: Role: QA Lead with test coverage analysis skills | Task: 檢查既有 E2E 測試覆蓋率，確保涵蓋 design.md 測試策略中的所有測試場景 (新增初洽單完整流程、複製初洽單流程、表單驗證測試、活動明細新增/編輯/刪除流程、Tab 切換狀態保持、錯誤處理、自動儲存草稿)，補充缺少的測試案例，確保所有關鍵使用者流程都有 E2E 測試覆蓋 | Restrictions: 測試必須穩定可靠、執行時間合理 (< 5 分鐘)、測試間相互獨立 | Success: E2E 測試覆蓋 100% 關鍵流程、所有測試通過、測試穩定_
+  - _Definition of Done_:
+      - 所有關鍵流程有測試覆蓋
+      - 補充缺少的測試案例
+      - 測試執行穩定
+
+### 5.4 視覺回歸測試基線
+- [ ] 5.4.1 建立完整視覺回歸測試基線
+  - File: `tests/e2e/visual-regression/` (整理)
+  - 確保所有元件都有截圖基線
+  - 測試不同狀態和響應式設計
+  - Purpose: 防止 UI 變更破壞設計
+  - _Leverage: Playwright MCP、既有視覺測試_
+  - _Requirements: UI 一致性_
+  - _Prompt: Role: QA Engineer with visual testing expertise | Task: 整理並補充視覺回歸測試基線，確保涵蓋 design.md 視覺回歸測試章節的所有測試案例 (每個元件的基線截圖: 4 個區塊元件、活動明細列表、編輯頁；不同狀態截圖: 表單驗證錯誤狀態、空資料狀態；響應式設計測試: 桌面 1920x1080、平板 768x1024、手機 375x667)，使用 Playwright expect(locator).toHaveScreenshot() 建立基線，確保截圖清晰且包含所有 UI 元素 | Restrictions: 截圖前確保資料一致 (使用 Mock 資料)、等待元件完全載入、使用固定的視窗大小 | Success: 所有元件都有基線截圖、不同狀態和響應式設計都有覆蓋、視覺測試穩定_
+  - _Definition of Done_:
+      - 所有元件截圖基線建立
+      - 不同狀態測試完成
+      - 響應式設計測試完成
+
+### 5.5 Feature README 文檔
+- [ ] 5.5.1 建立 Feature 說明文檔
+  - File: `app/features/inquiry-order/README.md`
+  - 說明功能概述、Public API、使用範例
+  - Purpose: 方便其他開發者理解和使用
+  - _Leverage: `design.md` Documentation Standards 章節_
+  - _Requirements: 文檔完整性_
+  - _Prompt: Role: Technical Writer with software documentation expertise | Task: 根據 design.md Documentation Standards 章節建立 Feature README，包含章節 (Overview: 功能概述、Public API: 列出 composables/store/pages/types、Usage Example: 使用範例程式碼、Dependencies: 依賴套件、Testing: 測試指令、Architecture: 模組結構圖)，使用 Markdown 格式，清晰說明如何使用這個 feature | Restrictions: 使用繁體中文、程式碼範例必須可執行、遵循專案文檔風格 | Success: 文檔清晰完整、範例程式碼正確、其他開發者可快速上手_
+  - _Definition of Done_:
+      - README.md 建立完成
+      - 包含所有必要章節
+      - 使用範例清晰
+
+### 5.6 API 文檔 (JSDoc)
+- [ ] 5.6.1 補充 JSDoc 註解
+  - File: 所有 composables, store, types 檔案 (補充)
+  - 為所有 Public API 加入 JSDoc 註解
+  - Purpose: 提供 IDE 自動完成和文檔提示
+  - _Leverage: `design.md` Documentation Standards 章節_
+  - _Requirements: 程式碼文檔_
+  - _Prompt: Role: Senior Developer with documentation best practices expertise | Task: 根據 design.md Documentation Standards 章節為所有 Public API 補充 JSDoc 註解，包含 (composables: @description, @param, @returns, @example；types: 介面欄位註解；store: actions 和 getters 註解)，遵循 JSDoc 標籤使用規範 (@description, @param, @returns, @throws, @example, @see)，確保 IDE 可提供完整的自動完成和型別提示 | Restrictions: 註解使用繁體中文、@example 必須是可執行的程式碼、參數和返回值必須包含型別資訊 | Success: 所有 Public API 都有 JSDoc 註解、IDE 自動完成正常、文檔清晰_
+  - _Definition of Done_:
+      - Composables JSDoc 完成
+      - Store JSDoc 完成
+      - Types JSDoc 完成
+      - IDE 自動完成測試通過
+
+---
+
+## Definition of Done Checklist
+
+### 整體完成標準
+- [ ] 所有 Phase 1-5 任務完成
+- [ ] 所有測試通過 (單元、元件、E2E、視覺)
+- [ ] 程式碼符合 ESLint 規範
+- [ ] TypeScript 編譯無錯誤
+- [ ] 效能符合設計文檔要求
+- [ ] 文檔完整 (README, JSDoc)
+- [ ] 通過 Code Review
+- [ ] 無已知的 Critical Bug
+
+### 功能完成標準
+- [ ] Requirements 1-8 所有需求實作完成
+- [ ] 主檔表單 4 個區塊可正常輸入
+- [ ] 活動明細可新增/編輯/刪除
+- [ ] Tab 切換狀態保持正常
+- [ ] 儲存功能正常 (主檔 + 明細)
+- [ ] 複製功能正常
+- [ ] 表單驗證完整
+- [ ] 錯誤處理友善
+- [ ] LocalStorage 草稿自動儲存
+
+### 測試完成標準
+- [ ] 單元測試覆蓋率 > 80% (Composables, Utils)
+- [ ] 元件測試覆蓋率 > 70%
+- [ ] E2E 測試覆蓋 100% 關鍵流程
+- [ ] 視覺回歸測試基線建立
+- [ ] 所有測試穩定且可重複執行
+
+### 文檔完成標準
+- [ ] Feature README 完成
+- [ ] JSDoc 註解完整
+- [ ] 使用範例清晰
+- [ ] 架構圖清楚
+
+---
+
+**任務文檔版本**: 1.0
+**最後更新**: 2025-12-12
+**預估工作量**: 8-12 天 (依 Phase 1-5 計劃)

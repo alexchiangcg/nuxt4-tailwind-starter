@@ -1,0 +1,30 @@
+{
+  "filePath": ".spec-workflow/specs/inquiry-order-management/design.md",
+  "currentVersion": 3,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-12T00:15:03.796Z",
+      "trigger": "initial",
+      "approvalId": "approval_1765498503791_n5hkrjuyv",
+      "approvalTitle": "Design Document - 初洽單管理技術設計"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-12T01:04:50.369Z",
+      "trigger": "revision_requested",
+      "approvalId": "approval_1765498503791_n5hkrjuyv",
+      "approvalTitle": "Design Document - 初洽單管理技術設計"
+    },
+    {
+      "version": 3,
+      "filename": "snapshot-003.json",
+      "timestamp": "2025-12-12T01:13:21.782Z",
+      "trigger": "approved",
+      "approvalId": "approval_1765501848757_ekij6jflg",
+      "approvalTitle": "Design Document - 初洽單管理技術設計（已更新 Syncfusion Tab 和 Button）"
+    }
+  ]
+}
