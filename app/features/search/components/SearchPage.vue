@@ -2,7 +2,7 @@
   <div class="search-page-container">
     <ejs-button cssClass='e-primary'>Primary</ejs-button>
 
-    <button class="action-btn bg-primary/50" @click="handleSearch">
+    <button class="action-btn bg-primary" @click="handleSearch">
       <IconSearch />
     </button>
     <!-- 頂部控制區 -->
