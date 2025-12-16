@@ -64,11 +64,13 @@
             :readonly="true"
             @input="updateField('reservationNumber', $event.value)"
           />
-          <ejs-button
-            iconCss="iconify material-symbols--arrow-forward"
-            cssClass="e-icon-btn"
+          <button
+            type="button"
+            class="flex items-center justify-center w-10 h-10 p-2.5 border-0 bg-transparent cursor-pointer hover:bg-gray-100"
             @click="$emit('navigate-to-reservation', modelValue.reservationNumber)"
-          />
+          >
+            <IconArrowForward class="w-5 h-5 text-primary" />
+          </button>
         </div>
       </div>
 
@@ -95,10 +97,10 @@
 </template>
 
 <script setup lang="ts">
+import IconArrowForward from '~icons/material-symbols/arrow-forward'
 import { TextBoxComponent as EjsTextbox } from '@syncfusion/ej2-vue-inputs'
 import { DropDownListComponent as EjsDropdownlist } from '@syncfusion/ej2-vue-dropdowns'
 import { DatePickerComponent as EjsDatepicker } from '@syncfusion/ej2-vue-calendars'
-import { ButtonComponent as EjsButton } from '@syncfusion/ej2-vue-buttons'
 import type { InquiryBasicInfo } from '../types/inquiry.types'
 import {
   mockInquiryStatus,

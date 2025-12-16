@@ -10,11 +10,13 @@
             :value="modelValue.customerName"
             @input="updateField('customerName', $event.value)"
           />
-          <ejs-button
-            iconCss="iconify material-symbols--more-horiz"
-            cssClass="e-icon-btn"
+          <button
+            type="button"
+            class="flex items-center justify-center w-10 h-10 p-2.5 border-0 bg-transparent cursor-pointer hover:bg-gray-100"
             @click="$emit('open-customer-detail')"
-          />
+          >
+            <IconMoreHoriz class="w-5 h-5 text-primary" />
+          </button>
         </div>
       </div>
 
@@ -81,9 +83,9 @@
 </template>
 
 <script setup lang="ts">
+import IconMoreHoriz from '~icons/material-symbols/more-horiz'
 import { TextBoxComponent as EjsTextbox } from '@syncfusion/ej2-vue-inputs'
 import { DropDownListComponent as EjsDropdownlist } from '@syncfusion/ej2-vue-dropdowns'
-import { ButtonComponent as EjsButton } from '@syncfusion/ej2-vue-buttons'
 import type { InquiryCustomerInfo } from '../types/inquiry.types'
 import {
   mockCountryCodes,
