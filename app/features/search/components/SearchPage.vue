@@ -1,10 +1,6 @@
 <template>
   <div class="search-page-container">
-    <ejs-button cssClass='e-primary'>Primary</ejs-button>
-
-    <button class="action-btn bg-primary/50" @click="handleSearch">
-      <IconSearch />
-    </button>
+  <div class="search-page-container">
     <!-- 頂部控制區 -->
     <div class="top-controls">
       <div class="query-mode-group">
