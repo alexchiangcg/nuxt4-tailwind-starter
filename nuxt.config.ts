@@ -1,6 +1,7 @@
 import { pwa } from "./app/config/pwa";
 import { appDescription } from "./app/constants/index";
 import Icons from "unplugin-icons/vite";
+import { fileURLToPath } from "node:url";
 
 export default defineNuxtConfig({
   modules: [
@@ -56,6 +57,12 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_BACKEND_URL || "http://localhost:8080/api/v1",
     },
   },
+  alias: {
+    "~": fileURLToPath(new URL("./app", import.meta.url)),
+    "@": fileURLToPath(new URL("./app", import.meta.url)),
+    // 可選：如果你也想用常見的 # 指到 app
+    "#": fileURLToPath(new URL("./app", import.meta.url)),
+  },
 
   // Fix for Syncfusion packages:
   // 1. Transpile ES modules for Nuxt compatibility
@@ -96,6 +103,12 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    resolve: {
+      alias: {
+        "~": fileURLToPath(new URL("./app", import.meta.url)),
+        "@": fileURLToPath(new URL("./app", import.meta.url)),
+      },
+    },
     plugins: [
       Icons({
         compiler: "vue3",
@@ -111,7 +124,10 @@ export default defineNuxtConfig({
   typescript: {
     tsConfig: {
       compilerOptions: {
+        baseUrl: ".",
         paths: {
+          "~/*": ["app/*"],
+          "@/*": ["app/*"],
           "@syncfusion/*": ["../node_modules/@syncfusion/*"],
         },
       },
