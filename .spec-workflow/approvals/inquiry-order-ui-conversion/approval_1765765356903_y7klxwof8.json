@@ -1,0 +1,161 @@
+{
+  "id": "approval_1765765356903_y7klxwof8",
+  "title": "初洽單 UI 切版 - Design 技術設計文檔（從零開始）",
+  "filePath": ".spec-workflow/specs/inquiry-order-ui-conversion/design.md",
+  "type": "document",
+  "status": "needs-revision",
+  "createdAt": "2025-12-15T02:22:36.903Z",
+  "category": "spec",
+  "categoryName": "inquiry-order-ui-conversion",
+  "response": "Feedback Summary (11 comments):\n\nGeneral Comments:\n1. toolbar 的按鈕還有別的功能鈕，如果不知道的話就再提問\n\nSpecific Text Comments:\n1. \"interface InquiryToolbarProps {\n  mode?: 'view' | ...\": 如果進入 edit 模式裡面有些元件還會 disabled，這個要考慮到\n2. \"*初洽業務** - `ejs-textbox`\": 這個是 dropDown\n3. \"** - `ejs-textbox`\": 這個是 dropdown\n4. \"ejs-multiselect\": dropdown，並且是單選的\n5. \"客戶名稱** - `ejs-textbox`\": 他旁邊還有 icon button\n6. \"`ejs-textbox`\": 有 dropdown(國碼) 跟 textbox\n7. \"4. **客戶類型** - `ejs-dropdownlist`\n5. **備註** - `ejs-...\": 我看 figma 上面只有居住地的欄位，並且是兩個 dropdown!\n8. \". **預計人數** - `ejs-textbox` (number input)\": figma上面沒看到這個欄位！\n9. \"4. **預計桌數** - `ejs-textbox` (number input)\": 少了預計範圍，賞廳業務兩個欄位，而且也沒有預計桌數！\n10. \"1. **優先順序** - `ejs-dropdownlist`\n2. **標籤** - `ejs-...\": 這整塊的名稱跟元件都是錯的！自己在看一下figma 去重新對齊\n",
+  "annotations": "{\n  \"decision\": \"needs-revision\",\n  \"comments\": [\n    {\n      \"type\": \"selection\",\n      \"comment\": \"如果進入 edit 模式裡面有些元件還會 disabled，這個要考慮到\",\n      \"timestamp\": \"2025-12-15T02:25:59.643Z\",\n      \"selectedText\": \"interface InquiryToolbarProps {\\n  mode?: 'view' | 'edit'  // 模式（本階段固定為 view，僅顯示按鈕）\\n}\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765765559643_f112j7dyd\",\n      \"startOffset\": 3233,\n      \"endOffset\": 3317\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"這個是 dropDown\",\n      \"timestamp\": \"2025-12-15T02:39:30.112Z\",\n      \"selectedText\": \"*初洽業務** - `ejs-textbox`\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766370112_olnksdjoo\",\n      \"startOffset\": 4979,\n      \"endOffset\": 5002\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"這個是 dropdown\",\n      \"timestamp\": \"2025-12-15T02:39:46.004Z\",\n      \"selectedText\": \"** - `ejs-textbox`\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766386004_u5e9ropep\",\n      \"startOffset\": 5012,\n      \"endOffset\": 5030\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"dropdown，並且是單選的\",\n      \"timestamp\": \"2025-12-15T02:40:16.589Z\",\n      \"selectedText\": \"ejs-multiselect\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766416589_mfv0us1kk\",\n      \"startOffset\": 5147,\n      \"endOffset\": 5162\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"他旁邊還有 icon button\",\n      \"timestamp\": \"2025-12-15T02:41:15.962Z\",\n      \"selectedText\": \"客戶名稱** - `ejs-textbox`\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766475962_dv0zvkdxv\",\n      \"startOffset\": 6728,\n      \"endOffset\": 6750\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"有 dropdown(國碼) 跟 textbox\",\n      \"timestamp\": \"2025-12-15T02:41:46.604Z\",\n      \"selectedText\": \"`ejs-textbox`\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766506604_lma5ika86\",\n      \"startOffset\": 6765,\n      \"endOffset\": 6778\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"我看 figma 上面只有居住地的欄位，並且是兩個 dropdown!\",\n      \"timestamp\": \"2025-12-15T02:42:37.114Z\",\n      \"selectedText\": \"4. **客戶類型** - `ejs-dropdownlist`\\n5. **備註** - `ejs-textbox` (multiline mode - Text Area)\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766557114_itdt904an\",\n      \"startOffset\": 6811,\n      \"endOffset\": 6898\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"figma上面沒看到這個欄位！\",\n      \"timestamp\": \"2025-12-15T02:43:31.238Z\",\n      \"selectedText\": \". **預計人數** - `ejs-textbox` (number input)\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765766611238_axr8tuua6\",\n      \"startOffset\": 7686,\n      \"endOffset\": 7727\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"少了預計範圍，賞廳業務兩個欄位，而且也沒有預計桌數！\",\n      \"timestamp\": \"2025-12-15T03:06:26.460Z\",\n      \"selectedText\": \"4. **預計桌數** - `ejs-textbox` (number input)\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765767986460_4edj9r0aa\",\n      \"startOffset\": 7728,\n      \"endOffset\": 7770\n    },\n    {\n      \"type\": \"selection\",\n      \"comment\": \"這整塊的名稱跟元件都是錯的！自己在看一下figma 去重新對齊\",\n      \"timestamp\": \"2025-12-15T03:08:00.412Z\",\n      \"selectedText\": \"1. **優先順序** - `ejs-dropdownlist`\\n2. **標籤** - `ejs-multiselect` (CheckBox mode)\\n3. **內部備註** - `ejs-textbox` (multiline)\\n4. **客戶需求** - `ejs-textbox` (multiline)\\n5. **附件上傳** - 本階段不實作（Figma 未明確標註）\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1765768080412_n1aedt44r\",\n      \"startOffset\": 8996,\n      \"endOffset\": 9188\n    },\n    {\n      \"type\": \"general\",\n      \"comment\": \"toolbar 的按鈕還有別的功能鈕，如果不知道的話就再提問\",\n      \"timestamp\": \"2025-12-15T03:17:28.819Z\",\n      \"id\": \"comment_1765768648819_76zgoeu82\"\n    }\n  ],\n  \"summary\": \"Feedback Summary (11 comments):\\n\\nGeneral Comments:\\n1. toolbar 的按鈕還有別的功能鈕，如果不知道的話就再提問\\n\\nSpecific Text Comments:\\n1. \\\"interface InquiryToolbarProps {\\n  mode?: 'view' | ...\\\": 如果進入 edit 模式裡面有些元件還會 disabled，這個要考慮到\\n2. \\\"*初洽業務** - `ejs-textbox`\\\": 這個是 dropDown\\n3. \\\"** - `ejs-textbox`\\\": 這個是 dropdown\\n4. \\\"ejs-multiselect\\\": dropdown，並且是單選的\\n5. \\\"客戶名稱** - `ejs-textbox`\\\": 他旁邊還有 icon button\\n6. \\\"`ejs-textbox`\\\": 有 dropdown(國碼) 跟 textbox\\n7. \\\"4. **客戶類型** - `ejs-dropdownlist`\\n5. **備註** - `ejs-...\\\": 我看 figma 上面只有居住地的欄位，並且是兩個 dropdown!\\n8. \\\". **預計人數** - `ejs-textbox` (number input)\\\": figma上面沒看到這個欄位！\\n9. \\\"4. **預計桌數** - `ejs-textbox` (number input)\\\": 少了預計範圍，賞廳業務兩個欄位，而且也沒有預計桌數！\\n10. \\\"1. **優先順序** - `ejs-dropdownlist`\\n2. **標籤** - `ejs-...\\\": 這整塊的名稱跟元件都是錯的！自己在看一下figma 去重新對齊\\n\",\n  \"timestamp\": \"2025-12-15T03:17:32.120Z\"\n}",
+  "respondedAt": "2025-12-15T03:17:32.129Z",
+  "comments": [
+    {
+      "type": "selection",
+      "comment": "如果進入 edit 模式裡面有些元件還會 disabled，這個要考慮到",
+      "timestamp": "2025-12-15T02:25:59.643Z",
+      "selectedText": "interface InquiryToolbarProps {\n  mode?: 'view' | 'edit'  // 模式（本階段固定為 view，僅顯示按鈕）\n}",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765765559643_f112j7dyd",
+      "startOffset": 3233,
+      "endOffset": 3317
+    },
+    {
+      "type": "selection",
+      "comment": "這個是 dropDown",
+      "timestamp": "2025-12-15T02:39:30.112Z",
+      "selectedText": "*初洽業務** - `ejs-textbox`",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766370112_olnksdjoo",
+      "startOffset": 4979,
+      "endOffset": 5002
+    },
+    {
+      "type": "selection",
+      "comment": "這個是 dropdown",
+      "timestamp": "2025-12-15T02:39:46.004Z",
+      "selectedText": "** - `ejs-textbox`",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766386004_u5e9ropep",
+      "startOffset": 5012,
+      "endOffset": 5030
+    },
+    {
+      "type": "selection",
+      "comment": "dropdown，並且是單選的",
+      "timestamp": "2025-12-15T02:40:16.589Z",
+      "selectedText": "ejs-multiselect",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766416589_mfv0us1kk",
+      "startOffset": 5147,
+      "endOffset": 5162
+    },
+    {
+      "type": "selection",
+      "comment": "他旁邊還有 icon button",
+      "timestamp": "2025-12-15T02:41:15.962Z",
+      "selectedText": "客戶名稱** - `ejs-textbox`",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766475962_dv0zvkdxv",
+      "startOffset": 6728,
+      "endOffset": 6750
+    },
+    {
+      "type": "selection",
+      "comment": "有 dropdown(國碼) 跟 textbox",
+      "timestamp": "2025-12-15T02:41:46.604Z",
+      "selectedText": "`ejs-textbox`",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766506604_lma5ika86",
+      "startOffset": 6765,
+      "endOffset": 6778
+    },
+    {
+      "type": "selection",
+      "comment": "我看 figma 上面只有居住地的欄位，並且是兩個 dropdown!",
+      "timestamp": "2025-12-15T02:42:37.114Z",
+      "selectedText": "4. **客戶類型** - `ejs-dropdownlist`\n5. **備註** - `ejs-textbox` (multiline mode - Text Area)",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766557114_itdt904an",
+      "startOffset": 6811,
+      "endOffset": 6898
+    },
+    {
+      "type": "selection",
+      "comment": "figma上面沒看到這個欄位！",
+      "timestamp": "2025-12-15T02:43:31.238Z",
+      "selectedText": ". **預計人數** - `ejs-textbox` (number input)",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765766611238_axr8tuua6",
+      "startOffset": 7686,
+      "endOffset": 7727
+    },
+    {
+      "type": "selection",
+      "comment": "少了預計範圍，賞廳業務兩個欄位，而且也沒有預計桌數！",
+      "timestamp": "2025-12-15T03:06:26.460Z",
+      "selectedText": "4. **預計桌數** - `ejs-textbox` (number input)",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765767986460_4edj9r0aa",
+      "startOffset": 7728,
+      "endOffset": 7770
+    },
+    {
+      "type": "selection",
+      "comment": "這整塊的名稱跟元件都是錯的！自己在看一下figma 去重新對齊",
+      "timestamp": "2025-12-15T03:08:00.412Z",
+      "selectedText": "1. **優先順序** - `ejs-dropdownlist`\n2. **標籤** - `ejs-multiselect` (CheckBox mode)\n3. **內部備註** - `ejs-textbox` (multiline)\n4. **客戶需求** - `ejs-textbox` (multiline)\n5. **附件上傳** - 本階段不實作（Figma 未明確標註）",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1765768080412_n1aedt44r",
+      "startOffset": 8996,
+      "endOffset": 9188
+    },
+    {
+      "type": "general",
+      "comment": "toolbar 的按鈕還有別的功能鈕，如果不知道的話就再提問",
+      "timestamp": "2025-12-15T03:17:28.819Z",
+      "id": "comment_1765768648819_76zgoeu82"
+    }
+  ]
+}

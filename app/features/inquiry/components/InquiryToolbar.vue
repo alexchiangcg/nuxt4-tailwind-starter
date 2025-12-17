@@ -4,7 +4,7 @@
     <div class="toolbar-left">
       <ejs-button
         content="轉訂席單"
-        cssClass="e-outline"
+        cssClass="e-outline convert-button"
         @click="$emit('convert')"
       />
     </div>
@@ -12,32 +12,35 @@
     <!-- 右側：模式切換與操作按鈕 -->
     <div class="toolbar-right">
       <!-- 檢視模式狀態標籤 -->
-      <div class="mode-indicator">
-        <span class="iconify material-symbols--visibility-outline"></span>
-        <span>檢視模式</span>
+      <div class="flex items-center justify-center gap-1 h-[27px] px-[2px] py-0 border border-[var(--color-view)] rounded-[48px] bg-[var(--color-success-opacity12)] text-[var(--color-view)] text-sm font-normal leading-[18px] tracking-[0.1px] w-[105px]">
+        <IconVisibility class="w-[15px] h-[15px]" />
+        <span class="font-['Roboto:Regular','Noto_Sans_JP:Regular',sans-serif]">檢視模式</span>
       </div>
 
       <!-- Icon 按鈕群 -->
       <ejs-button
-        iconCss="iconify material-symbols--delete-outline"
-        cssClass="e-icon-btn e-delete-btn"
+        cssClass="e-icon-button e-delete-button"
         @click="$emit('delete')"
-      />
+      >
+        <IconDeleteOutline />
+      </ejs-button>
       <ejs-button
-        iconCss="iconify material-symbols--content-copy"
-        cssClass="e-icon-btn"
+        cssClass="e-icon-button"
         @click="$emit('copy')"
-      />
-      <ejs-button
-        iconCss="iconify material-symbols--add"
-        cssClass="e-icon-btn"
+      >
+        <IconContentCopy />
+      </ejs-button>
+    <ejs-button
+        cssClass="e-icon-button"
         @click="$emit('add')"
-      />
+      >
+        <IconAdd />
+    </ejs-button>
 
       <!-- 編輯按鈕 -->
       <ejs-button
         content="編輯"
-        :isPrimary="true"
+        cssClass="e-primary-button edit-button"
         @click="toggleMode"
       />
     </div>
@@ -45,6 +48,10 @@
 </template>
 
 <script setup lang="ts">
+import IconVisibility from '~icons/material-symbols/visibility-outline'
+import IconDeleteOutline from '~icons/material-symbols/delete-outline'
+import IconContentCopy from '~icons/material-symbols/content-copy-outline-rounded'
+import IconAdd from '~icons/material-symbols/add'
 import { ButtonComponent as EjsButton } from '@syncfusion/ej2-vue-buttons'
 
 interface InquiryToolbarProps {
@@ -94,75 +101,70 @@ const toggleMode = () => {
   align-items: center;
 }
 
-/* 按鈕基礎樣式 - 精確匹配 Figma */
-:deep(.e-btn) {
-  height: 40px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0.24px;
-  padding: 10px 16px;
-}
+</style>
 
-/* Outline 按鈕 */
-:deep(.e-outline) {
-  border: 1px solid rgb(var(--color-sf-outline));
+<style scoped>
+/* 轉訂席單按鈕 - 精確匹配 Figma 設計 */
+:deep(.e-btn.e-outline.convert-button) {
+  border-color: rgb(var(--color-sf-outline));
   background: transparent;
   color: rgb(var(--color-sf-on-surface));
-}
-
-/* Primary 按鈕 */
-:deep(.e-primary) {
-  background: rgb(var(--color-sf-primary));
-  border: 1px solid rgb(var(--color-sf-primary));
-  color: rgb(var(--color-sf-on-primary));
-}
-
-/* Icon 按鈕 */
-:deep(.e-icon-btn) {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  padding: 10px;
-  border: 1px solid rgb(var(--color-sf-primary));
-  border-radius: 4px;
-  background: transparent;
-}
-
-:deep(.e-icon-btn .e-btn-icon) {
-  font-size: 20px;
-  color: rgb(var(--color-sf-primary));
-  margin: 0;
-}
-
-/* 模式指示器樣式 */
-.mode-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   height: 40px;
   padding: 10px 16px;
-  border: 1px solid rgb(var(--color-sf-success));
-  border-radius: 4px;
+}
+
+:deep(.e-btn.e-outline.convert-button:hover),
+:deep(.e-btn.e-outline.convert-button:focus) {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+/* Icon 按鈕 - 精確匹配 Figma 設計 */
+:deep(.e-btn.e-icon-button) {
+  width: 40px;
+  height: 40px;
+  border-color: rgb(var(--color-sf-primary));
   background: transparent;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0.24px;
-  color: rgb(var(--color-sf-success));
+  padding: 0;
 }
 
-.mode-indicator .iconify {
-  font-size: 20px;
+:deep(.e-btn.e-icon-button .e-btn-icon) {
+  color: rgb(var(--color-sf-primary));
+  width: 20px;
+  height: 20px;
+  padding: 3px 0;
 }
 
-/* 刪除按鈕特殊樣式 */
-:deep(.e-delete-btn) {
-  border-color: rgb(var(--color-sf-danger)) !important;
+:deep(.e-btn.e-icon-button svg) {
+  width: 20px;
+  height: 20px;
+  color: rgb(var(--color-sf-primary));
+  display: block;
 }
 
-:deep(.e-delete-btn .e-btn-icon) {
-  color: rgb(var(--color-sf-danger)) !important;
+/* 刪除��鈕特殊顏色 */
+:deep(.e-btn.e-delete-button) {
+  border-color: rgb(var(--color-sf-danger));
+}
+
+:deep(.e-btn.e-delete-button .e-btn-icon) {
+  color: rgb(var(--color-sf-danger));
+}
+
+:deep(.e-btn.e-delete-button svg) {
+  color: rgb(var(--color-sf-danger));
+}
+
+/* 編輯按鈕 - 精確匹配 Figma 設計 */
+:deep(.e-btn.e-primary-button.edit-button) {
+  background: rgb(var(--color-sf-primary));
+  border-color: rgb(var(--color-sf-primary));
+  color: rgb(var(--color-sf-on-primary));
+  height: 40px;
+  padding: 10px 16px;
+}
+
+:deep(.e-btn.e-primary-button.edit-button:hover),
+:deep(.e-btn.e-primary-button.edit-button:focus) {
+  background: var(--color-sf-primary-darken-opacity-5);
 }
 </style>

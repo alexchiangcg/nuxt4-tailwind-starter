@@ -1,0 +1,38 @@
+{
+  "filePath": ".spec-workflow/specs/inquiry-order-ui-conversion/requirements.md",
+  "currentVersion": 4,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-12T06:30:13.030Z",
+      "trigger": "initial",
+      "approvalId": "approval_1765521013025_gnb8n4atc",
+      "approvalTitle": "初洽單 UI 切版 - Requirements 文檔審核"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-12T06:40:40.041Z",
+      "trigger": "revision_requested",
+      "approvalId": "approval_1765521013025_gnb8n4atc",
+      "approvalTitle": "初洽單 UI 切版 - Requirements 文檔審核"
+    },
+    {
+      "version": 3,
+      "filename": "snapshot-003.json",
+      "timestamp": "2025-12-15T01:25:09.634Z",
+      "trigger": "revision_requested",
+      "approvalId": "approval_1765523203499_vyklok17f",
+      "approvalTitle": "初洽單 UI 切版 - Requirements 文檔審核（已修正）"
+    },
+    {
+      "version": 4,
+      "filename": "snapshot-004.json",
+      "timestamp": "2025-12-15T01:45:49.294Z",
+      "trigger": "approved",
+      "approvalId": "approval_1765762896535_i64picfkc",
+      "approvalTitle": "初洽單 UI 切版 - Requirements（已明確 Figma Syncfusion 元件對映）"
+    }
+  ]
+}

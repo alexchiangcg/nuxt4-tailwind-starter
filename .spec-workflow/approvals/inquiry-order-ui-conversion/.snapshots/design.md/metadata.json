@@ -1,0 +1,30 @@
+{
+  "filePath": ".spec-workflow/specs/inquiry-order-ui-conversion/design.md",
+  "currentVersion": 3,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-15T02:00:16.517Z",
+      "trigger": "initial",
+      "approvalId": "approval_1765764016493_fpo3grkjk",
+      "approvalTitle": "初洽單 UI 切版 - Design 技術設計文檔"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-15T03:17:32.126Z",
+      "trigger": "revision_requested",
+      "approvalId": "approval_1765765356903_y7klxwof8",
+      "approvalTitle": "初洽單 UI 切版 - Design 技術設計文檔（從零開始）"
+    },
+    {
+      "version": 3,
+      "filename": "snapshot-003.json",
+      "timestamp": "2025-12-15T06:22:34.285Z",
+      "trigger": "approved",
+      "approvalId": "approval_1765770458477_xzt4a6anu",
+      "approvalTitle": "Design Document - 已修正所有 Figma 元件對映"
+    }
+  ]
+}
