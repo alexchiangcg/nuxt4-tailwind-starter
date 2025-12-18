@@ -162,7 +162,6 @@ const handleShowMore = (type: string, data: InquiryActivityDetail) => {
 .inquiry-activity-details-grid {
   width: 100%;
   background: rgb(var(--color-sf-surface));
-  border: 1px solid rgb(var(--color-sf-outline-variant));
   border-radius: 6px;
   overflow: hidden;
 }

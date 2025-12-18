@@ -132,7 +132,6 @@ const updateField = (field: keyof InquiryBasicInfo, value: any) => {
 <style scoped>
 .inquiry-basic-info {
   background: rgb(var(--color-sf-surface));
-  border: 1px solid rgb(var(--color-sf-outline-variant));
   border-radius: 6px;
   padding: 16px;
   display: flex;

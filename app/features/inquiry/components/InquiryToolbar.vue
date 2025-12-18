@@ -123,7 +123,11 @@ const toggleMode = () => {
   width: 40px;
   height: 40px;
   border-color: rgb(var(--color-sf-primary));
+  border-image: none;
   background: transparent;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
   padding: 0;
 }
 
@@ -163,8 +167,8 @@ const toggleMode = () => {
   padding: 10px 16px;
 }
 
-:deep(.e-btn.e-primary-button.edit-button:hover),
+/* :deep(.e-btn.e-primary-button.edit-button:hover),
 :deep(.e-btn.e-primary-button.edit-button:focus) {
   background: var(--color-sf-primary-darken-opacity-5);
-}
+} */
 </style>

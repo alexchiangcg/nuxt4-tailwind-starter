@@ -100,7 +100,6 @@ const updateField = (field: keyof InquirySupplementInfo, value: any) => {
 <style scoped>
 .inquiry-supplement-info {
   background: rgb(var(--color-sf-surface));
-  border: 1px solid rgb(var(--color-sf-outline-variant));
   border-radius: 6px;
   padding: 16px;
   display: flex;
