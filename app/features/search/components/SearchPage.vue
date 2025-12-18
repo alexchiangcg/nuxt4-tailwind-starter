@@ -1,6 +1,5 @@
 <template>
   <div class="search-page-container">
-  <div class="search-page-container">
     <!-- 頂部控制區 -->
     <div class="top-controls">
       <div class="query-mode-group">
