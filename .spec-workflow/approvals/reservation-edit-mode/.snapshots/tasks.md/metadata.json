@@ -1,0 +1,22 @@
+{
+  "filePath": ".spec-workflow/specs/reservation-edit-mode/tasks.md",
+  "currentVersion": 2,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-17T06:47:19.715Z",
+      "trigger": "initial",
+      "approvalId": "approval_1765954039712_1inh0i9f1",
+      "approvalTitle": "Phase 3: Tasks - 初洽單編輯模式任務分解"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-17T06:50:45.500Z",
+      "trigger": "approved",
+      "approvalId": "approval_1765954039712_1inh0i9f1",
+      "approvalTitle": "Phase 3: Tasks - 初洽單編輯模式任務分解"
+    }
+  ]
+}

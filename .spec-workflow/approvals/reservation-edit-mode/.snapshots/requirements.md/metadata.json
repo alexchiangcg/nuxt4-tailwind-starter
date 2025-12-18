@@ -1,0 +1,30 @@
+{
+  "filePath": ".spec-workflow/specs/reservation-edit-mode/requirements.md",
+  "currentVersion": 3,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-17T06:23:54.711Z",
+      "trigger": "initial",
+      "approvalId": "approval_1765952634700_kx0sp0yfu",
+      "approvalTitle": "Phase 1: Requirements - 初洽單編輯模式需求定義"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-17T06:24:50.672Z",
+      "trigger": "revision_requested",
+      "approvalId": "approval_1765952634700_kx0sp0yfu",
+      "approvalTitle": "Phase 1: Requirements - 初洽單編輯模式需求定義"
+    },
+    {
+      "version": 3,
+      "filename": "snapshot-003.json",
+      "timestamp": "2025-12-17T06:27:13.579Z",
+      "trigger": "approved",
+      "approvalId": "approval_1765952746672_oqdiwmc45",
+      "approvalTitle": "Phase 1: Requirements - 初洽單編輯模式需求定義（已修訂）"
+    }
+  ]
+}
