@@ -1,0 +1,22 @@
+{
+  "filePath": ".spec-workflow/specs/inquiry-form-edit/design.md",
+  "currentVersion": 2,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2025-12-18T02:29:44.353Z",
+      "trigger": "initial",
+      "approvalId": "approval_1766024984350_9fnfp4uxk",
+      "approvalTitle": "初洽單編輯頁面 - Design 審核"
+    },
+    {
+      "version": 2,
+      "filename": "snapshot-002.json",
+      "timestamp": "2025-12-18T02:32:47.763Z",
+      "trigger": "approved",
+      "approvalId": "approval_1766024984350_9fnfp4uxk",
+      "approvalTitle": "初洽單編輯頁面 - Design 審核"
+    }
+  ]
+}

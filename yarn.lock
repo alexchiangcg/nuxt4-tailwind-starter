@@ -3587,6 +3587,203 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-base@npm:^32.1.19, @syncfusion/ej2-base@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-base@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-icons": "npm:~32.1.19"
+  bin:
+    syncfusion-license: bin/syncfusion-license.js
+  checksum: 10c0/1cb0e220934fe3f75ac93a90a25b9528e5606815a0dfb3ed079b1d78a8aa44e913032e84d82eebfbe3e659b0571b4639917e797c43c898b5e1407734c5a64472
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-buttons@npm:32.1.19, @syncfusion/ej2-buttons@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-buttons@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+  checksum: 10c0/8e3407a9b963cdd0b4aa4854ed8155f3cd3fd359295de192962f77749947238acda0fa875001e3df074c8c214bb69dca8c98b5aae2af55f9154b0032ed48a464
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-calendars@npm:32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-calendars@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:~32.1.19"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/4ab9862c28aa190ae4cdee0624ef952814c1fc787e50e6908d5e76ccc01fad0fdec2578f1dbdd0b27f328eba7e9d4880a97ed8183192bcf24e606ea68cb6f67a
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-data@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-data@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+  checksum: 10c0/5fb5b7a9653727a7b7611e833d9f8a14c1e453b5e415f9c953eba2cf1cf01b70b67b37fdaceb12ec5fa3765694eb721ec00ec9a8c3cced18c27412b418146b15
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-dropdowns@npm:32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-dropdowns@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:~32.1.19"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-navigations": "npm:~32.1.19"
+    "@syncfusion/ej2-notifications": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/6034ed65df7428527a1537ec55d863e7602d7e0c4d47181c3c2720309000292356480bb969e1d5b2ef1feca05cec22cd10c68c331449a2b8183562e85a83af0d
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-icons@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-icons@npm:32.1.19"
+  checksum: 10c0/cb22dc16bd1a57dcd25e45a62a6677d8aa4aae976e258019e77ee0a0a0eda16340c8ac3dd71858a5a695dda605ee4ebabb327f1188e57f5130fc3f62bd7cb84c
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-inputs@npm:32.1.19, @syncfusion/ej2-inputs@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-inputs@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+    "@syncfusion/ej2-splitbuttons": "npm:~32.1.19"
+  checksum: 10c0/be3adbf3708cf5bb0855410f0c1dc39370b0dd793f8ec5fc2d394305b3f9e3116d6fbf9c0e4a2c51e0a5894c42420b566f538c8e4e9a5b4eb646a8dbbb79bd36
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-lists@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-lists@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/d42a31720dce6161f5a417a7d4b6dc856838af3f32d9c32320d9364ca5759522118db3e1f68671d10658944ddf0eb1bf31fb83887a602db6b45d1e5ccc20ddef
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-navigations@npm:32.1.19, @syncfusion/ej2-navigations@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-navigations@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:~32.1.19"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/cd4b83451fa6411d613836b7f918ad0556b6fd77a44b32ab7d1d8443e1dc402b4ac27c959c3851312ffaa14a6c3361e0795a2d849c43ba4f86ac9dccc3c790aa
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-notifications@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-notifications@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/086717216454418b29fe269c636db417eb53ea5d5e2296da19df870e2fe8f75e7ab49426c52bd040e669b2ecfe8d9a001f938e985e59f07316f56f0598df3bb6
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-popups@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-popups@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+  checksum: 10c0/d4871558f7ccebd032da93f7a01064b522fa9fb90fd4b483c5b0b0e083264cca1f052c21bd7243b4568ddf069656391053d904e7a8964dfd6ede1426375af6d3
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-splitbuttons@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-splitbuttons@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/b6b89e156afe650d70a5ded8faa6dba3a3ccbc7ad1b5f7cfd663cc9da809345485b20d117611ce31c1061bd0149e0c220abf6384cf660ad52517076a03dc60e2
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-base@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-vue-base@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+  checksum: 10c0/e0471705d0951ef0c34bd32c12cd1bafad1c0f1b261a68e720576544aa0ba2a9cd287cd38bd054cb41d9ac5d8d29f198ab525a0efb418631bdef760931bf1947
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-buttons@npm:^32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-vue-buttons@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:32.1.19"
+    "@syncfusion/ej2-vue-base": "npm:~32.1.19"
+  checksum: 10c0/7c9a3eb931afe92c8cc0bd5dcc1059c14233dff2ff6d3a8acd364c7ccab01e2eb0ed0ffa4b7ed467a026788caf0385a18f066b1499756c52b833df1cf2c38ea7
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-calendars@npm:^32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-vue-calendars@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-calendars": "npm:32.1.19"
+    "@syncfusion/ej2-vue-base": "npm:~32.1.19"
+  checksum: 10c0/19ad3cecca7e58599a4ab7cff5e6bf1b298b7d4e1d00294c8b97ad0a2057a404570f435f1e218e31546ba631fca7b4caed594c16087f097e1278c7334424a7a3
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-dropdowns@npm:^32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-vue-dropdowns@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-dropdowns": "npm:32.1.19"
+    "@syncfusion/ej2-vue-base": "npm:~32.1.19"
+  checksum: 10c0/a3a6a7522159b6e672722e090c806b7695787359619ec635748fd9f3202373f15ee17cb59d4bbafa5e3ac3b2e5def7615bbab40a192381a2061bf407e343c10b
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-inputs@npm:^32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-vue-inputs@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:32.1.19"
+    "@syncfusion/ej2-vue-base": "npm:~32.1.19"
+  checksum: 10c0/7299ae68e1c9cc16ebba9a976f628425bd55417e071ce2518ef3c5f6cbd7fa19ee284aa7b5bed6a759866a1363cec917a89de73b85b5a3feea4477dfedf438d1
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-navigations@npm:^32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-vue-navigations@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-navigations": "npm:32.1.19"
+    "@syncfusion/ej2-vue-base": "npm:~32.1.19"
+  checksum: 10c0/7b7b0d42a9623173b73598961bfdd7c2daa8101e9f77d31da519148e197386201a99038afee9d3541c683c032a1d4fa61e15e38fe77ea72f16c53e4f3c3a63cb
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/node@npm:4.1.17":
   version: 4.1.17
   resolution: "@tailwindcss/node@npm:4.1.17"
@@ -10946,6 +11143,12 @@ __metadata:
     "@nuxtjs/device": "npm:^3.2.4"
     "@nuxtjs/i18n": "npm:^9.5.4"
     "@pinia/nuxt": "npm:^0.11.2"
+    "@syncfusion/ej2-base": "npm:^32.1.19"
+    "@syncfusion/ej2-vue-buttons": "npm:^32.1.19"
+    "@syncfusion/ej2-vue-calendars": "npm:^32.1.19"
+    "@syncfusion/ej2-vue-dropdowns": "npm:^32.1.19"
+    "@syncfusion/ej2-vue-inputs": "npm:^32.1.19"
+    "@syncfusion/ej2-vue-navigations": "npm:^32.1.19"
     "@tailwindcss/postcss": "npm:^4.1.17"
     "@types/lodash": "npm:^4.17.13"
     "@types/node": "npm:^22.10.7"

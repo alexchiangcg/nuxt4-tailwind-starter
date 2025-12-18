@@ -1,0 +1,29 @@
+{
+  "id": "approval_1766025411062_fek3xq218",
+  "title": "初洽單編輯頁面 - Tasks 審核",
+  "filePath": ".spec-workflow/specs/inquiry-form-edit/tasks.md",
+  "type": "document",
+  "status": "needs-revision",
+  "createdAt": "2025-12-18T02:36:51.062Z",
+  "category": "spec",
+  "categoryName": "inquiry-form-edit",
+  "response": "Feedback Summary (1 comments):\n\nSpecific Text Comments:\n1. \"- [ ] 4. 建立 API 層\n  - File: app/features/inquiry/a...\": 先建立殼就好，因為後續才要串接 api\n",
+  "annotations": "{\n  \"decision\": \"needs-revision\",\n  \"comments\": [\n    {\n      \"type\": \"selection\",\n      \"comment\": \"先建立殼就好，因為後續才要串接 api\",\n      \"timestamp\": \"2025-12-18T02:38:00.676Z\",\n      \"selectedText\": \"- [ ] 4. 建立 API 層\\n  - File: app/features/inquiry/api/inquiry.api.ts\\n  - 實作 inquiryApi 物件: getInquiry(id), createInquiry(data), updateInquiry(id, data)\\n  - 使用 Nuxt 的 $fetch，加上錯誤處理\\n  - Purpose: 封裝後端 API 呼叫\\n  - _Leverage: Nuxt $fetch, inquiry.types.ts_\\n  - _Requirements: 資料持久化需求_\\n  - _Prompt: Implement the task for spec inquiry-form-edit, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Backend Integration Developer | Task: Create API layer using Nuxt $fetch to implement inquiryApi object with methods: getInquiry(id: string): Promise<InquiryFormData>, createInquiry(data: InquiryFormData): Promise<string>, updateInquiry(id: string, data: InquiryFormData): Promise<void>, including comprehensive error handling | Restrictions: Use Nuxt $fetch only, handle HTTP errors properly, return typed responses | _Leverage: Nuxt $fetch documentation, inquiry.types.ts | _Requirements: API integration for data persistence | Success: API methods implemented with proper error handling, TypeScript types match interfaces, handles network failures gracefully. When the task is complete, mark it as in-progress in tasks.md, implement the task, then use log-implementation to record implementation details with complete artifacts (include all API methods with their signatures, error handling patterns, and endpoint URLs), and finally mark it as completed in tasks.md._\",\n      \"highlightColor\": {\n        \"bg\": \"rgba(255, 235, 59, 0.3)\",\n        \"border\": \"#FFEB3B\",\n        \"name\": \"#ffeb3b\"\n      },\n      \"id\": \"comment_1766025480676_jo3zub3du\",\n      \"startOffset\": 4066,\n      \"endOffset\": 5461\n    }\n  ],\n  \"summary\": \"Feedback Summary (1 comments):\\n\\nSpecific Text Comments:\\n1. \\\"- [ ] 4. 建立 API 層\\n  - File: app/features/inquiry/a...\\\": 先建立殼就好，因為後續才要串接 api\\n\",\n  \"timestamp\": \"2025-12-18T02:38:07.010Z\"\n}",
+  "respondedAt": "2025-12-18T02:38:07.019Z",
+  "comments": [
+    {
+      "type": "selection",
+      "comment": "先建立殼就好，因為後續才要串接 api",
+      "timestamp": "2025-12-18T02:38:00.676Z",
+      "selectedText": "- [ ] 4. 建立 API 層\n  - File: app/features/inquiry/api/inquiry.api.ts\n  - 實作 inquiryApi 物件: getInquiry(id), createInquiry(data), updateInquiry(id, data)\n  - 使用 Nuxt 的 $fetch，加上錯誤處理\n  - Purpose: 封裝後端 API 呼叫\n  - _Leverage: Nuxt $fetch, inquiry.types.ts_\n  - _Requirements: 資料持久化需求_\n  - _Prompt: Implement the task for spec inquiry-form-edit, first run spec-workflow-guide to get the workflow guide then implement the task: Role: Backend Integration Developer | Task: Create API layer using Nuxt $fetch to implement inquiryApi object with methods: getInquiry(id: string): Promise<InquiryFormData>, createInquiry(data: InquiryFormData): Promise<string>, updateInquiry(id: string, data: InquiryFormData): Promise<void>, including comprehensive error handling | Restrictions: Use Nuxt $fetch only, handle HTTP errors properly, return typed responses | _Leverage: Nuxt $fetch documentation, inquiry.types.ts | _Requirements: API integration for data persistence | Success: API methods implemented with proper error handling, TypeScript types match interfaces, handles network failures gracefully. When the task is complete, mark it as in-progress in tasks.md, implement the task, then use log-implementation to record implementation details with complete artifacts (include all API methods with their signatures, error handling patterns, and endpoint URLs), and finally mark it as completed in tasks.md._",
+      "highlightColor": {
+        "bg": "rgba(255, 235, 59, 0.3)",
+        "border": "#FFEB3B",
+        "name": "#ffeb3b"
+      },
+      "id": "comment_1766025480676_jo3zub3du",
+      "startOffset": 4066,
+      "endOffset": 5461
+    }
+  ]
+}

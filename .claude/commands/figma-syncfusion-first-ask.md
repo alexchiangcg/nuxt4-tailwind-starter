@@ -13,7 +13,7 @@
 
 ### Frame：編輯模式（Edit）
 - URL  
-  https://www.figma.com/design/jXU8CU5Q0ca7nP2Opvvzb1/訂席_2B--MCP-?node-id=6194-206567&m=dev
+  https://www.figma.com/design/jXU8CU5Q0ca7nP2Opvvzb1/%E8%A8%82%E5%B8%AD_2B--MCP-?node-id=6194-206567&m=dev
 
 規則：
 - frame 都要透過 figma mcp 解析
