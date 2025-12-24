@@ -26,6 +26,10 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
+  devServer: {
+    port: 4567,
+  },
+
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
