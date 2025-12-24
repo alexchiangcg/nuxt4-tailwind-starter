@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(npm run dev)",
+      "Bash(yarn install)",
+      "Bash(npm install)",
+      "Bash(npx vue-tsc:*)",
+      "Bash(cat:*)",
+      "Bash(sudo chown:*)",
+      "mcp__syncfusion-vue-assistant__SyncfusionVueAssistant"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7",
+    "deepwiki",
+    "figma-dev-mode",
+    "playwright"
+  ]
+}
