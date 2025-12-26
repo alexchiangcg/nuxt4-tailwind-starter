@@ -45,6 +45,20 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-calendars',
     description: 'DatePicker for selecting dates with calendar popup'
   },
+  {
+    name: 'TimePicker',
+    route: '/playground/timepicker',
+    category: 'Calendars',
+    package: '@syncfusion/ej2-vue-calendars',
+    description: 'TimePicker for selecting time values'
+  },
+  {
+    name: 'DateTimePicker',
+    route: '/playground/datetimepicker',
+    category: 'Calendars',
+    package: '@syncfusion/ej2-vue-calendars',
+    description: 'DateTimePicker for selecting date and time together'
+  },
 
   // Inputs
   {
@@ -67,6 +81,13 @@ export const components: PlaygroundComponent[] = [
     category: 'Inputs',
     package: '@syncfusion/ej2-vue-inputs',
     description: 'Slider for selecting values within a range'
+  },
+  {
+    name: 'ColorPicker',
+    route: '/playground/colorpicker',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: 'ColorPicker for selecting colors with various modes'
   },
 
   // Dropdowns
@@ -125,6 +146,34 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-navigations',
     description: 'Accordion component for expandable content panels'
   },
+  {
+    name: 'Menu',
+    route: '/playground/menu',
+    category: 'Navigations',
+    package: '@syncfusion/ej2-vue-navigations',
+    description: 'Menu component for hierarchical navigation'
+  },
+  {
+    name: 'Toolbar',
+    route: '/playground/toolbar',
+    category: 'Navigations',
+    package: '@syncfusion/ej2-vue-navigations',
+    description: 'Toolbar for grouping action buttons and controls'
+  },
+  {
+    name: 'Sidebar',
+    route: '/playground/sidebar',
+    category: 'Navigations',
+    package: '@syncfusion/ej2-vue-navigations',
+    description: 'Sidebar for slide-in navigation panels'
+  },
+  {
+    name: 'TreeView',
+    route: '/playground/treeview',
+    category: 'Navigations',
+    package: '@syncfusion/ej2-vue-navigations',
+    description: 'TreeView for hierarchical data display'
+  },
 
   // Notifications
   {
@@ -152,20 +201,77 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-splitbuttons',
     description: 'SplitButton with primary action and dropdown menu'
   },
+
+  // Layouts
+  {
+    name: 'Splitter',
+    route: '/playground/splitter',
+    category: 'Layouts',
+    package: '@syncfusion/ej2-vue-layouts',
+    description: 'Splitter for resizable split panels'
+  },
+
+  // Lists
+  {
+    name: 'ListView',
+    route: '/playground/listview',
+    category: 'Lists',
+    package: '@syncfusion/ej2-vue-lists',
+    description: 'ListView for displaying and interacting with list data'
+  },
+
+  // Editors
+  {
+    name: 'RichTextEditor',
+    route: '/playground/richtexteditor',
+    category: 'Editors',
+    package: '@syncfusion/ej2-vue-richtexteditor',
+    description: 'RichTextEditor for rich text content editing'
+  },
+
+  // Schedule
+  {
+    name: 'Schedule',
+    route: '/playground/schedule',
+    category: 'Schedule',
+    package: '@syncfusion/ej2-vue-schedule',
+    description: 'Schedule for calendar and event management'
+  },
+
+  // PDF Viewer
+  {
+    name: 'PdfViewer',
+    route: '/playground/pdfviewer',
+    category: 'Viewers',
+    package: '@syncfusion/ej2-vue-pdfviewer',
+    description: 'PdfViewer for viewing and annotating PDF documents'
+  },
+
+  // Pivot View
+  {
+    name: 'PivotView',
+    route: '/playground/pivotview',
+    category: 'Data Analysis',
+    package: '@syncfusion/ej2-vue-pivotview',
+    description: 'PivotView for data analysis and visualization'
+  },
 ]
 
 export const categories = [
   'Buttons',
   'Calendars',
+  'Data Analysis',
   'Dropdowns',
+  'Editors',
   'Grids',
   'Inputs',
   'Layouts',
+  'Lists',
   'Navigations',
   'Notifications',
   'Popups',
   'Progress',
-  'Split Buttons',
-  'Editors',
   'Schedule',
+  'Split Buttons',
+  'Viewers',
 ]

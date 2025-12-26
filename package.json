@@ -24,6 +24,7 @@
     "@syncfusion/ej2-vue-grids": "^30.0.0",
     "@syncfusion/ej2-vue-inputs": "^30.0.0",
     "@syncfusion/ej2-vue-layouts": "^30.0.0",
+    "@syncfusion/ej2-vue-lists": "^30.0.0",
     "@syncfusion/ej2-vue-navigations": "^30.0.0",
     "@syncfusion/ej2-vue-notifications": "^30.0.0",
     "@syncfusion/ej2-vue-pdfviewer": "^30.0.0",
