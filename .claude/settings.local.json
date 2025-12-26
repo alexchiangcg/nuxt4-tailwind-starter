@@ -9,7 +9,11 @@
       "Bash(npx vue-tsc:*)",
       "Bash(cat:*)",
       "Bash(sudo chown:*)",
-      "mcp__syncfusion-vue-assistant__SyncfusionVueAssistant"
+      "mcp__syncfusion-vue-assistant__SyncfusionVueAssistant",
+      "Bash(ls:*)",
+      "Bash(yarn add:*)",
+      "Bash(corepack enable:*)",
+      "Bash(git commit:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
