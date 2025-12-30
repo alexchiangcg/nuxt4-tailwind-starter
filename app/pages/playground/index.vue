@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { components, categories } from '~/config/playground-components'
+import { components, categories, categoryLabels } from '~/config/playground-components'
 
 definePageMeta({
   layout: 'playground'
@@ -28,9 +28,12 @@ const componentsByCategory = computed(() => {
     <!-- Component Grid by Category -->
     <div class="space-y-10">
       <section v-for="group in componentsByCategory" :key="group.category">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
-          {{ group.category }}
-        </h2>
+        <div class="mb-4">
+          <h2 class="text-2xl font-semibold text-gray-800">
+            {{ categoryLabels[group.category] || group.category }}
+          </h2>
+          <span class="text-sm text-gray-400">{{ group.category }}</span>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <NuxtLink
