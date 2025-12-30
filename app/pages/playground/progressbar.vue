@@ -484,5 +484,4 @@ const animation = {
 
 <style>
 @import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-vue-progressbar/styles/material.css';
 </style>
