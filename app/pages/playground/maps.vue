@@ -137,8 +137,6 @@ import {
   Zoom
 } from '@syncfusion/ej2-vue-maps'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-vue-maps/styles/material.css'
 
 provide('maps', [Legend, MapsTooltip, Bubble, Marker, Zoom])
 

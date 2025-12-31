@@ -463,6 +463,4 @@ const axisSettings = {
   </div>
 </template>
 
-<style>
-@import '@syncfusion/ej2-base/styles/material.css';
-</style>
+

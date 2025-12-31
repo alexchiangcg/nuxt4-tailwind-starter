@@ -262,8 +262,6 @@ const togglePush = () => {
 </template>
 
 <style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-navigations/styles/material.css';
 
 .e-sidebar {
   z-index: 10 !important;

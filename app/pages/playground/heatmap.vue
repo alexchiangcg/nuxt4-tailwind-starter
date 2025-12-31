@@ -114,8 +114,6 @@
 import { provide } from 'vue'
 import { HeatMapComponent as EjsHeatmap, Legend, Tooltip } from '@syncfusion/ej2-vue-heatmap'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-vue-heatmap/styles/material.css'
 
 provide('heatmap', [Legend, Tooltip])
 

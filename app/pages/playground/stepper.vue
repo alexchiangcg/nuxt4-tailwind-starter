@@ -256,9 +256,6 @@ import {
   StepDirective as EStep
 } from '@syncfusion/ej2-vue-navigations'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-popups/styles/material.css'
-import '@syncfusion/ej2-navigations/styles/material.css'
 
 definePageMeta({ layout: 'playground' })
 

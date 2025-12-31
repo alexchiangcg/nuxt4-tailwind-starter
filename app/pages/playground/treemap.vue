@@ -110,9 +110,6 @@
 import { provide } from 'vue'
 import { TreeMapComponent as EjsTreemap, TreeMapLegend, TreeMapTooltip } from '@syncfusion/ej2-vue-treemap'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-vue-treemap/styles/material.css'
-
 provide('treemap', [TreeMapLegend, TreeMapTooltip])
 
 definePageMeta({ layout: 'playground' })

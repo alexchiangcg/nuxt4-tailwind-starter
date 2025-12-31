@@ -107,15 +107,6 @@
 import { provide } from 'vue'
 import { FileManagerComponent as EjsFilemanager, NavigationPane, Toolbar, DetailsView } from '@syncfusion/ej2-vue-filemanager'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-buttons/styles/material.css'
-import '@syncfusion/ej2-inputs/styles/material.css'
-import '@syncfusion/ej2-popups/styles/material.css'
-import '@syncfusion/ej2-splitbuttons/styles/material.css'
-import '@syncfusion/ej2-navigations/styles/material.css'
-import '@syncfusion/ej2-layouts/styles/material.css'
-import '@syncfusion/ej2-grids/styles/material.css'
-import '@syncfusion/ej2-vue-filemanager/styles/material.css'
 
 provide('filemanager', [NavigationPane, Toolbar, DetailsView])
 

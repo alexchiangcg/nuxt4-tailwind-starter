@@ -1,0 +1,61 @@
+/**
+ * Syncfusion EJ2 Vue Components - Material Theme
+ * Global CSS imports for all components
+ *
+ * This file is imported globally in nuxt.config.ts
+ * Do NOT import CSS in individual component files
+ */
+
+/* Base & Core */
+@import '@syncfusion/ej2-base/styles/material.css';
+@import '@syncfusion/ej2-icons/styles/material.css';
+
+/* Form Controls */
+@import '@syncfusion/ej2-buttons/styles/material.css';
+@import '@syncfusion/ej2-inputs/styles/material.css';
+@import '@syncfusion/ej2-dropdowns/styles/material.css';
+@import '@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '@syncfusion/ej2-calendars/styles/material.css';
+
+/* Layout */
+@import '@syncfusion/ej2-layouts/styles/material.css';
+@import '@syncfusion/ej2-popups/styles/material.css';
+@import '@syncfusion/ej2-lists/styles/material.css';
+
+/* Navigation */
+@import '@syncfusion/ej2-navigations/styles/material.css';
+
+/* Notifications */
+@import '@syncfusion/ej2-notifications/styles/material.css';
+
+/* Data Grid & Tables */
+@import '@syncfusion/ej2-grids/styles/material.css';
+@import '@syncfusion/ej2-treegrid/styles/material.css';
+@import '@syncfusion/ej2-pivotview/styles/material.css';
+@import '@syncfusion/ej2-kanban/styles/material.css';
+@import '@syncfusion/ej2-spreadsheet/styles/material.css';
+
+/* Charts & Gauges - No separate CSS files (styles are embedded) */
+
+/* Scheduling */
+@import '@syncfusion/ej2-schedule/styles/material.css';
+@import '@syncfusion/ej2-gantt/styles/material.css';
+
+/* Editors */
+@import '@syncfusion/ej2-richtexteditor/styles/material.css';
+@import '@syncfusion/ej2-documenteditor/styles/material.css';
+@import '@syncfusion/ej2-image-editor/styles/material.css';
+@import '@syncfusion/ej2-inplace-editor/styles/material.css';
+
+/* File & PDF */
+@import '@syncfusion/ej2-filemanager/styles/material.css';
+@import '@syncfusion/ej2-pdfviewer/styles/material.css';
+
+/* Diagrams */
+@import '@syncfusion/ej2-diagrams/styles/material.css';
+
+/* Interactive */
+@import '@syncfusion/ej2-interactive-chat/styles/material.css';
+
+/* Ribbon */
+@import '@syncfusion/ej2-ribbon/styles/material.css';

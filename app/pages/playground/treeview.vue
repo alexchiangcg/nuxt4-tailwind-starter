@@ -381,9 +381,6 @@ const editFields = {
 </template>
 
 <style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-vue-navigations/styles/material.css';
-@import '@syncfusion/ej2-inputs/styles/material.css';
 
 .e-treeview .e-list-icon.folder {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffc107"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>');

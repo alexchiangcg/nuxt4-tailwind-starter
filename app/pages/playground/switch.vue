@@ -187,7 +187,4 @@ const isOn = ref(true)
   </div>
 </template>
 
-<style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-buttons/styles/material.css';
-</style>
+

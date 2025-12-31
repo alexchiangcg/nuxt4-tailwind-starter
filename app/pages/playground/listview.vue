@@ -226,8 +226,4 @@ const nestedFields = {
   </div>
 </template>
 
-<style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-vue-lists/styles/material.css';
-@import '@syncfusion/ej2-buttons/styles/material.css';
-</style>
+

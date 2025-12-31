@@ -167,8 +167,6 @@ import {
   AccumulationDataLabel
 } from '@syncfusion/ej2-vue-charts'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-vue-charts/styles/material.css'
 
 provide('accumulationchart', [PieSeries, AccumulationLegend, AccumulationTooltip, AccumulationDataLabel])
 

@@ -157,8 +157,6 @@ import {
   ItemDirective as EBreadcrumbItem
 } from '@syncfusion/ej2-vue-navigations'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-navigations/styles/material.css'
 
 definePageMeta({ layout: 'playground' })
 </script>

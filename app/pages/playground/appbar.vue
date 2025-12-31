@@ -345,12 +345,6 @@ const moreItems = [
 </template>
 
 <style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-buttons/styles/material.css';
-@import '@syncfusion/ej2-inputs/styles/material.css';
-@import '@syncfusion/ej2-popups/styles/material.css';
-@import '@syncfusion/ej2-splitbuttons/styles/material.css';
-@import '@syncfusion/ej2-navigations/styles/material.css';
 
 .prominent-appbar {
   min-height: 80px;

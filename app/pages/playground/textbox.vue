@@ -273,7 +273,4 @@ const sampleValue = ref('Sample Text')
   </div>
 </template>
 
-<style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-inputs/styles/material.css';
-</style>
+

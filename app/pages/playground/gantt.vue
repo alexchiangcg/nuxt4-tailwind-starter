@@ -250,19 +250,6 @@ import { ref, provide, reactive } from 'vue'
 import { GanttComponent as EjsGantt, Edit, Selection, Toolbar, Filter, Sort, Resize, CriticalPath, DayMarkers } from '@syncfusion/ej2-vue-gantt'
 
 // Import Syncfusion styles
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-buttons/styles/material.css'
-import '@syncfusion/ej2-calendars/styles/material.css'
-import '@syncfusion/ej2-dropdowns/styles/material.css'
-import '@syncfusion/ej2-inputs/styles/material.css'
-import '@syncfusion/ej2-navigations/styles/material.css'
-import '@syncfusion/ej2-popups/styles/material.css'
-import '@syncfusion/ej2-splitbuttons/styles/material.css'
-import '@syncfusion/ej2-grids/styles/material.css'
-import '@syncfusion/ej2-treegrid/styles/material.css'
-import '@syncfusion/ej2-layouts/styles/material.css'
-import '@syncfusion/ej2-richtexteditor/styles/material.css'
-import '@syncfusion/ej2-vue-gantt/styles/material.css'
 
 // Inject required modules
 provide('gantt', [Edit, Selection, Toolbar, Filter, Sort, Resize, CriticalPath, DayMarkers])

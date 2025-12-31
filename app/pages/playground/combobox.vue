@@ -318,9 +318,4 @@ const empFields = { text: 'name', value: 'empId' }
   </div>
 </template>
 
-<style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-inputs/styles/material.css';
-@import '@syncfusion/ej2-vue-dropdowns/styles/material.css';
-@import '@syncfusion/ej2-buttons/styles/material.css';
-</style>
+

@@ -161,8 +161,6 @@ import {
   Export
 } from '@syncfusion/ej2-vue-charts'
 
-import '@syncfusion/ej2-base/styles/material.css'
-import '@syncfusion/ej2-vue-charts/styles/material.css'
 
 provide('stockchart', [DateTime, CandleSeries, HiloOpenCloseSeries, LineSeries, RangeTooltip, Crosshair, Export])
 

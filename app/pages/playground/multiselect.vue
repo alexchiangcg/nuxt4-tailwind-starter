@@ -387,9 +387,4 @@ const skillFields = { text: 'skill', value: 'skill', groupBy: 'category' }
   </div>
 </template>
 
-<style>
-@import '@syncfusion/ej2-base/styles/material.css';
-@import '@syncfusion/ej2-inputs/styles/material.css';
-@import '@syncfusion/ej2-vue-dropdowns/styles/material.css';
-@import '@syncfusion/ej2-buttons/styles/material.css';
-</style>
+

@@ -10,7 +10,10 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
   ],
 
-  css: ['~/assets/css/tailwind.css'],
+  css: [
+    '~/assets/css/tailwind.css',
+    '~/assets/css/syncfusion.css',
+  ],
 
   vite: {
     css: {
