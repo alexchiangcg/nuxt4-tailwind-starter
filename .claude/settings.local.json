@@ -81,7 +81,9 @@
       "Bash(then echo \"MISSING: $css\" fi done echo \"=== Check complete! ===\")",
       "Bash(cd /home/a25012/projects/nuxt4-tailwind-starter/node_modules/@syncfusion ls -d ej2-base/styles ej2-icons/styles ej2-buttons/styles ej2-inputs/styles ej2-dropdowns/styles ej2-splitbuttons/styles ej2-calendars/styles ej2-layouts/styles ej2-popups/styles ej2-lists/styles ej2-navigations/styles ej2-notifications/styles ej2-grids/styles ej2-treegrid/styles ej2-pivotview/styles ej2-kanban/styles ej2-spreadsheet/styles ej2-schedule/styles ej2-gantt/styles ej2-richtexteditor/styles ej2-documenteditor/styles ej2-image-editor/styles ej2-inplace-editor/styles ej2-filemanager/styles ej2-pdfviewer/styles ej2-diagrams/styles ej2-interactive-chat/styles ej2-ribbon/styles)",
       "Bash(for pkg in ej2-base ej2-icons ej2-buttons ej2-inputs ej2-dropdowns ej2-splitbuttons ej2-calendars ej2-layouts ej2-popups ej2-lists ej2-navigations ej2-notifications ej2-grids ej2-treegrid ej2-pivotview ej2-kanban ej2-spreadsheet ej2-schedule ej2-gantt ej2-richtexteditor ej2-documenteditor ej2-image-editor ej2-inplace-editor ej2-filemanager ej2-pdfviewer ej2-diagrams ej2-interactive-chat ej2-ribbon)",
-      "Bash(if [ ! -f \"/home/a25012/projects/nuxt4-tailwind-starter/node_modules/@syncfusion/$pkg/styles/material.css\" ])"
+      "Bash(if [ ! -f \"/home/a25012/projects/nuxt4-tailwind-starter/node_modules/@syncfusion/$pkg/styles/material.css\" ])",
+      "Bash(timeout 15 yarn dev:*)",
+      "Bash(git diff:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
