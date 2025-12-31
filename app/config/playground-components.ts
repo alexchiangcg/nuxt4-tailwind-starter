@@ -634,6 +634,41 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-layouts',
     description: '卡片元件，用於展示內容的容器。支援標題、副標題、圖片、內容區、操作按鈕、水平/垂直佈局'
   },
+  {
+    name: 'Avatar',
+    route: '/playground/avatar',
+    category: 'Layouts',
+    package: '@syncfusion/ej2-vue-layouts',
+    description: '頭像元件，用於顯示使用者頭像。支援多種尺寸、圓形/方形、圖片/文字/圖示、群組堆疊、狀態徽章'
+  },
+  {
+    name: 'OtpInput',
+    route: '/playground/otp-input',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: 'OTP 驗證碼輸入元件，用於輸入一次性密碼。支援自訂長度、分隔符、多種樣式、數字/文字/密碼模式'
+  },
+  {
+    name: 'Mention',
+    route: '/playground/mention',
+    category: 'Dropdowns',
+    package: '@syncfusion/ej2-vue-dropdowns',
+    description: '@提及元件，在文字輸入時觸發選單。支援自訂觸發字元、範本自訂、物件資料來源、多種目標元素'
+  },
+  {
+    name: 'InPlaceEditor',
+    route: '/playground/inplace-editor',
+    category: 'Editors',
+    package: '@syncfusion/ej2-vue-inplace-editor',
+    description: '原地編輯元件，點擊文字即可編輯。支援多種編輯器類型、內嵌/彈出模式、驗證規則、事件回調'
+  },
+  {
+    name: 'Barcode',
+    route: '/playground/barcode',
+    category: 'Data Visualization',
+    package: '@syncfusion/ej2-vue-barcode-generator',
+    description: '條碼產生器，生成各種條碼與 QR Code。支援 Code128、Code39、EAN、UPC、QR Code、Data Matrix 等格式'
+  },
 ]
 
 export const categories = [

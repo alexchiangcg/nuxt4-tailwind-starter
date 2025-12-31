@@ -2,7 +2,7 @@
 
 > 最後更新：2025-12-31
 
-## 已完成 (79 個)
+## 已完成 (84 個)
 
 | 類別 | 元件名稱 | 狀態 |
 |------|---------|------|
@@ -85,17 +85,22 @@
 | Notifications | Spinner | ✅ |
 | Navigation | Pager | ✅ |
 | Layout | Card | ✅ |
+| Layout | Avatar | ✅ |
+| Inputs | OTP Input | ✅ |
+| Dropdowns | Mention | ✅ |
+| Editors | InPlaceEditor | ✅ |
+| Data Visualization | Barcode | ✅ |
 
 ---
 
-## 尚未實作 (約 22 個)
+## 尚未實作 (約 17 個)
 
 ### 高優先級 - 常用元件
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
 | Dropdowns | DropdownTree | `@syncfusion/ej2-vue-dropdowns` | 下拉樹 | ⬜ |
-| Dropdowns | Mention | `@syncfusion/ej2-vue-dropdowns` | @提及元件 | ⬜ |
+| Dropdowns | Mention | `@syncfusion/ej2-vue-dropdowns` | @提及元件 | ✅ |
 | Popups | Tooltip | `@syncfusion/ej2-vue-popups` | 工具提示 | ✅ |
 | Notifications | Spinner | `@syncfusion/ej2-vue-popups` | 載入中動畫 | ✅ |
 | Notifications | Badge | `@syncfusion/ej2-vue-notifications` | 徽章 | ✅ |
@@ -120,7 +125,7 @@
 | TreeMap | TreeMap | `@syncfusion/ej2-vue-treemap` | 樹狀圖 | ✅ |
 | SmithChart | Smith Chart | `@syncfusion/ej2-vue-charts` | 史密斯圖 | ⬜ |
 | RangeNavigator | Range Selector | `@syncfusion/ej2-vue-charts` | 範圍選擇器 | ⬜ |
-| Barcode | Barcode | `@syncfusion/ej2-vue-barcodegenerator` | 條碼產生器 | ⬜ |
+| Barcode | Barcode | `@syncfusion/ej2-vue-barcodegenerator` | 條碼產生器 | ✅ |
 
 ### 排程與專案管理
 
@@ -135,7 +140,7 @@
 |------|---------|---------|------|------|
 | DocumentEditor | Document Editor | `@syncfusion/ej2-vue-documenteditor` | Word 文件編輯器 | ✅ |
 | ImageEditor | Image Editor | `@syncfusion/ej2-vue-image-editor` | 圖片編輯器 | ✅ |
-| InPlaceEditor | In-Place Editor | `@syncfusion/ej2-vue-inplace-editor` | 原地編輯 | ⬜ |
+| InPlaceEditor | In-Place Editor | `@syncfusion/ej2-vue-inplace-editor` | 原地編輯 | ✅ |
 | Spreadsheet | Spreadsheet | `@syncfusion/ej2-vue-spreadsheet` | 試算表 | ✅ |
 
 ### 導航元件
@@ -157,7 +162,7 @@
 |------|---------|---------|------|------|
 | Layout | Dashboard Layout | `@syncfusion/ej2-vue-layouts` | 儀表板佈局 | ⬜ |
 | Layout | Card | `@syncfusion/ej2-vue-layouts` | 卡片 | ✅ |
-| Layout | Avatar | `@syncfusion/ej2-vue-layouts` | 頭像 | ⬜ |
+| Layout | Avatar | `@syncfusion/ej2-vue-layouts` | 頭像 | ✅ |
 
 ### 表單與資料
 
@@ -185,7 +190,7 @@
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
-| Inputs | OTP Input | `@syncfusion/ej2-vue-inputs` | OTP 輸入框 | ⬜ |
+| Inputs | OTP Input | `@syncfusion/ej2-vue-inputs` | OTP 輸入框 | ✅ |
 | Inputs | Speech to Text | `@syncfusion/ej2-vue-inputs` | 語音轉文字 | ⬜ |
 
 ### 對話框相關
@@ -200,8 +205,8 @@
 
 | 狀態 | 數量 |
 |------|------|
-| ✅ 已完成 | 79 |
-| ⬜ 待實作 | ~22 |
+| ✅ 已完成 | 84 |
+| ⬜ 待實作 | ~17 |
 | **總計** | ~101 |
 
 ---
