@@ -599,6 +599,41 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-buttons',
     description: '浮動操作按鈕 (FAB)，固定在畫面角落的圓形按鈕。支援多種位置、SpeedDial 擴展選單、線性/放射狀模式'
   },
+  {
+    name: 'ButtonGroup',
+    route: '/playground/buttongroup',
+    category: 'Buttons',
+    package: '@syncfusion/ej2-vue-buttons',
+    description: '按鈕群組元件，將多個按鈕組合成群組。支援單選/多選模式、垂直排列、圖示按鈕、多種樣式'
+  },
+  {
+    name: 'ProgressButton',
+    route: '/playground/progressbutton',
+    category: 'Split Buttons',
+    package: '@syncfusion/ej2-vue-splitbuttons',
+    description: '進度按鈕元件，點擊後顯示進度動畫。支援進度條、旋轉器位置、內容動畫效果、自訂持續時間'
+  },
+  {
+    name: 'Spinner',
+    route: '/playground/spinner',
+    category: 'Notifications',
+    package: '@syncfusion/ej2-vue-popups',
+    description: '載入中旋轉器元件，用於顯示載入狀態。支援多種類型(Material/Fabric/Bootstrap)、尺寸、標籤文字'
+  },
+  {
+    name: 'Pager',
+    route: '/playground/pager',
+    category: 'Grids',
+    package: '@syncfusion/ej2-vue-grids',
+    description: '分頁器元件，用於資料分頁導航。支援頁碼按鈕、每頁筆數下拉選單、快速跳頁、查詢字串同步'
+  },
+  {
+    name: 'Card',
+    route: '/playground/card',
+    category: 'Layouts',
+    package: '@syncfusion/ej2-vue-layouts',
+    description: '卡片元件，用於展示內容的容器。支援標題、副標題、圖片、內容區、操作按鈕、水平/垂直佈局'
+  },
 ]
 
 export const categories = [

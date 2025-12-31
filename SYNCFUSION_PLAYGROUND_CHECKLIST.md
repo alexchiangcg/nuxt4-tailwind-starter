@@ -2,7 +2,7 @@
 
 > 最後更新：2025-12-31
 
-## 已完成 (74 個)
+## 已完成 (79 個)
 
 | 類別 | 元件名稱 | 狀態 |
 |------|---------|------|
@@ -80,21 +80,24 @@
 | Buttons | DropdownButton | ✅ |
 | Buttons | FloatingActionButton (FAB) | ✅ |
 | Navigation | SpeedDial | ✅ |
+| Buttons | ButtonGroup | ✅ |
+| Buttons | ProgressButton | ✅ |
+| Notifications | Spinner | ✅ |
+| Navigation | Pager | ✅ |
+| Layout | Card | ✅ |
 
 ---
 
-## 尚未實作 (約 27 個)
+## 尚未實作 (約 22 個)
 
 ### 高優先級 - 常用元件
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
-| Buttons | ButtonGroup | `@syncfusion/ej2-vue-buttons` | 按鈕群組 | ⬜ |
-| Buttons | ProgressButton | `@syncfusion/ej2-vue-splitbuttons` | 帶進度的按鈕 | ⬜ |
 | Dropdowns | DropdownTree | `@syncfusion/ej2-vue-dropdowns` | 下拉樹 | ⬜ |
 | Dropdowns | Mention | `@syncfusion/ej2-vue-dropdowns` | @提及元件 | ⬜ |
 | Popups | Tooltip | `@syncfusion/ej2-vue-popups` | 工具提示 | ✅ |
-| Notifications | Spinner | `@syncfusion/ej2-vue-popups` | 載入中動畫 | ⬜ |
+| Notifications | Spinner | `@syncfusion/ej2-vue-popups` | 載入中動畫 | ✅ |
 | Notifications | Badge | `@syncfusion/ej2-vue-notifications` | 徽章 | ✅ |
 | Notifications | Skeleton | `@syncfusion/ej2-vue-notifications` | 骨架屏 | ✅ |
 | Notifications | Message | `@syncfusion/ej2-vue-notifications` | 訊息提示 | ✅ |
@@ -143,7 +146,7 @@
 | Navigation | Carousel | `@syncfusion/ej2-vue-navigations` | 輪播 | ✅ |
 | Navigation | ContextMenu | `@syncfusion/ej2-vue-navigations` | 右鍵選單 | ✅ |
 | Navigation | FileManager | `@syncfusion/ej2-vue-filemanager` | 檔案管理器 | ✅ |
-| Navigation | Pager | `@syncfusion/ej2-vue-grids` | 分頁器 | ⬜ |
+| Navigation | Pager | `@syncfusion/ej2-vue-grids` | 分頁器 | ✅ |
 | Navigation | Ribbon | `@syncfusion/ej2-vue-ribbon` | 功能區 | ✅ |
 | Navigation | Stepper | `@syncfusion/ej2-vue-navigations` | 步驟指示器 | ✅ |
 | Navigation | AppBar | `@syncfusion/ej2-vue-navigations` | 應用程式列 | ✅ |
@@ -153,7 +156,7 @@
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
 | Layout | Dashboard Layout | `@syncfusion/ej2-vue-layouts` | 儀表板佈局 | ⬜ |
-| Layout | Card | `@syncfusion/ej2-vue-layouts` | 卡片 | ⬜ |
+| Layout | Card | `@syncfusion/ej2-vue-layouts` | 卡片 | ✅ |
 | Layout | Avatar | `@syncfusion/ej2-vue-layouts` | 頭像 | ⬜ |
 
 ### 表單與資料
@@ -197,8 +200,8 @@
 
 | 狀態 | 數量 |
 |------|------|
-| ✅ 已完成 | 74 |
-| ⬜ 待實作 | ~27 |
+| ✅ 已完成 | 79 |
+| ⬜ 待實作 | ~22 |
 | **總計** | ~101 |
 
 ---
