@@ -1,8 +1,8 @@
 # Syncfusion Vue Playground 元件實作進度
 
-> 最後更新：2025-12-30
+> 最後更新：2025-12-31
 
-## 已完成 (63 個)
+## 已完成 (68 個)
 
 | 類別 | 元件名稱 | 狀態 |
 |------|---------|------|
@@ -69,10 +69,15 @@
 | Charts | Sparkline | ✅ |
 | Navigations | AppBar | ✅ |
 | Navigations | Ribbon | ✅ |
+| Inputs | TextArea | ✅ |
+| Inputs | Rating | ✅ |
+| Inputs | FileUpload (Uploader) | ✅ |
+| Notifications | Message | ✅ |
+| Dropdowns | ListBox | ✅ |
 
 ---
 
-## 尚未實作 (約 38 個)
+## 尚未實作 (約 33 個)
 
 ### 高優先級 - 常用元件
 
@@ -85,20 +90,20 @@
 | Buttons | FloatingActionButton (FAB) | `@syncfusion/ej2-vue-buttons` | 浮動操作按鈕 | ⬜ |
 | Calendars | Calendar | `@syncfusion/ej2-vue-calendars` | 日曆元件 | ✅ |
 | Calendars | DateRangePicker | `@syncfusion/ej2-vue-calendars` | 日期範圍選擇器 | ✅ |
-| Inputs | TextArea | `@syncfusion/ej2-vue-inputs` | 多行文字輸入 | ⬜ |
+| Inputs | TextArea | `@syncfusion/ej2-vue-inputs` | 多行文字輸入 | ✅ |
 | Inputs | MaskedTextBox | `@syncfusion/ej2-vue-inputs` | 遮罩輸入框 | ⬜ |
-| Inputs | FileUpload (Uploader) | `@syncfusion/ej2-vue-inputs` | 檔案上傳 | ⬜ |
+| Inputs | FileUpload (Uploader) | `@syncfusion/ej2-vue-inputs` | 檔案上傳 | ✅ |
 | Inputs | Signature | `@syncfusion/ej2-vue-inputs` | 簽名板 | ⬜ |
-| Inputs | Rating | `@syncfusion/ej2-vue-inputs` | 評分元件 | ⬜ |
+| Inputs | Rating | `@syncfusion/ej2-vue-inputs` | 評分元件 | ✅ |
 | Dropdowns | AutoComplete | `@syncfusion/ej2-vue-dropdowns` | 自動完成 | ✅ |
-| Dropdowns | ListBox | `@syncfusion/ej2-vue-dropdowns` | 列表框 | ⬜ |
+| Dropdowns | ListBox | `@syncfusion/ej2-vue-dropdowns` | 列表框 | ✅ |
 | Dropdowns | DropdownTree | `@syncfusion/ej2-vue-dropdowns` | 下拉樹 | ⬜ |
 | Dropdowns | Mention | `@syncfusion/ej2-vue-dropdowns` | @提及元件 | ⬜ |
 | Popups | Tooltip | `@syncfusion/ej2-vue-popups` | 工具提示 | ✅ |
 | Notifications | Spinner | `@syncfusion/ej2-vue-popups` | 載入中動畫 | ⬜ |
 | Notifications | Badge | `@syncfusion/ej2-vue-notifications` | 徽章 | ✅ |
 | Notifications | Skeleton | `@syncfusion/ej2-vue-notifications` | 骨架屏 | ✅ |
-| Notifications | Message | `@syncfusion/ej2-vue-notifications` | 訊息提示 | ⬜ |
+| Notifications | Message | `@syncfusion/ej2-vue-notifications` | 訊息提示 | ✅ |
 
 ### 資料視覺化元件
 
@@ -199,8 +204,8 @@
 
 | 狀態 | 數量 |
 |------|------|
-| ✅ 已完成 | 63 |
-| ⬜ 待實作 | ~38 |
+| ✅ 已完成 | 68 |
+| ⬜ 待實作 | ~33 |
 | **總計** | ~101 |
 
 ---
