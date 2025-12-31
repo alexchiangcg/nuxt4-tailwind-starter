@@ -2,7 +2,7 @@
 
 > 最後更新：2025-12-31
 
-## 已完成 (68 個)
+## 已完成 (74 個)
 
 | 類別 | 元件名稱 | 狀態 |
 |------|---------|------|
@@ -74,29 +74,23 @@
 | Inputs | FileUpload (Uploader) | ✅ |
 | Notifications | Message | ✅ |
 | Dropdowns | ListBox | ✅ |
+| Buttons | Chips | ✅ |
+| Inputs | Signature | ✅ |
+| Inputs | MaskedTextBox | ✅ |
+| Buttons | DropdownButton | ✅ |
+| Buttons | FloatingActionButton (FAB) | ✅ |
+| Navigation | SpeedDial | ✅ |
 
 ---
 
-## 尚未實作 (約 33 個)
+## 尚未實作 (約 27 個)
 
 ### 高優先級 - 常用元件
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
 | Buttons | ButtonGroup | `@syncfusion/ej2-vue-buttons` | 按鈕群組 | ⬜ |
-| Buttons | DropdownButton | `@syncfusion/ej2-vue-splitbuttons` | 下拉選單按鈕 | ⬜ |
 | Buttons | ProgressButton | `@syncfusion/ej2-vue-splitbuttons` | 帶進度的按鈕 | ⬜ |
-| Buttons | Chips | `@syncfusion/ej2-vue-buttons` | 標籤/晶片元件 | ⬜ |
-| Buttons | FloatingActionButton (FAB) | `@syncfusion/ej2-vue-buttons` | 浮動操作按鈕 | ⬜ |
-| Calendars | Calendar | `@syncfusion/ej2-vue-calendars` | 日曆元件 | ✅ |
-| Calendars | DateRangePicker | `@syncfusion/ej2-vue-calendars` | 日期範圍選擇器 | ✅ |
-| Inputs | TextArea | `@syncfusion/ej2-vue-inputs` | 多行文字輸入 | ✅ |
-| Inputs | MaskedTextBox | `@syncfusion/ej2-vue-inputs` | 遮罩輸入框 | ⬜ |
-| Inputs | FileUpload (Uploader) | `@syncfusion/ej2-vue-inputs` | 檔案上傳 | ✅ |
-| Inputs | Signature | `@syncfusion/ej2-vue-inputs` | 簽名板 | ⬜ |
-| Inputs | Rating | `@syncfusion/ej2-vue-inputs` | 評分元件 | ✅ |
-| Dropdowns | AutoComplete | `@syncfusion/ej2-vue-dropdowns` | 自動完成 | ✅ |
-| Dropdowns | ListBox | `@syncfusion/ej2-vue-dropdowns` | 列表框 | ✅ |
 | Dropdowns | DropdownTree | `@syncfusion/ej2-vue-dropdowns` | 下拉樹 | ⬜ |
 | Dropdowns | Mention | `@syncfusion/ej2-vue-dropdowns` | @提及元件 | ⬜ |
 | Popups | Tooltip | `@syncfusion/ej2-vue-popups` | 工具提示 | ✅ |
@@ -153,7 +147,6 @@
 | Navigation | Ribbon | `@syncfusion/ej2-vue-ribbon` | 功能區 | ✅ |
 | Navigation | Stepper | `@syncfusion/ej2-vue-navigations` | 步驟指示器 | ✅ |
 | Navigation | AppBar | `@syncfusion/ej2-vue-navigations` | 應用程式列 | ✅ |
-| Navigation | SpeedDial | `@syncfusion/ej2-vue-buttons` | 快速撥號按鈕 | ⬜ |
 
 ### 佈局元件
 
@@ -204,8 +197,8 @@
 
 | 狀態 | 數量 |
 |------|------|
-| ✅ 已完成 | 68 |
-| ⬜ 待實作 | ~33 |
+| ✅ 已完成 | 74 |
+| ⬜ 待實作 | ~27 |
 | **總計** | ~101 |
 
 ---

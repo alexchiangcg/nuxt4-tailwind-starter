@@ -527,6 +527,78 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-ribbon',
     description: '功能區元件，Office 風格的工具列介面。支援分頁、群組、多種控制項類型、檔案選單、響應式佈局'
   },
+
+  // 新增的元件
+  {
+    name: 'TextArea',
+    route: '/playground/textarea',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: '多行文字輸入框，支援字數統計、最大長度限制、調整大小模式、浮動標籤'
+  },
+  {
+    name: 'Rating',
+    route: '/playground/rating',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: '評分元件，用於收集使用者評分。支援全選/半選/四分之一/精確模式、只讀狀態、工具提示'
+  },
+  {
+    name: 'FileUpload',
+    route: '/playground/fileupload',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: '檔案上傳元件，支援拖放上傳、檔案類型限制、大小限制、多檔案上傳、自動上傳'
+  },
+  {
+    name: 'Message',
+    route: '/playground/message',
+    category: 'Notifications',
+    package: '@syncfusion/ej2-vue-notifications',
+    description: '訊息通知元件，顯示資訊、成功、警告、錯誤等不同等級的訊息。支援圖示、關閉按鈕、自訂樣式'
+  },
+  {
+    name: 'ListBox',
+    route: '/playground/listbox',
+    category: 'Dropdowns',
+    package: '@syncfusion/ej2-vue-dropdowns',
+    description: '列表框元件，用於從列表中選取項目。支援單選/多選、拖放、篩選、雙列表框、工具列操作'
+  },
+  {
+    name: 'Chips',
+    route: '/playground/chips',
+    category: 'Buttons',
+    package: '@syncfusion/ej2-vue-buttons',
+    description: '標籤晶片元件，用於顯示標籤、篩選條件等。支援單選/多選模式、可刪除、可拖放、多種樣式'
+  },
+  {
+    name: 'Signature',
+    route: '/playground/signature',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: '簽名板元件，用於電子簽名。支援筆跡顏色、筆跡粗細、背景色、儲存為圖片、撤銷/重做'
+  },
+  {
+    name: 'MaskedTextBox',
+    route: '/playground/maskedtextbox',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: '遮罩輸入框，用於格式化輸入如電話、日期、信用卡等。支援自訂遮罩、提示字元、浮動標籤'
+  },
+  {
+    name: 'DropdownButton',
+    route: '/playground/dropdownbutton',
+    category: 'Split Buttons',
+    package: '@syncfusion/ej2-vue-splitbuttons',
+    description: '下拉按鈕元件，點擊顯示選項清單。支援圖示、分隔線、停用項目、多種按鈕樣式'
+  },
+  {
+    name: 'FloatingActionButton',
+    route: '/playground/fab',
+    category: 'Buttons',
+    package: '@syncfusion/ej2-vue-buttons',
+    description: '浮動操作按鈕 (FAB)，固定在畫面角落的圓形按鈕。支援多種位置、SpeedDial 擴展選單、線性/放射狀模式'
+  },
 ]
 
 export const categories = [
