@@ -669,6 +669,62 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-barcode-generator',
     description: '條碼產生器，生成各種條碼與 QR Code。支援 Code128、Code39、EAN、UPC、QR Code、Data Matrix 等格式'
   },
+  {
+    name: 'DropdownTree',
+    route: '/playground/dropdowntree',
+    category: 'Dropdowns',
+    package: '@syncfusion/ej2-vue-dropdowns',
+    description: '下拉樹元件，結合下拉選單與樹狀結構。支援階層式資料、核取方塊多選、自動勾選父子節點、篩選搜尋'
+  },
+  {
+    name: 'DashboardLayout',
+    route: '/playground/dashboard-layout',
+    category: 'Layouts',
+    package: '@syncfusion/ej2-vue-layouts',
+    description: '儀表板佈局元件，可拖放與調整大小的面板佈局。支援網格系統、浮動面板、響應式斷點、儲存/還原佈局'
+  },
+  {
+    name: 'QueryBuilder',
+    route: '/playground/querybuilder',
+    category: 'Data Analysis',
+    package: '@syncfusion/ej2-vue-querybuilder',
+    description: '查詢建構器元件，視覺化建立查詢條件。支援多種欄位類型、群組條件、SQL/JSON 輸出、拖放規則'
+  },
+  {
+    name: 'BulletChart',
+    route: '/playground/bulletchart',
+    category: 'Charts',
+    package: '@syncfusion/ej2-vue-charts',
+    description: '子彈圖元件，用於比較實際值與目標值。支援多範圍背景、水平/垂直方向、分類軸、工具提示'
+  },
+  {
+    name: 'RangeNavigator',
+    route: '/playground/range-navigator',
+    category: 'Charts',
+    package: '@syncfusion/ej2-vue-charts',
+    description: '範圍選擇器元件，用於選取時間或數值範圍。支援週期選擇器、日期時間軸、延遲更新、與圖表聯動'
+  },
+  {
+    name: 'SmithChart',
+    route: '/playground/smithchart',
+    category: 'Charts',
+    package: '@syncfusion/ej2-vue-charts',
+    description: '史密斯圖元件，用於射頻工程中的阻抗和導納視覺化。支援阻抗/導納模式、多系列、標記、工具提示、圖例'
+  },
+  {
+    name: 'MultiColumnComboBox',
+    route: '/playground/multicolumn-combobox',
+    category: 'Dropdowns',
+    package: '@syncfusion/ej2-vue-multicolumn-combobox',
+    description: '多欄下拉選單，在下拉清單中顯示多個資料欄位。支援欄位排序、篩選、分組、自訂欄寬'
+  },
+  {
+    name: 'PredefinedDialogs',
+    route: '/playground/predefined-dialogs',
+    category: 'Popups',
+    package: '@syncfusion/ej2-vue-popups',
+    description: '預設對話框工具，包含 Alert、Confirm、Prompt 三種類型。支援自訂按鈕、拖曳、動畫、位置設定'
+  },
 ]
 
 export const categories = [

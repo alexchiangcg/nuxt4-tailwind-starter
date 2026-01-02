@@ -3782,12 +3782,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-base@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-base@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-icons": "npm:~32.1.19"
+  bin:
+    syncfusion-license: bin/syncfusion-license.js
+  checksum: 10c0/1cb0e220934fe3f75ac93a90a25b9528e5606815a0dfb3ed079b1d78a8aa44e913032e84d82eebfbe3e659b0571b4639917e797c43c898b5e1407734c5a64472
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-buttons@npm:30.2.4, @syncfusion/ej2-buttons@npm:~30.2.4":
   version: 30.2.4
   resolution: "@syncfusion/ej2-buttons@npm:30.2.4"
   dependencies:
     "@syncfusion/ej2-base": "npm:~30.2.4"
   checksum: 10c0/1bd2e25315f75cdaa3da6580eb47eaee9eacbfc695993f63c67b32ec7a14a60082db29feb18ceaba900d4ac3353549df42be18556b041e42fabd672577d18546
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-buttons@npm:~32.1.19, @syncfusion/ej2-buttons@npm:~32.1.21":
+  version: 32.1.21
+  resolution: "@syncfusion/ej2-buttons@npm:32.1.21"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+  checksum: 10c0/46b51b1ac3a58a1b1c21a8b4f81629dd42c622d38339752a63ba6a2410b2a813f38ec8f1207ea139fbb484a36b94a7550cca732025b0b4fc398678e777661c2c
   languageName: node
   linkType: hard
 
@@ -3801,6 +3821,19 @@ __metadata:
     "@syncfusion/ej2-lists": "npm:~30.2.4"
     "@syncfusion/ej2-popups": "npm:~30.2.4"
   checksum: 10c0/acb8635c26bb5a7c6d3073065b050c5140fd0a051ad07d0718627ddc438e0d6ff473826049dd76515bdc462baa699a2b566e70f0dc81abc73a389ce5adfc7453
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-calendars@npm:~32.1.21":
+  version: 32.1.21
+  resolution: "@syncfusion/ej2-calendars@npm:32.1.21"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.21"
+    "@syncfusion/ej2-inputs": "npm:~32.1.20"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/682c206645dbf469e0f9e8b32fd51c5cad2e1b3240e78c72cf7652958f72bb5f8ef47514aa468ae7e25b7ecdade4c98732b267f226363eb4c09aa2b8c91ea4a0
   languageName: node
   linkType: hard
 
@@ -3839,12 +3872,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-compression@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-compression@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-file-utils": "npm:~32.1.19"
+  checksum: 10c0/bdb55a629419f0010d5a0dbf7d2cc51235a5f588add2b6f8efff2f77ecedc03b8acd0a49d870588fad25ee8c2655ebb6a0a0c93980f6c3688dc2b4264416af28
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-data@npm:~30.2.4":
   version: 30.2.4
   resolution: "@syncfusion/ej2-data@npm:30.2.4"
   dependencies:
     "@syncfusion/ej2-base": "npm:~30.2.4"
   checksum: 10c0/9f65efd675474e06c5ca7702767abab5600ce2adf54cbdd4a8345e0e65e54032551e178da6c69026a9a415fcbc5e3b36644219634b7ffdb1a87372be23764e30
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-data@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-data@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+  checksum: 10c0/5fb5b7a9653727a7b7611e833d9f8a14c1e453b5e415f9c953eba2cf1cf01b70b67b37fdaceb12ec5fa3765694eb721ec00ec9a8c3cced18c27412b418146b15
   languageName: node
   linkType: hard
 
@@ -3908,6 +3959,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-dropdowns@npm:~32.1.21":
+  version: 32.1.21
+  resolution: "@syncfusion/ej2-dropdowns@npm:32.1.21"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:~32.1.20"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-navigations": "npm:~32.1.19"
+    "@syncfusion/ej2-notifications": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/9aff8743acc2827effb80e847ca06a9e71ba095a0d604ba1f9b8cda7641fb32550a8633d1f188411395585c1f2ede9a3ae7976e1c7be4771853f57b1871de7e8
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-excel-export@npm:~30.2.4":
   version: 30.2.4
   resolution: "@syncfusion/ej2-excel-export@npm:30.2.4"
@@ -3918,10 +3984,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-excel-export@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-excel-export@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-compression": "npm:~32.1.19"
+  checksum: 10c0/d037a6964a7584adb051d24620f301e5139ff38abd53fcd6095d12914764a80481227686a08f940cbf2b70bccb48fd4132f77be31c04958108f6854c0bafeb9e
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-file-utils@npm:~30.2.4":
   version: 30.2.4
   resolution: "@syncfusion/ej2-file-utils@npm:30.2.4"
   checksum: 10c0/a6f211449c9e17cf6743e00c9c6563633733f04a3eb220536b6cc42745258a3c7398af788af361f65b87de0f0d341d410a60eedf3a8e43c4bd181e2b6f7e30ee
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-file-utils@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-file-utils@npm:32.1.19"
+  checksum: 10c0/fa9f3e7033582400340f72a3ed9c66a70ae1103dd3c3ff0d1340861bcc5dca5e99a39f48fc4b2defaf7a1750d197e7f372c3b4a1f41ade75ea3275c5e97a463a
   languageName: node
   linkType: hard
 
@@ -3989,6 +4072,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-grids@npm:~32.1.20":
+  version: 32.1.21
+  resolution: "@syncfusion/ej2-grids@npm:32.1.21"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.21"
+    "@syncfusion/ej2-calendars": "npm:~32.1.21"
+    "@syncfusion/ej2-compression": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-dropdowns": "npm:~32.1.21"
+    "@syncfusion/ej2-excel-export": "npm:~32.1.19"
+    "@syncfusion/ej2-file-utils": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:~32.1.20"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-navigations": "npm:~32.1.19"
+    "@syncfusion/ej2-notifications": "npm:~32.1.19"
+    "@syncfusion/ej2-pdf-export": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+    "@syncfusion/ej2-splitbuttons": "npm:~32.1.19"
+  checksum: 10c0/dc8f68496d02a9951f8efbca8d69c6106ece3c9b7775ba0c3919c6c3b61d74b564f0d0766658969b95e2835522e41707c1cd535d803690f4195fed51ba761301
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-heatmap@npm:30.2.5":
   version: 30.2.5
   resolution: "@syncfusion/ej2-heatmap@npm:30.2.5"
@@ -4007,6 +4113,13 @@ __metadata:
   version: 30.2.4
   resolution: "@syncfusion/ej2-icons@npm:30.2.4"
   checksum: 10c0/00cff49d08884658e5536764476cff1ffd704c793c47508df2baedc493273997881e9cb55e2f7f08162eeadd595df253896656ddfb06083384eca9a73352f038
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-icons@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-icons@npm:32.1.19"
+  checksum: 10c0/cb22dc16bd1a57dcd25e45a62a6677d8aa4aae976e258019e77ee0a0a0eda16340c8ac3dd71858a5a695dda605ee4ebabb327f1188e57f5130fc3f62bd7cb84c
   languageName: node
   linkType: hard
 
@@ -4054,6 +4167,18 @@ __metadata:
     "@syncfusion/ej2-popups": "npm:~30.2.4"
     "@syncfusion/ej2-splitbuttons": "npm:~30.2.4"
   checksum: 10c0/4f273a13de9765b7014f23b5bca3fb0de246c3a44839a8ae4e218f838cb52957c279f36011ee60e68a8cd6b7109d6aaf1419d2ec87ef61e551ed25dfcd5521fc
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-inputs@npm:~32.1.19, @syncfusion/ej2-inputs@npm:~32.1.20":
+  version: 32.1.20
+  resolution: "@syncfusion/ej2-inputs@npm:32.1.20"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+    "@syncfusion/ej2-splitbuttons": "npm:~32.1.19"
+  checksum: 10c0/86c35a29e61d10b8a3c8b29c49492c4f3a8b75bff39c11c55b928eb5e98a52f3669ca2c542c2bd0351fe67ce5bb6731a4ac2cf807a068b533a9b1680456b11e1
   languageName: node
   linkType: hard
 
@@ -4120,6 +4245,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-lists@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-lists@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/d42a31720dce6161f5a417a7d4b6dc856838af3f32d9c32320d9364ca5759522118db3e1f68671d10658944ddf0eb1bf31fb83887a602db6b45d1e5ccc20ddef
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-maps@npm:30.2.4":
   version: 30.2.4
   resolution: "@syncfusion/ej2-maps@npm:30.2.4"
@@ -4132,6 +4269,16 @@ __metadata:
     "@syncfusion/ej2-pdf-export": "npm:~30.2.4"
     "@syncfusion/ej2-svg-base": "npm:~30.2.4"
   checksum: 10c0/7036686e45ccc608eaa8132c7b014e740358eecb8e866428e4980a42af0f5454c28e55d76e795bdac8dda2108a15307c92f00ccceb19ca45afe4a9eb46bf5b7f
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-multicolumn-combobox@npm:32.1.20":
+  version: 32.1.20
+  resolution: "@syncfusion/ej2-multicolumn-combobox@npm:32.1.20"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-grids": "npm:~32.1.20"
+  checksum: 10c0/9476d57605a3097010f9f59783d01818ac41d0087adeee49df328286b9bb7ff9888873a76c5736f2a69136bc3d6f98f81403466dd5bc8119e0aecbeeeee198c6
   languageName: node
   linkType: hard
 
@@ -4149,6 +4296,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-navigations@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-navigations@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-data": "npm:~32.1.19"
+    "@syncfusion/ej2-inputs": "npm:~32.1.19"
+    "@syncfusion/ej2-lists": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/cd4b83451fa6411d613836b7f918ad0556b6fd77a44b32ab7d1d8443e1dc402b4ac27c959c3851312ffaa14a6c3361e0795a2d849c43ba4f86ac9dccc3c790aa
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-notifications@npm:30.2.4, @syncfusion/ej2-notifications@npm:~30.2.4":
   version: 30.2.4
   resolution: "@syncfusion/ej2-notifications@npm:30.2.4"
@@ -4157,6 +4318,17 @@ __metadata:
     "@syncfusion/ej2-buttons": "npm:~30.2.4"
     "@syncfusion/ej2-popups": "npm:~30.2.4"
   checksum: 10c0/ecb14496e68ed90597fe9c63f03c650b4b8a26ee1a8abdbfde01f0eaee8efd3423db5f6c2daebd1cdc3de4a8beb5674e4b26cc176184385fc61d32eb88cba9e4
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-notifications@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-notifications@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/086717216454418b29fe269c636db417eb53ea5d5e2296da19df870e2fe8f75e7ab49426c52bd040e669b2ecfe8d9a001f938e985e59f07316f56f0598df3bb6
   languageName: node
   linkType: hard
 
@@ -4175,6 +4347,15 @@ __metadata:
   dependencies:
     "@syncfusion/ej2-compression": "npm:~30.2.4"
   checksum: 10c0/665bea548f79c353e6c2e52988400d8e7c739e432d593bd6e34181013026ceb902c33b6468ca88a733022914daf614e9a61eb60ed49a7a780812d60193b859f3
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-pdf-export@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-pdf-export@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-compression": "npm:~32.1.19"
+  checksum: 10c0/2350d08a2826a62145f392e74bc1ace002db28142507ede15a22088c401b39fe73ace8fdbe32d07e27f276d0f4411f1acb80069e7fc479dd165c738730edb2b5
   languageName: node
   linkType: hard
 
@@ -4240,6 +4421,16 @@ __metadata:
     "@syncfusion/ej2-base": "npm:~30.2.4"
     "@syncfusion/ej2-buttons": "npm:~30.2.4"
   checksum: 10c0/8d5157b098548426fe72d108384bf169b89ddb4f9ec261622ba7e6ae68a7c2404219a7199df202e9daef97196dbeeaa7e54b39f24993ba4dcdef4c96953b6671
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-popups@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-popups@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-buttons": "npm:~32.1.19"
+  checksum: 10c0/d4871558f7ccebd032da93f7a01064b522fa9fb90fd4b483c5b0b0e083264cca1f052c21bd7243b4568ddf069656391053d904e7a8964dfd6ede1426375af6d3
   languageName: node
   linkType: hard
 
@@ -4313,6 +4504,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-splitbuttons@npm:~32.1.19":
+  version: 32.1.19
+  resolution: "@syncfusion/ej2-splitbuttons@npm:32.1.19"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-popups": "npm:~32.1.19"
+  checksum: 10c0/b6b89e156afe650d70a5ded8faa6dba3a3ccbc7ad1b5f7cfd663cc9da809345485b20d117611ce31c1061bd0149e0c220abf6384cf660ad52517076a03dc60e2
+  languageName: node
+  linkType: hard
+
 "@syncfusion/ej2-spreadsheet@npm:30.2.7":
   version: 30.2.7
   resolution: "@syncfusion/ej2-spreadsheet@npm:30.2.7"
@@ -4367,6 +4568,15 @@ __metadata:
   dependencies:
     "@syncfusion/ej2-base": "npm:~30.2.4"
   checksum: 10c0/79facafb084eed9a003a59eb4816d797d2be23ae1f5fae7381c591033899b0b469561fcc019e7900fb46f6e70a117870344a24a7eca83e171103f5ebc17f7a5c
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-base@npm:~32.1.20":
+  version: 32.1.21
+  resolution: "@syncfusion/ej2-vue-base@npm:32.1.21"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+  checksum: 10c0/8554bc9872529be32669805ca28ac69004014eb7e29ef6515522256f9f2bd0d480261b41ed9da6371c31568c3bc9debe4595c8332142fe24bc462e1fce763697
   languageName: node
   linkType: hard
 
@@ -4576,6 +4786,17 @@ __metadata:
     "@syncfusion/ej2-maps": "npm:30.2.4"
     "@syncfusion/ej2-vue-base": "npm:~30.2.4"
   checksum: 10c0/3ae25d2672d875435b656f7cae7ce88fb59da9bd9c245ebd633766d1e7ddb75b07e730ba0fd0a7a2d50a8571350b4c446bb0f3b3a5fb187482a8242b45be4e0a
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-vue-multicolumn-combobox@npm:^32.1.20":
+  version: 32.1.20
+  resolution: "@syncfusion/ej2-vue-multicolumn-combobox@npm:32.1.20"
+  dependencies:
+    "@syncfusion/ej2-base": "npm:~32.1.19"
+    "@syncfusion/ej2-multicolumn-combobox": "npm:32.1.20"
+    "@syncfusion/ej2-vue-base": "npm:~32.1.20"
+  checksum: 10c0/f91c1cf4d0c1ecccfb66a895ea11c1cb1fdd2a8b641aea34b84bea35d8ae96dc6047053d32f84aa91cf7d39f2b5a2480b70bee39d8893b69afad96446e5fb3c0
   languageName: node
   linkType: hard
 
@@ -12239,6 +12460,7 @@ __metadata:
     "@syncfusion/ej2-vue-lineargauge": "npm:^30.1.19"
     "@syncfusion/ej2-vue-lists": "npm:^30.0.0"
     "@syncfusion/ej2-vue-maps": "npm:^30.1.19"
+    "@syncfusion/ej2-vue-multicolumn-combobox": "npm:^32.1.20"
     "@syncfusion/ej2-vue-navigations": "npm:^30.0.0"
     "@syncfusion/ej2-vue-notifications": "npm:^30.0.0"
     "@syncfusion/ej2-vue-pdfviewer": "npm:^30.0.0"

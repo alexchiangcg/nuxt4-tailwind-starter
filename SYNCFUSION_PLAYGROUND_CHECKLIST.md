@@ -1,8 +1,8 @@
 # Syncfusion Vue Playground 元件實作進度
 
-> 最後更新：2025-12-31
+> 最後更新：2026-01-02
 
-## 已完成 (84 個)
+## 已完成 (92 個)
 
 | 類別 | 元件名稱 | 狀態 |
 |------|---------|------|
@@ -90,16 +90,24 @@
 | Dropdowns | Mention | ✅ |
 | Editors | InPlaceEditor | ✅ |
 | Data Visualization | Barcode | ✅ |
+| Dropdowns | DropdownTree | ✅ |
+| Charts | Bullet Chart | ✅ |
+| Charts | Range Navigator | ✅ |
+| Layout | Dashboard Layout | ✅ |
+| Forms | QueryBuilder | ✅ |
+| Charts | Smith Chart | ✅ |
+| Dropdowns | MultiColumn ComboBox | ✅ |
+| Popups | Predefined Dialogs | ✅ |
 
 ---
 
-## 尚未實作 (約 17 個)
+## 尚未實作 (約 9 個)
 
 ### 高優先級 - 常用元件
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
-| Dropdowns | DropdownTree | `@syncfusion/ej2-vue-dropdowns` | 下拉樹 | ⬜ |
+| Dropdowns | DropdownTree | `@syncfusion/ej2-vue-dropdowns` | 下拉樹 | ✅ |
 | Dropdowns | Mention | `@syncfusion/ej2-vue-dropdowns` | @提及元件 | ✅ |
 | Popups | Tooltip | `@syncfusion/ej2-vue-popups` | 工具提示 | ✅ |
 | Notifications | Spinner | `@syncfusion/ej2-vue-popups` | 載入中動畫 | ✅ |
@@ -116,15 +124,15 @@
 | Charts | 3D Chart | `@syncfusion/ej2-vue-charts` | 3D 圖表 | ✅ |
 | Charts | Stock Chart | `@syncfusion/ej2-vue-charts` | 股票圖表 | ✅ |
 | Charts | Sparkline | `@syncfusion/ej2-vue-charts` | 迷你圖 | ✅ |
-| Charts | Bullet Chart | `@syncfusion/ej2-vue-charts` | 子彈圖 | ⬜ |
+| Charts | Bullet Chart | `@syncfusion/ej2-vue-charts` | 子彈圖 | ✅ |
 | Gauges | Circular Gauge | `@syncfusion/ej2-vue-circulargauge` | 圓形儀表 | ✅ |
 | Gauges | Linear Gauge | `@syncfusion/ej2-vue-lineargauge` | 線性儀表 | ✅ |
 | Maps | Maps | `@syncfusion/ej2-vue-maps` | 地圖元件 | ✅ |
 | Diagrams | Diagram | `@syncfusion/ej2-vue-diagrams` | 流程圖/UML | ✅ |
 | HeatMap | HeatMap Chart | `@syncfusion/ej2-vue-heatmap` | 熱力圖 | ✅ |
 | TreeMap | TreeMap | `@syncfusion/ej2-vue-treemap` | 樹狀圖 | ✅ |
-| SmithChart | Smith Chart | `@syncfusion/ej2-vue-charts` | 史密斯圖 | ⬜ |
-| RangeNavigator | Range Selector | `@syncfusion/ej2-vue-charts` | 範圍選擇器 | ⬜ |
+| SmithChart | Smith Chart | `@syncfusion/ej2-vue-charts` | 史密斯圖 | ✅ |
+| RangeNavigator | Range Selector | `@syncfusion/ej2-vue-charts` | 範圍選擇器 | ✅ |
 | Barcode | Barcode | `@syncfusion/ej2-vue-barcodegenerator` | 條碼產生器 | ✅ |
 
 ### 排程與專案管理
@@ -160,7 +168,7 @@
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
-| Layout | Dashboard Layout | `@syncfusion/ej2-vue-layouts` | 儀表板佈局 | ⬜ |
+| Layout | Dashboard Layout | `@syncfusion/ej2-vue-layouts` | 儀表板佈局 | ✅ |
 | Layout | Card | `@syncfusion/ej2-vue-layouts` | 卡片 | ✅ |
 | Layout | Avatar | `@syncfusion/ej2-vue-layouts` | 頭像 | ✅ |
 
@@ -169,8 +177,8 @@
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
 | Grids | TreeGrid | `@syncfusion/ej2-vue-treegrid` | 樹狀表格 | ✅ |
-| Forms | QueryBuilder | `@syncfusion/ej2-vue-querybuilder` | 查詢建構器 | ⬜ |
-| Dropdowns | MultiColumn ComboBox | `@syncfusion/ej2-vue-multicolumn-combobox` | 多欄下拉框 | ⬜ |
+| Forms | QueryBuilder | `@syncfusion/ej2-vue-querybuilder` | 查詢建構器 | ✅ |
+| Dropdowns | MultiColumn ComboBox | `@syncfusion/ej2-vue-multicolumn-combobox` | 多欄下拉框 | ✅ |
 
 ### 智慧元件 (AI 驅動)
 
@@ -197,7 +205,7 @@
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
-| Popups | Predefined Dialogs | `@syncfusion/ej2-vue-popups` | 預設對話框（Alert/Confirm/Prompt）| ⬜ |
+| Popups | Predefined Dialogs | `@syncfusion/ej2-vue-popups` | 預設對話框（Alert/Confirm/Prompt）| ✅ |
 
 ---
 
@@ -205,8 +213,8 @@
 
 | 狀態 | 數量 |
 |------|------|
-| ✅ 已完成 | 84 |
-| ⬜ 待實作 | ~17 |
+| ✅ 已完成 | 92 |
+| ⬜ 待實作 | ~9 |
 | **總計** | ~101 |
 
 ---
