@@ -725,11 +725,33 @@ export const components: PlaygroundComponent[] = [
     package: '@syncfusion/ej2-vue-popups',
     description: '預設對話框工具，包含 Alert、Confirm、Prompt 三種類型。支援自訂按鈕、拖曳、動畫、位置設定'
   },
+  {
+    name: 'SpeechToText',
+    route: '/playground/speech-to-text',
+    category: 'Inputs',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: '語音轉文字元件，使用 Web Speech API 進行語音識別。支援多語言、連續識別、即時結果、事件回調'
+  },
+  {
+    name: 'SmartPaste',
+    route: '/playground/smart-paste',
+    category: 'Smart Components',
+    package: '@syncfusion/ej2-vue-buttons',
+    description: 'AI 智慧貼上按鈕，使用 AI 解析剪貼簿內容並自動填充表單欄位。需整合 OpenAI/Azure OpenAI 服務'
+  },
+  {
+    name: 'SmartTextArea',
+    route: '/playground/smart-textarea',
+    category: 'Smart Components',
+    package: '@syncfusion/ej2-vue-inputs',
+    description: 'AI 智慧文字區域，提供智慧句子自動完成功能。支援角色設定、預設語句、AI 建議處理'
+  },
 ]
 
 export const categories = [
   'Buttons',
   'Calendars',
+  'Smart Components',
   'Charts',
   'Chat',
   'Data Analysis',

@@ -2,7 +2,7 @@
 
 > 最後更新：2026-01-02
 
-## 已完成 (92 個)
+## 已完成 (95 個)
 
 | 類別 | 元件名稱 | 狀態 |
 |------|---------|------|
@@ -98,10 +98,13 @@
 | Charts | Smith Chart | ✅ |
 | Dropdowns | MultiColumn ComboBox | ✅ |
 | Popups | Predefined Dialogs | ✅ |
+| Inputs | Speech to Text | ✅ |
+| Smart Components | Smart Paste | ✅ |
+| Smart Components | Smart TextArea | ✅ |
 
 ---
 
-## 尚未實作 (約 9 個)
+## 尚未實作 (約 6 個)
 
 ### 高優先級 - 常用元件
 
@@ -184,8 +187,8 @@
 
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
-| Smart | Smart Paste | `@syncfusion/ej2-vue-buttons` | AI 智慧貼上 | ⬜ |
-| Smart | Smart TextArea | `@syncfusion/ej2-vue-inputs` | AI 智慧文字區 | ⬜ |
+| Smart | Smart Paste | `@syncfusion/ej2-vue-buttons` | AI 智慧貼上 | ✅ |
+| Smart | Smart TextArea | `@syncfusion/ej2-vue-inputs` | AI 智慧文字區 | ✅ |
 
 ### 互動式聊天
 
@@ -199,7 +202,7 @@
 | 類別 | 元件名稱 | Package | 說明 | 狀態 |
 |------|---------|---------|------|------|
 | Inputs | OTP Input | `@syncfusion/ej2-vue-inputs` | OTP 輸入框 | ✅ |
-| Inputs | Speech to Text | `@syncfusion/ej2-vue-inputs` | 語音轉文字 | ⬜ |
+| Inputs | Speech to Text | `@syncfusion/ej2-vue-inputs` | 語音轉文字 | ✅ |
 
 ### 對話框相關
 
@@ -213,8 +216,8 @@
 
 | 狀態 | 數量 |
 |------|------|
-| ✅ 已完成 | 92 |
-| ⬜ 待實作 | ~9 |
+| ✅ 已完成 | 95 |
+| ⬜ 待實作 | ~6 |
 | **總計** | ~101 |
 
 ---
