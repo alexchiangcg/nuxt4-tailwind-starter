@@ -83,7 +83,11 @@
       "Bash(for pkg in ej2-base ej2-icons ej2-buttons ej2-inputs ej2-dropdowns ej2-splitbuttons ej2-calendars ej2-layouts ej2-popups ej2-lists ej2-navigations ej2-notifications ej2-grids ej2-treegrid ej2-pivotview ej2-kanban ej2-spreadsheet ej2-schedule ej2-gantt ej2-richtexteditor ej2-documenteditor ej2-image-editor ej2-inplace-editor ej2-filemanager ej2-pdfviewer ej2-diagrams ej2-interactive-chat ej2-ribbon)",
       "Bash(if [ ! -f \"/home/a25012/projects/nuxt4-tailwind-starter/node_modules/@syncfusion/$pkg/styles/material.css\" ])",
       "Bash(timeout 15 yarn dev:*)",
-      "Bash(git diff:*)"
+      "Bash(git diff:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git push:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
