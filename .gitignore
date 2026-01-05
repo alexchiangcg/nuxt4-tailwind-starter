@@ -7,3 +7,5 @@ dist
 .env
 .idea/
 public/assets/fonts
+
+.playwright-mcp
